@@ -19,23 +19,49 @@ concurrency:
 
 jobs:
   deploy:
+    runs-on: ubuntu-latest
     environment:
       name: github-pages
       url: ${{ steps.deployment.outputs.page_url }}
-    runs-on: ubuntu-latest
 
     steps:
       - name: Checkout
         uses: actions/checkout@v4
 
+      - name: Check if Pages is enabled
+        id: pages_check
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          CODE=$(curl -sS -o /tmp/pages.json -w "%{http_code}" \
+            -H "Authorization: Bearer $GH_TOKEN" \
+            -H "Accept: application/vnd.github+json" \
+            "https://api.github.com/repos/${{ github.repository }}/pages")
+
+          if [ "$CODE" = "200" ]; then
+            echo "enabled=true" >> "$GITHUB_OUTPUT"
+            echo "Pages is enabled."
+          else
+            echo "enabled=false" >> "$GITHUB_OUTPUT"
+            echo "Pages not enabled yet (API status: $CODE). Skipping deployment."
+            echo "Enable once: Settings -> Pages -> Build and deployment -> GitHub Actions"
+          fi
+
       - name: Setup Pages
+        if: steps.pages_check.outputs.enabled == 'true'
         uses: actions/configure-pages@v5
 
       - name: Upload artifact
+        if: steps.pages_check.outputs.enabled == 'true'
         uses: actions/upload-pages-artifact@v3
         with:
           path: docs
 
       - name: Deploy to GitHub Pages
+        if: steps.pages_check.outputs.enabled == 'true'
         id: deployment
         uses: actions/deploy-pages@v4
+
+      - name: Skip notice
+        if: steps.pages_check.outputs.enabled != 'true'
+        run: echo "Workflow passed without deploy because Pages is disabled."
