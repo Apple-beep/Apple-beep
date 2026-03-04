@@ -1,0 +1,140 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Musharaf Arcade</title>
+    <style>
+      :root {
+        --bg: #05070c;
+        --panel: #0f172a;
+        --line: #1f2a44;
+        --teal: #22d3ee;
+        --orange: #fb923c;
+        --text: #e2e8f0;
+        --muted: #94a3b8;
+      }
+
+      * {
+        box-sizing: border-box;
+      }
+
+      body {
+        margin: 0;
+        min-height: 100vh;
+        font-family: "Space Grotesk", "Avenir Next", "Segoe UI", sans-serif;
+        background:
+          radial-gradient(circle at 15% 20%, rgba(34, 211, 238, 0.17), transparent 40%),
+          radial-gradient(circle at 80% 10%, rgba(251, 146, 60, 0.18), transparent 35%),
+          linear-gradient(140deg, #05070c, #0b1221 55%, #101827);
+        color: var(--text);
+        display: grid;
+        place-items: center;
+        padding: 24px;
+      }
+
+      .shell {
+        width: min(980px, 100%);
+        background: linear-gradient(160deg, rgba(15, 23, 42, 0.95), rgba(2, 6, 23, 0.95));
+        border: 1px solid var(--line);
+        border-radius: 24px;
+        padding: 28px;
+        box-shadow: 0 20px 80px rgba(2, 8, 30, 0.65);
+      }
+
+      h1 {
+        margin: 0 0 10px;
+        font-size: clamp(28px, 5vw, 48px);
+      }
+
+      p {
+        margin: 0;
+        color: var(--muted);
+        line-height: 1.55;
+      }
+
+      .grid {
+        margin-top: 22px;
+        display: grid;
+        gap: 14px;
+      }
+
+      @media (min-width: 900px) {
+        .grid {
+          grid-template-columns: repeat(2, minmax(0, 1fr));
+        }
+      }
+
+      .card {
+        border: 1px solid var(--line);
+        border-radius: 18px;
+        padding: 18px;
+        text-decoration: none;
+        color: inherit;
+        background: rgba(15, 23, 42, 0.45);
+        transition: transform 160ms ease, border-color 160ms ease;
+      }
+
+      .card:hover {
+        transform: translateY(-4px);
+        border-color: rgba(34, 211, 238, 0.8);
+      }
+
+      .card h2 {
+        margin: 0 0 8px;
+        font-size: 22px;
+      }
+
+      .tag {
+        display: inline-block;
+        margin-top: 10px;
+        padding: 6px 10px;
+        border-radius: 999px;
+        font-size: 12px;
+        letter-spacing: 0.08em;
+        text-transform: uppercase;
+      }
+
+      .tag.teal {
+        background: rgba(34, 211, 238, 0.18);
+        color: var(--teal);
+      }
+
+      .tag.orange {
+        background: rgba(251, 146, 60, 0.18);
+        color: var(--orange);
+      }
+
+      .home-link {
+        display: inline-block;
+        margin-top: 18px;
+        color: var(--teal);
+      }
+    </style>
+  </head>
+  <body>
+    <main class="shell">
+      <h1>Musharaf Arcade</h1>
+      <p>
+        Two recruiter-facing mini games focused on engineering instincts: optimizing latency and making
+        tradeoffs during production incidents.
+      </p>
+
+      <section class="grid">
+        <a class="card" href="./games/latency-lab.html">
+          <h2>Latency Lab</h2>
+          <p>Find the fastest route across a distributed system graph before the timer expires.</p>
+          <span class="tag teal">Systems Thinking</span>
+        </a>
+
+        <a class="card" href="./games/incident-commander.html">
+          <h2>Incident Commander</h2>
+          <p>Handle incidents with balanced decisions across uptime, trust, and budget.</p>
+          <span class="tag orange">Decision Making</span>
+        </a>
+      </section>
+
+      <a class="home-link" href="https://github.com/Apple-beep">Back to GitHub Profile</a>
+    </main>
+  </body>
+</html>

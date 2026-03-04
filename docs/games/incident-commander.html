@@ -1,0 +1,447 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Incident Commander</title>
+    <style>
+      :root {
+        --bg: #05070c;
+        --panel: #0f172a;
+        --line: #243041;
+        --teal: #22d3ee;
+        --orange: #fb923c;
+        --pink: #f472b6;
+        --text: #e2e8f0;
+        --muted: #94a3b8;
+      }
+
+      * {
+        box-sizing: border-box;
+      }
+
+      body {
+        margin: 0;
+        min-height: 100vh;
+        font-family: "Space Grotesk", "Avenir Next", "Segoe UI", sans-serif;
+        color: var(--text);
+        background:
+          radial-gradient(circle at 12% 18%, rgba(34, 211, 238, 0.17), transparent 38%),
+          radial-gradient(circle at 90% 10%, rgba(244, 114, 182, 0.2), transparent 36%),
+          linear-gradient(140deg, #05070c, #0a1120 55%, #151426);
+        padding: 22px;
+      }
+
+      .wrap {
+        width: min(980px, 100%);
+        margin: 0 auto;
+      }
+
+      .top {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin-bottom: 12px;
+      }
+
+      .top a {
+        color: var(--teal);
+        text-decoration: none;
+      }
+
+      .panel {
+        border: 1px solid var(--line);
+        border-radius: 18px;
+        padding: 18px;
+        background: linear-gradient(160deg, rgba(15, 23, 42, 0.95), rgba(2, 6, 23, 0.96));
+        box-shadow: 0 16px 60px rgba(0, 0, 0, 0.32);
+      }
+
+      h1 {
+        margin: 0 0 8px;
+        font-size: clamp(28px, 4vw, 40px);
+      }
+
+      .hint {
+        margin: 0 0 18px;
+        color: var(--muted);
+      }
+
+      .meters {
+        display: grid;
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+        gap: 12px;
+        margin-bottom: 16px;
+      }
+
+      .meter {
+        border: 1px solid #2a3b55;
+        border-radius: 14px;
+        padding: 10px;
+        background: rgba(2, 6, 23, 0.48);
+      }
+
+      .meter label {
+        display: block;
+        font-size: 12px;
+        text-transform: uppercase;
+        letter-spacing: 0.08em;
+        color: var(--muted);
+      }
+
+      .bar {
+        margin-top: 7px;
+        height: 12px;
+        background: #172133;
+        border-radius: 999px;
+        overflow: hidden;
+      }
+
+      .fill {
+        height: 100%;
+        width: 60%;
+        border-radius: inherit;
+        transition: width 250ms ease;
+      }
+
+      .fill.teal { background: linear-gradient(90deg, #0ea5e9, #22d3ee); }
+      .fill.orange { background: linear-gradient(90deg, #f97316, #fb923c); }
+      .fill.pink { background: linear-gradient(90deg, #ec4899, #f472b6); }
+
+      .incident {
+        border: 1px solid #2a3b55;
+        border-radius: 14px;
+        padding: 14px;
+        background: rgba(15, 23, 42, 0.62);
+      }
+
+      .incident small {
+        color: var(--muted);
+      }
+
+      .incident h2 {
+        margin: 8px 0;
+        font-size: 24px;
+      }
+
+      .choices {
+        margin-top: 12px;
+        display: grid;
+        gap: 8px;
+      }
+
+      button {
+        width: 100%;
+        border: 1px solid #355075;
+        background: #0b1a2f;
+        color: var(--text);
+        border-radius: 12px;
+        padding: 11px 12px;
+        font: inherit;
+        text-align: left;
+        cursor: pointer;
+      }
+
+      button:hover {
+        border-color: #5f8dc3;
+      }
+
+      .secondary {
+        margin-top: 12px;
+        width: auto;
+        text-align: center;
+        padding-inline: 18px;
+      }
+
+      .log {
+        margin-top: 14px;
+        border: 1px solid #2a3b55;
+        border-radius: 12px;
+        background: rgba(2, 6, 23, 0.48);
+        padding: 10px;
+        min-height: 60px;
+        color: var(--muted);
+      }
+
+      .log strong {
+        color: var(--text);
+      }
+
+      @media (max-width: 780px) {
+        .meters {
+          grid-template-columns: 1fr;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <main class="wrap">
+      <div class="top">
+        <a href="../index.html">\u2190 Back to Arcade</a>
+      </div>
+
+      <section class="panel">
+        <h1>Incident Commander</h1>
+        <p class="hint">
+          Survive 8 production incidents. Keep <strong>Uptime</strong>, <strong>User Trust</strong>,
+          and <strong>Budget</strong> above zero.
+        </p>
+
+        <div class="meters">
+          <article class="meter">
+            <label>Uptime: <span id="uptimeValue">75</span></label>
+            <div class="bar"><div id="uptimeFill" class="fill teal"></div></div>
+          </article>
+          <article class="meter">
+            <label>User Trust: <span id="trustValue">75</span></label>
+            <div class="bar"><div id="trustFill" class="fill orange"></div></div>
+          </article>
+          <article class="meter">
+            <label>Budget: <span id="budgetValue">75</span></label>
+            <div class="bar"><div id="budgetFill" class="fill pink"></div></div>
+          </article>
+        </div>
+
+        <article class="incident">
+          <small id="round">Incident 1 / 8</small>
+          <h2 id="title">Loading incident...</h2>
+          <p id="description"></p>
+
+          <div id="choices" class="choices"></div>
+          <button id="nextBtn" class="secondary" style="display:none">Next Incident</button>
+          <button id="restartBtn" class="secondary" style="display:none">Restart Campaign</button>
+        </article>
+
+        <div id="log" class="log"><strong>Tip:</strong> Perfect answers do not exist. Balance tradeoffs.</div>
+      </section>
+    </main>
+
+    <script>
+      const incidents = [
+        {
+          title: "Database CPU Spike",
+          description: "Write latency jumped 4x during peak traffic.",
+          choices: [
+            { label: "Scale read replicas immediately", effect: { uptime: 18, trust: 6, budget: -18 }, note: "Service stabilizes fast, but cost surges." },
+            { label: "Throttle heavy endpoints", effect: { uptime: 9, trust: -8, budget: -4 }, note: "System cools down, some users are blocked." },
+            { label: "Wait and observe 10 minutes", effect: { uptime: -12, trust: -10, budget: 4 }, note: "Cheaper decision, but outage perception worsens." },
+          ],
+        },
+        {
+          title: "Suspicious Login Burst",
+          description: "Auth logs show a probable credential stuffing attack.",
+          choices: [
+            { label: "Enable strict geo-block + CAPTCHA", effect: { uptime: -4, trust: 14, budget: -6 }, note: "Some friction, but users feel safer." },
+            { label: "Silent monitoring only", effect: { uptime: 2, trust: -14, budget: 3 }, note: "No UX impact, risk remains high." },
+            { label: "Password reset for all active sessions", effect: { uptime: -8, trust: 10, budget: -2 }, note: "Strong security move, moderate frustration." },
+          ],
+        },
+        {
+          title: "Third-Party API Outage",
+          description: "Payments provider is unstable and retries are stacking.",
+          choices: [
+            { label: "Fail over to backup provider", effect: { uptime: 13, trust: 8, budget: -14 }, note: "Checkout recovers with higher transaction cost." },
+            { label: "Queue payments for delayed processing", effect: { uptime: 6, trust: -6, budget: -2 }, note: "Service degrades gracefully." },
+            { label: "Disable checkout temporarily", effect: { uptime: -10, trust: -12, budget: 7 }, note: "Stops losses but tanks conversion." },
+          ],
+        },
+        {
+          title: "Memory Leak in Worker Fleet",
+          description: "Background workers are restarting every few minutes.",
+          choices: [
+            { label: "Hotfix rollback to last stable build", effect: { uptime: 16, trust: 4, budget: -5 }, note: "Reliability returns; features freeze." },
+            { label: "Patch in place during traffic", effect: { uptime: 9, trust: 7, budget: -10 }, note: "Risky but forward-moving." },
+            { label: "Do nothing till next deployment window", effect: { uptime: -15, trust: -11, budget: 6 }, note: "Deferred risk becomes visible to users." },
+          ],
+        },
+        {
+          title: "Data Quality Alert",
+          description: "Analytics pipeline started producing duplicated events.",
+          choices: [
+            { label: "Pause pipeline and backfill from raw logs", effect: { uptime: -3, trust: 11, budget: -8 }, note: "Accurate data restored with delay." },
+            { label: "Ship dashboard with warning banner", effect: { uptime: 4, trust: -6, budget: 2 }, note: "Fast, but confidence drops." },
+            { label: "Ignore until next sprint", effect: { uptime: 0, trust: -12, budget: 5 }, note: "Short-term savings, long-term trust hit." },
+          ],
+        },
+        {
+          title: "Sudden Traffic Surge",
+          description: "A product launch mention sends 7x normal traffic.",
+          choices: [
+            { label: "Auto-scale aggressively", effect: { uptime: 20, trust: 8, budget: -20 }, note: "Users happy; cloud bill explodes." },
+            { label: "Serve cached-only mode", effect: { uptime: 8, trust: -4, budget: -6 }, note: "System survives with reduced functionality." },
+            { label: "Rate-limit by region", effect: { uptime: 11, trust: -8, budget: -3 }, note: "Core market stable; others throttled." },
+          ],
+        },
+        {
+          title: "Critical CVE Announced",
+          description: "A dependency in production has a high-severity CVE.",
+          choices: [
+            { label: "Emergency patch + canary deploy", effect: { uptime: 6, trust: 14, budget: -9 }, note: "Security confidence improves." },
+            { label: "Patch during weekend window", effect: { uptime: 0, trust: -10, budget: 4 }, note: "Safer rollout, but exposed risk window." },
+            { label: "WAF rule workaround only", effect: { uptime: 3, trust: -5, budget: 1 }, note: "Temporary mitigation with residual risk." },
+          ],
+        },
+        {
+          title: "Postmortem Communication",
+          description: "Users demand transparency after recent instability.",
+          choices: [
+            { label: "Publish detailed RCA + prevention steps", effect: { uptime: 0, trust: 16, budget: -4 }, note: "Strong trust recovery." },
+            { label: "Share brief apology only", effect: { uptime: 0, trust: -4, budget: 0 }, note: "Minimal effort, weak confidence boost." },
+            { label: "Stay silent until metrics improve", effect: { uptime: 0, trust: -15, budget: 2 }, note: "Silence amplifies negative perception." },
+          ],
+        },
+      ];
+
+      const state = {
+        uptime: 75,
+        trust: 75,
+        budget: 75,
+        round: 0,
+        maxRounds: 8,
+        chosen: false,
+        queue: shuffle([...incidents]).slice(0, 8),
+      };
+
+      const els = {
+        uptimeValue: document.getElementById("uptimeValue"),
+        trustValue: document.getElementById("trustValue"),
+        budgetValue: document.getElementById("budgetValue"),
+        uptimeFill: document.getElementById("uptimeFill"),
+        trustFill: document.getElementById("trustFill"),
+        budgetFill: document.getElementById("budgetFill"),
+        round: document.getElementById("round"),
+        title: document.getElementById("title"),
+        description: document.getElementById("description"),
+        choices: document.getElementById("choices"),
+        nextBtn: document.getElementById("nextBtn"),
+        restartBtn: document.getElementById("restartBtn"),
+        log: document.getElementById("log"),
+      };
+
+      function shuffle(arr) {
+        for (let i = arr.length - 1; i > 0; i -= 1) {
+          const j = Math.floor(Math.random() * (i + 1));
+          [arr[i], arr[j]] = [arr[j], arr[i]];
+        }
+        return arr;
+      }
+
+      function clamp(value) {
+        return Math.max(0, Math.min(100, value));
+      }
+
+      function setStats() {
+        els.uptimeValue.textContent = state.uptime;
+        els.trustValue.textContent = state.trust;
+        els.budgetValue.textContent = state.budget;
+
+        els.uptimeFill.style.width = `${state.uptime}%`;
+        els.trustFill.style.width = `${state.trust}%`;
+        els.budgetFill.style.width = `${state.budget}%`;
+      }
+
+      function renderIncident() {
+        state.chosen = false;
+
+        if (state.round >= state.maxRounds) {
+          endCampaign();
+          return;
+        }
+
+        const incident = state.queue[state.round];
+        els.round.textContent = `Incident ${state.round + 1} / ${state.maxRounds}`;
+        els.title.textContent = incident.title;
+        els.description.textContent = incident.description;
+
+        els.choices.innerHTML = "";
+        incident.choices.forEach((choice) => {
+          const btn = document.createElement("button");
+          btn.textContent = choice.label;
+          btn.addEventListener("click", () => applyChoice(choice));
+          els.choices.appendChild(btn);
+        });
+
+        els.nextBtn.style.display = "none";
+        els.restartBtn.style.display = "none";
+      }
+
+      function applyChoice(choice) {
+        if (state.chosen) {
+          return;
+        }
+
+        state.chosen = true;
+
+        state.uptime = clamp(state.uptime + choice.effect.uptime);
+        state.trust = clamp(state.trust + choice.effect.trust);
+        state.budget = clamp(state.budget + choice.effect.budget);
+
+        setStats();
+
+        const delta = `Uptime ${fmt(choice.effect.uptime)}, Trust ${fmt(choice.effect.trust)}, Budget ${fmt(choice.effect.budget)}`;
+        els.log.innerHTML = `<strong>Decision impact:</strong> ${delta}<br/>${choice.note}`;
+
+        if (state.uptime === 0 || state.trust === 0 || state.budget === 0) {
+          knockout();
+          return;
+        }
+
+        els.nextBtn.style.display = "inline-block";
+      }
+
+      function fmt(v) {
+        return v > 0 ? `+${v}` : `${v}`;
+      }
+
+      function knockout() {
+        els.choices.innerHTML = "";
+        els.nextBtn.style.display = "none";
+        els.restartBtn.style.display = "inline-block";
+        els.log.innerHTML =
+          "<strong>Service collapse:</strong> One critical metric hit zero. Incident campaign failed.";
+      }
+
+      function endCampaign() {
+        const avg = Math.round((state.uptime + state.trust + state.budget) / 3);
+        let title = "On-call Survivor";
+
+        if (avg >= 85) {
+          title = "Staff-Level Incident Commander";
+        } else if (avg >= 70) {
+          title = "Strong Production Operator";
+        }
+
+        els.round.textContent = "Campaign Complete";
+        els.title.textContent = title;
+        els.description.textContent =
+          "You navigated production tradeoffs across reliability, trust, and spend.";
+        els.choices.innerHTML = "";
+        els.nextBtn.style.display = "none";
+        els.restartBtn.style.display = "inline-block";
+        els.log.innerHTML = `<strong>Final score:</strong> ${avg}/100`;
+      }
+
+      function next() {
+        state.round += 1;
+        renderIncident();
+      }
+
+      function restart() {
+        state.uptime = 75;
+        state.trust = 75;
+        state.budget = 75;
+        state.round = 0;
+        state.queue = shuffle([...incidents]).slice(0, 8);
+        setStats();
+        els.log.innerHTML = "<strong>Tip:</strong> Perfect answers do not exist. Balance tradeoffs.";
+        renderIncident();
+      }
+
+      els.nextBtn.addEventListener("click", next);
+      els.restartBtn.addEventListener("click", restart);
+
+      setStats();
+      renderIncident();
+    </script>
+  </body>
+</html>

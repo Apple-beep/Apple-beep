@@ -1,0 +1,688 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Latency Lab</title>
+    <style>
+      :root {
+        --bg: #030712;
+        --panel: #0f172a;
+        --line: #1e293b;
+        --teal: #22d3ee;
+        --green: #22c55e;
+        --orange: #fb923c;
+        --red: #ef4444;
+        --text: #e2e8f0;
+        --muted: #94a3b8;
+      }
+
+      * {
+        box-sizing: border-box;
+      }
+
+      body {
+        margin: 0;
+        min-height: 100vh;
+        font-family: "Space Grotesk", "Avenir Next", "Segoe UI", sans-serif;
+        color: var(--text);
+        background:
+          radial-gradient(circle at 8% 20%, rgba(34, 211, 238, 0.18), transparent 40%),
+          radial-gradient(circle at 90% 15%, rgba(34, 197, 94, 0.14), transparent 35%),
+          linear-gradient(160deg, #020617, #0b1120 55%, #101827);
+        padding: 20px;
+      }
+
+      .wrap {
+        width: min(1100px, 100%);
+        margin: 0 auto;
+      }
+
+      .topbar {
+        display: flex;
+        flex-wrap: wrap;
+        align-items: center;
+        justify-content: space-between;
+        gap: 10px;
+        margin-bottom: 14px;
+      }
+
+      .topbar a {
+        color: var(--teal);
+        text-decoration: none;
+      }
+
+      h1 {
+        margin: 0;
+        font-size: clamp(28px, 4vw, 42px);
+      }
+
+      .subtitle {
+        margin: 6px 0 14px;
+        color: var(--muted);
+      }
+
+      .panel {
+        background: linear-gradient(145deg, rgba(15, 23, 42, 0.95), rgba(2, 6, 23, 0.95));
+        border: 1px solid var(--line);
+        border-radius: 18px;
+        padding: 16px;
+        box-shadow: 0 20px 70px rgba(0, 0, 0, 0.35);
+      }
+
+      .hud {
+        display: grid;
+        grid-template-columns: repeat(4, minmax(0, 1fr));
+        gap: 10px;
+      }
+
+      .stat {
+        border: 1px solid #1f3354;
+        border-radius: 14px;
+        padding: 10px;
+        background: rgba(2, 6, 23, 0.5);
+      }
+
+      .label {
+        color: var(--muted);
+        font-size: 12px;
+        text-transform: uppercase;
+        letter-spacing: 0.08em;
+      }
+
+      .value {
+        margin-top: 6px;
+        font-size: 22px;
+        font-weight: 700;
+      }
+
+      .value.good {
+        color: var(--green);
+      }
+
+      .value.warn {
+        color: var(--orange);
+      }
+
+      .canvas-wrap {
+        margin-top: 12px;
+        border: 1px solid #243b61;
+        border-radius: 16px;
+        overflow: hidden;
+        background: radial-gradient(circle at 30% 35%, #10213f, #0a1222 60%, #050a14);
+      }
+
+      canvas {
+        width: 100%;
+        height: auto;
+        display: block;
+      }
+
+      .controls {
+        margin-top: 12px;
+        display: flex;
+        flex-wrap: wrap;
+        gap: 10px;
+        align-items: center;
+        justify-content: space-between;
+      }
+
+      .buttons {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 8px;
+      }
+
+      button {
+        border: 1px solid #2b426b;
+        background: #0a162b;
+        color: var(--text);
+        border-radius: 12px;
+        padding: 10px 14px;
+        font: inherit;
+        cursor: pointer;
+      }
+
+      button:hover {
+        border-color: #4b6c9e;
+      }
+
+      button.primary {
+        background: linear-gradient(90deg, #0e7490, #0284c7);
+        border: none;
+      }
+
+      .log {
+        margin-top: 12px;
+        border: 1px solid #1f3354;
+        border-radius: 12px;
+        background: rgba(2, 6, 23, 0.4);
+        padding: 10px;
+        color: var(--muted);
+        min-height: 56px;
+      }
+
+      .log strong {
+        color: var(--text);
+      }
+
+      @media (max-width: 860px) {
+        .hud {
+          grid-template-columns: repeat(2, minmax(0, 1fr));
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <main class="wrap">
+      <div class="topbar">
+        <a href="../index.html">\u2190 Back to Arcade</a>
+      </div>
+
+      <h1>Latency Lab</h1>
+      <p class="subtitle">
+        Click through connected nodes and route traffic from <strong>Client</strong> to
+        <strong>Database</strong> with the lowest latency before timeout.
+      </p>
+
+      <section class="panel">
+        <div class="hud">
+          <article class="stat">
+            <div class="label">Level</div>
+            <div class="value" id="level">1 / 4</div>
+          </article>
+          <article class="stat">
+            <div class="label">Current Latency</div>
+            <div class="value" id="latency">0 ms</div>
+          </article>
+          <article class="stat">
+            <div class="label">Time Left</div>
+            <div class="value warn" id="timer">45s</div>
+          </article>
+          <article class="stat">
+            <div class="label">Score</div>
+            <div class="value good" id="score">0</div>
+          </article>
+        </div>
+
+        <div class="canvas-wrap">
+          <canvas id="network" width="960" height="540" aria-label="Network graph"></canvas>
+        </div>
+
+        <div class="controls">
+          <div class="buttons">
+            <button id="resetBtn">Reset Route</button>
+            <button id="skipBtn">Skip Level</button>
+            <button id="nextBtn" class="primary" disabled>Next Level</button>
+          </div>
+          <div>Best score: <strong id="best">0</strong></div>
+        </div>
+
+        <div id="log" class="log">
+          <strong>Mission:</strong> Start at <strong>Client</strong>, reach <strong>Database</strong>.
+        </div>
+      </section>
+    </main>
+
+    <script>
+      const levels = [
+        {
+          time: 45,
+          start: "A",
+          end: "F",
+          nodes: {
+            A: { x: 90, y: 280, label: "Client" },
+            B: { x: 270, y: 130, label: "Cache" },
+            C: { x: 270, y: 420, label: "Auth" },
+            D: { x: 500, y: 120, label: "API" },
+            E: { x: 520, y: 400, label: "Queue" },
+            F: { x: 810, y: 270, label: "Database" },
+          },
+          edges: [
+            ["A", "B", 12],
+            ["A", "C", 9],
+            ["B", "D", 8],
+            ["C", "E", 7],
+            ["C", "D", 18],
+            ["B", "E", 15],
+            ["D", "F", 10],
+            ["E", "F", 11],
+            ["D", "E", 6],
+          ],
+        },
+        {
+          time: 42,
+          start: "A",
+          end: "G",
+          nodes: {
+            A: { x: 80, y: 270, label: "Client" },
+            B: { x: 220, y: 140, label: "Edge" },
+            C: { x: 230, y: 390, label: "WAF" },
+            D: { x: 420, y: 90, label: "Auth" },
+            E: { x: 450, y: 270, label: "Gateway" },
+            F: { x: 430, y: 450, label: "Queue" },
+            G: { x: 810, y: 270, label: "DB" },
+          },
+          edges: [
+            ["A", "B", 7],
+            ["A", "C", 10],
+            ["B", "D", 12],
+            ["C", "F", 6],
+            ["B", "E", 8],
+            ["C", "E", 9],
+            ["D", "E", 5],
+            ["E", "F", 4],
+            ["D", "G", 14],
+            ["E", "G", 11],
+            ["F", "G", 12],
+          ],
+        },
+        {
+          time: 40,
+          start: "A",
+          end: "H",
+          nodes: {
+            A: { x: 90, y: 290, label: "User" },
+            B: { x: 210, y: 120, label: "DNS" },
+            C: { x: 250, y: 270, label: "CDN" },
+            D: { x: 220, y: 430, label: "WAF" },
+            E: { x: 470, y: 100, label: "Auth" },
+            F: { x: 500, y: 280, label: "API" },
+            G: { x: 490, y: 450, label: "Worker" },
+            H: { x: 830, y: 280, label: "Primary DB" },
+          },
+          edges: [
+            ["A", "B", 8],
+            ["A", "C", 6],
+            ["A", "D", 9],
+            ["B", "E", 9],
+            ["C", "E", 11],
+            ["C", "F", 7],
+            ["D", "G", 6],
+            ["E", "F", 5],
+            ["F", "G", 8],
+            ["E", "H", 15],
+            ["F", "H", 10],
+            ["G", "H", 12],
+          ],
+        },
+        {
+          time: 36,
+          start: "A",
+          end: "I",
+          nodes: {
+            A: { x: 80, y: 270, label: "Client" },
+            B: { x: 190, y: 95, label: "CDN" },
+            C: { x: 200, y: 270, label: "Proxy" },
+            D: { x: 200, y: 450, label: "Auth" },
+            E: { x: 400, y: 130, label: "Service A" },
+            F: { x: 430, y: 280, label: "Service B" },
+            G: { x: 420, y: 450, label: "Service C" },
+            H: { x: 640, y: 270, label: "Queue" },
+            I: { x: 860, y: 270, label: "Replica DB" },
+          },
+          edges: [
+            ["A", "B", 6],
+            ["A", "C", 5],
+            ["A", "D", 11],
+            ["B", "E", 8],
+            ["C", "E", 10],
+            ["C", "F", 6],
+            ["D", "G", 5],
+            ["E", "F", 4],
+            ["F", "G", 7],
+            ["E", "H", 9],
+            ["F", "H", 6],
+            ["G", "H", 7],
+            ["H", "I", 9],
+            ["F", "I", 16],
+          ],
+        },
+      ];
+
+      const canvas = document.getElementById("network");
+      const ctx = canvas.getContext("2d");
+
+      const el = {
+        level: document.getElementById("level"),
+        latency: document.getElementById("latency"),
+        timer: document.getElementById("timer"),
+        score: document.getElementById("score"),
+        best: document.getElementById("best"),
+        log: document.getElementById("log"),
+        nextBtn: document.getElementById("nextBtn"),
+        resetBtn: document.getElementById("resetBtn"),
+        skipBtn: document.getElementById("skipBtn"),
+      };
+
+      const state = {
+        levelIndex: 0,
+        path: [],
+        latency: 0,
+        score: 0,
+        best: Number(localStorage.getItem("latencyLabBest") || 0),
+        timeLeft: levels[0].time,
+        timerId: null,
+        roundFinished: false,
+      };
+
+      const nodeRadius = 26;
+
+      function currentLevel() {
+        return levels[state.levelIndex];
+      }
+
+      function buildAdj(level) {
+        const adj = {};
+        Object.keys(level.nodes).forEach((k) => {
+          adj[k] = [];
+        });
+
+        for (const [a, b, w] of level.edges) {
+          adj[a].push({ node: b, weight: w });
+          adj[b].push({ node: a, weight: w });
+        }
+
+        return adj;
+      }
+
+      function shortestPathCost(level) {
+        const adj = buildAdj(level);
+        const dist = {};
+        const visited = {};
+
+        Object.keys(level.nodes).forEach((key) => {
+          dist[key] = Number.POSITIVE_INFINITY;
+          visited[key] = false;
+        });
+
+        dist[level.start] = 0;
+
+        while (true) {
+          let candidate = null;
+          let bestDist = Number.POSITIVE_INFINITY;
+
+          for (const key of Object.keys(dist)) {
+            if (!visited[key] && dist[key] < bestDist) {
+              bestDist = dist[key];
+              candidate = key;
+            }
+          }
+
+          if (!candidate) {
+            break;
+          }
+
+          if (candidate === level.end) {
+            break;
+          }
+
+          visited[candidate] = true;
+
+          for (const edge of adj[candidate]) {
+            const attempt = dist[candidate] + edge.weight;
+            if (attempt < dist[edge.node]) {
+              dist[edge.node] = attempt;
+            }
+          }
+        }
+
+        return dist[level.end];
+      }
+
+      function routeEdgeWeight(level, from, to) {
+        for (const [a, b, w] of level.edges) {
+          if ((a === from && b === to) || (a === to && b === from)) {
+            return w;
+          }
+        }
+
+        return null;
+      }
+
+      function updateHud() {
+        el.level.textContent = `${state.levelIndex + 1} / ${levels.length}`;
+        el.latency.textContent = `${state.latency} ms`;
+        el.timer.textContent = `${state.timeLeft}s`;
+        el.score.textContent = String(state.score);
+        el.best.textContent = String(state.best);
+      }
+
+      function setLog(message, tone = "normal") {
+        const toneColor = tone === "bad" ? "#ef4444" : tone === "good" ? "#22c55e" : "#e2e8f0";
+        el.log.innerHTML = `<span style=\"color:${toneColor}\">${message}</span>`;
+      }
+
+      function draw() {
+        const level = currentLevel();
+        ctx.clearRect(0, 0, canvas.width, canvas.height);
+
+        const pathPairs = new Set();
+        for (let i = 0; i < state.path.length - 1; i += 1) {
+          const a = state.path[i];
+          const b = state.path[i + 1];
+          pathPairs.add(`${a}-${b}`);
+          pathPairs.add(`${b}-${a}`);
+        }
+
+        for (const [a, b, w] of level.edges) {
+          const from = level.nodes[a];
+          const to = level.nodes[b];
+          const used = pathPairs.has(`${a}-${b}`);
+
+          ctx.strokeStyle = used ? "#22d3ee" : "rgba(148,163,184,0.4)";
+          ctx.lineWidth = used ? 5 : 2;
+          ctx.beginPath();
+          ctx.moveTo(from.x, from.y);
+          ctx.lineTo(to.x, to.y);
+          ctx.stroke();
+
+          const mx = (from.x + to.x) / 2;
+          const my = (from.y + to.y) / 2;
+          ctx.fillStyle = used ? "#67e8f9" : "#cbd5e1";
+          ctx.font = "600 16px 'Space Grotesk', sans-serif";
+          ctx.fillText(`${w}ms`, mx - 16, my - 8);
+        }
+
+        for (const [key, node] of Object.entries(level.nodes)) {
+          const isCurrent = state.path[state.path.length - 1] === key;
+          const isStart = key === level.start;
+          const isEnd = key === level.end;
+          const isVisited = state.path.includes(key);
+
+          ctx.beginPath();
+          ctx.arc(node.x, node.y, nodeRadius, 0, Math.PI * 2);
+
+          if (isCurrent) {
+            ctx.fillStyle = "#22d3ee";
+          } else if (isStart) {
+            ctx.fillStyle = "#22c55e";
+          } else if (isEnd) {
+            ctx.fillStyle = "#f97316";
+          } else if (isVisited) {
+            ctx.fillStyle = "#38bdf8";
+          } else {
+            ctx.fillStyle = "#334155";
+          }
+
+          ctx.fill();
+          ctx.lineWidth = 2;
+          ctx.strokeStyle = "#e2e8f0";
+          ctx.stroke();
+
+          ctx.fillStyle = "#e2e8f0";
+          ctx.font = "600 14px 'Space Grotesk', sans-serif";
+          ctx.textAlign = "center";
+          ctx.fillText(node.label, node.x, node.y + 5);
+        }
+      }
+
+      function resetRoute() {
+        const level = currentLevel();
+        state.path = [level.start];
+        state.latency = 0;
+        state.roundFinished = false;
+        el.nextBtn.disabled = true;
+        setLog("Mission reset. Route from Client to Database.");
+        updateHud();
+        draw();
+      }
+
+      function startRoundTimer() {
+        if (state.timerId) {
+          clearInterval(state.timerId);
+        }
+
+        state.timerId = setInterval(() => {
+          if (state.roundFinished) {
+            return;
+          }
+
+          state.timeLeft -= 1;
+          updateHud();
+
+          if (state.timeLeft <= 0) {
+            state.timeLeft = 0;
+            state.roundFinished = true;
+            clearInterval(state.timerId);
+            setLog("Timeout. You lost this route. Reset and try again.", "bad");
+            updateHud();
+          }
+        }, 1000);
+      }
+
+      function finishRound() {
+        const level = currentLevel();
+        const optimal = shortestPathCost(level);
+        const delta = state.latency - optimal;
+
+        state.roundFinished = true;
+        el.nextBtn.disabled = false;
+
+        let bonus = 0;
+        if (delta === 0) {
+          bonus = 280;
+          setLog(`Perfect route. ${state.latency}ms equals optimal. +${bonus} points`, "good");
+        } else {
+          bonus = Math.max(70, 240 - delta * 12);
+          setLog(`Route complete at ${state.latency}ms (optimal ${optimal}ms). +${bonus} points`, "normal");
+        }
+
+        state.score += bonus;
+        if (state.score > state.best) {
+          state.best = state.score;
+          localStorage.setItem("latencyLabBest", String(state.best));
+        }
+
+        updateHud();
+        draw();
+      }
+
+      function completeGame() {
+        clearInterval(state.timerId);
+        const possible = levels.length * 280;
+        const pct = Math.round((state.score / possible) * 100);
+
+        let verdict = "Solid";
+        if (pct >= 90) {
+          verdict = "Principal Engineer Energy";
+        } else if (pct >= 75) {
+          verdict = "Strong Systems Thinker";
+        }
+
+        setLog(`Campaign complete. ${verdict} (${pct}%). Click Next to restart from Level 1.`, "good");
+        state.levelIndex = -1;
+        el.nextBtn.disabled = false;
+      }
+
+      function nextLevel() {
+        if (state.levelIndex === -1) {
+          state.levelIndex = 0;
+          state.score = 0;
+        } else {
+          state.levelIndex += 1;
+        }
+
+        if (state.levelIndex >= levels.length) {
+          completeGame();
+          return;
+        }
+
+        const level = currentLevel();
+        state.timeLeft = level.time;
+        resetRoute();
+        startRoundTimer();
+      }
+
+      function skipLevel() {
+        setLog("Level skipped with 0 score gain.", "bad");
+        state.roundFinished = true;
+        el.nextBtn.disabled = false;
+        clearInterval(state.timerId);
+      }
+
+      function nodeFromPoint(x, y) {
+        const level = currentLevel();
+        for (const [id, node] of Object.entries(level.nodes)) {
+          const dx = x - node.x;
+          const dy = y - node.y;
+          if (Math.sqrt(dx * dx + dy * dy) <= nodeRadius + 2) {
+            return id;
+          }
+        }
+        return null;
+      }
+
+      function clickGraph(event) {
+        if (state.roundFinished || state.levelIndex === -1) {
+          return;
+        }
+
+        const rect = canvas.getBoundingClientRect();
+        const scaleX = canvas.width / rect.width;
+        const scaleY = canvas.height / rect.height;
+        const x = (event.clientX - rect.left) * scaleX;
+        const y = (event.clientY - rect.top) * scaleY;
+
+        const chosen = nodeFromPoint(x, y);
+        if (!chosen) {
+          return;
+        }
+
+        const level = currentLevel();
+        const current = state.path[state.path.length - 1];
+
+        if (chosen === current) {
+          return;
+        }
+
+        const w = routeEdgeWeight(level, current, chosen);
+        if (w == null) {
+          setLog(`Invalid hop: ${level.nodes[current].label} -> ${level.nodes[chosen].label}.`, "bad");
+          return;
+        }
+
+        state.path.push(chosen);
+        state.latency += w;
+        updateHud();
+        draw();
+
+        if (chosen === level.end) {
+          finishRound();
+        }
+      }
+
+      function init() {
+        el.best.textContent = String(state.best);
+        canvas.addEventListener("click", clickGraph);
+        el.resetBtn.addEventListener("click", resetRoute);
+        el.skipBtn.addEventListener("click", skipLevel);
+        el.nextBtn.addEventListener("click", nextLevel);
+
+        nextLevel();
+      }
+
+      init();
+    </script>
+  </body>
+</html>
