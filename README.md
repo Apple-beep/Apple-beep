@@ -1,161 +1,197 @@
 <div align="center">
 
-<!-- HEADER BANNER -->
-<img width="100%" src="https://capsule-render.vercel.app/api?type=venom&color=gradient&customColorList=0,2,2,5,30&height=250&section=header&text=Musharaf%20Khan%20Pathan&fontAlign=50&fontAlignY=45&fontSize=55&fontColor=ffffff&animation=fadeIn&desc=Software%20Engineer%20•%20Backend%20Dev%20•%20Illinois%20Tech%20%F0%9F%8E%93&descAlignY=68&descSize=18" />
+<!-- CYBERPUNK HEADER - totally different style -->
+<img width="100%" src="https://capsule-render.vercel.app/api?type=rect&color=gradient&customColorList=12,14,17,24&height=3&section=header"/>
 
-<!-- TYPING ANIMATION -->
-[![Typing SVG](https://readme-typing-svg.demolab.com?font=JetBrains+Mono&weight=700&size=28&duration=3000&pause=800&color=58A6FF&center=true&vCenter=true&width=800&lines=%F0%9F%91%8B+Hey%2C+I'm+Musharaf!;%F0%9F%9A%80+Backend+Engineer+%7C+Java+%2B+Spring+Boot;%F0%9F%A7%A0+Building+Scalable+Microservices;%E2%9A%A1+Kafka+%7C+REST+APIs+%7C+Cloud;%F0%9F%8E%93+Illinois+Institute+of+Technology;%F0%9F%92%BC+Open+to+Full-Time+SWE+Roles!)](https://git.io/typing-svg)
+<br/>
 
-<!-- BADGES ROW -->
-![Profile Views](https://komarev.com/ghpvc/?username=Apple-beep&style=for-the-badge&color=0e75b6&label=👁️+PROFILE+VIEWS)
-[![LinkedIn](https://img.shields.io/badge/LinkedIn-%230077B5.svg?style=for-the-badge&logo=linkedin&logoColor=white)](https://linkedin.com/in/YOUR-LINKEDIN)
-[![Portfolio](https://img.shields.io/badge/Portfolio-FF5722?style=for-the-badge&logo=google-chrome&logoColor=white)](https://YOUR-SITE.com)
-[![Email](https://img.shields.io/badge/Email-D14836?style=for-the-badge&logo=gmail&logoColor=white)](mailto:YOUR-EMAIL)
+<img width="100%" src="https://capsule-render.vercel.app/api?type=slice&color=gradient&customColorList=12,14,17,24&height=220&section=header&text=MUSHARAF.exe&fontAlign=70&fontAlignY=55&fontSize=60&fontColor=00FFFF&animation=blinking&desc=⚡%20Backend%20Engineer%20|%20System%20Builder%20|%20Chicago%20🏙️&descSize=16&descAlignY=78&descAlign=70"/>
+
+<!-- LIVE STATUS BADGE ROW -->
+<a href="https://linkedin.com/in/musharaf-khan-pathan">
+  <img src="https://img.shields.io/badge/LINKEDIN-CONNECT-00FFFF?style=for-the-badge&logo=linkedin&logoColor=000&labelColor=00FFFF&color=0D1117"/>
+</a>
+<a href="https://musharafportfolio.vercel.app">
+  <img src="https://img.shields.io/badge/PORTFOLIO-LIVE-00FF88?style=for-the-badge&logo=vercel&logoColor=000&labelColor=00FF88&color=0D1117"/>
+</a>
+<img src="https://img.shields.io/badge/STATUS-OPEN%20TO%20WORK-FF00FF?style=for-the-badge&labelColor=FF00FF&color=0D1117"/>
+<img src="https://komarev.com/ghpvc/?username=Apple-beep&style=for-the-badge&color=0D1117&label=VISITORS&abbreviated=true"/>
+
+<br/><br/>
+
+<!-- ANIMATED TYPING -->
+[![Typing SVG](https://readme-typing-svg.demolab.com?font=Share+Tech+Mono&size=22&duration=2500&pause=500&color=00FFFF&center=true&vCenter=true&repeat=true&width=700&lines=_%3E+initializing+Musharaf.exe...;_%3E+loading+Java+%2B+Spring+Boot+modules...;_%3E+compiling+5%2B+years+of+curiosity...;_%3E+connecting+to+Chicago%2C+IL...;_%3E+system+ready.+Let's+build+something.+%F0%9F%9A%80)](https://git.io/typing-svg)
 
 </div>
 
 ---
 
-<!-- TERMINAL-STYLE ABOUT ME -->
-## 🖥️ `$ whoami`
+<!-- SYSTEM BOOT PANEL -->
+## ⚡ `SYSTEM://BOOT`
 
-```bash
-╔══════════════════════════════════════════════════════════════╗
-║  👤  Musharaf Khan Pathan                                    ║
-║  📍  Chicago, Illinois 🏙️                                   ║
-║  🎓  B.S. Computer Science — Illinois Institute of Tech      ║
-║  💼  Backend & Full-Stack Software Engineer                  ║
-║  🏢  Ex: Argus Systems (India) | Teaching Assistant @ IIT    ║
-║  ⚡  Currently: Software Engineer Intern (Colorado)          ║
-║  🌱  Learning: Go -  Kafka -  Cloud Architectures              ║
-║  🤝  Open to: Full-Time SWE Roles in 2026                    ║
-║  🎯  Motto: "Ship it, then iterate." 🚀                      ║
-╚══════════════════════════════════════════════════════════════╝
+<table>
+<tr>
+<td width="50%">
+
+```
+┌─────────────────────────────────────────┐
+│         OPERATOR: MUSHARAF.EXE          │
+├─────────────────────────────────────────┤
+│  📍 LOCATION    │ Chicago, Illinois      │
+│  🎓 UNIT        │ Illinois Institute     │
+│                 │ of Technology          │
+│  🏢 DEPLOYED    │ SWE Intern @ Colorado  │
+│  🗄️ STACK       │ Java · Spring Boot     │
+│                 │ Kafka · Microservices  │
+│  🌱 UPGRADING   │ Go · Cloud-Native      │
+│  🎯 OBJECTIVE   │ Full-Time SWE 2026     │
+│  🤝 COMMUNITY   │ Chartwells Volunteer   │
+├─────────────────────────────────────────┤
+│  STATUS: ████████████░░  READY TO SHIP  │
+└─────────────────────────────────────────┘
 ```
 
-> *"First, solve the problem. Then, write the code."* — John Johnson
+</td>
+<td width="50%">
+
+```java
+// Musharaf.java
+
+public class Musharaf implements Engineer {
+
+  String passion  = "Building things at scale";
+  String belief   = "Ship it, then iterate.";
+  boolean hiring  = true;
+
+  @Override
+  public String[] getStack() {
+    return new String[]{
+      "Java", "Spring Boot", "Python",
+      "Kafka", "C++", "Go", "SQL"
+    };
+  }
+
+  public String getStatus() {
+    return hiring
+      ? "✅ Open to Full-Time Roles!"
+      : "🔒 Not Available";
+  }
+}
+```
+
+</td>
+</tr>
+</table>
 
 ---
 
-<!-- SKILLS WITH COOL ICONS -->
-## ⚙️ Tech Arsenal
+<!-- SKILL BARS - animated HTML -->
+## 📡 `SKILL_MATRIX://LOADED`
 
 <div align="center">
 
-**🔤 Languages**
-
-[![My Skills](https://skillicons.dev/icons?i=java,python,cpp,c,go,sql&perline=6)](https://skillicons.dev)
-
-**🧰 Frameworks & Tools**
-
-[![My Skills](https://skillicons.dev/icons?i=spring,kafka,docker,git,postman,vscode&perline=6)](https://skillicons.dev)
-
-**🗄️ Databases & Cloud**
-
-[![My Skills](https://skillicons.dev/icons?i=mysql,postgres,aws,linux,github,gradle&perline=6)](https://skillicons.dev)
+| Language / Tool | Proficiency | Level |
+|---|---|---|
+| ☕ Java | `████████████████░░░░` | Advanced |
+| 🌱 Spring Boot | `███████████████░░░░░` | Advanced |
+| 🐍 Python | `██████████████░░░░░░` | Intermediate+ |
+| ⚡ C / C++ | `████████████░░░░░░░░` | Intermediate |
+| 🐳 Docker | `██████████░░░░░░░░░░` | Intermediate |
+| 📨 Kafka | `█████████░░░░░░░░░░░` | Learning |
+| 🐹 Go | `███████░░░░░░░░░░░░░` | Learning |
+| ☁️ AWS | `████████░░░░░░░░░░░░` | Learning |
 
 </div>
 
 ---
 
-<!-- GITHUB STATS GRID -->
-## 📊 GitHub Stats
+<!-- STATS IN 3-CARD LAYOUT -->
+## 📊 `METRICS://DASHBOARD`
 
 <div align="center">
 
-<a href="https://github.com/Apple-beep">
-  <img height="180em" src="https://github-readme-stats.vercel.app/api?username=Apple-beep&show_icons=true&theme=tokyonight&include_all_commits=true&count_private=true&hide_border=true&rank_icon=github"/>
-  <img height="180em" src="https://github-readme-stats.vercel.app/api/top-langs/?username=Apple-beep&layout=donut&theme=tokyonight&hide_border=true&langs_count=8"/>
-</a>
+<img height="175em" src="https://github-readme-stats.vercel.app/api?username=Apple-beep&show_icons=true&theme=chartreuse-dark&include_all_commits=true&count_private=true&hide_border=true&bg_color=0D1117&title_color=00FFFF&icon_color=00FF88&text_color=FFFFFF&ring_color=FF00FF"/>
+<img height="175em" src="https://github-readme-stats.vercel.app/api/top-langs/?username=Apple-beep&layout=donut-vertical&theme=chartreuse-dark&hide_border=true&bg_color=0D1117&title_color=00FFFF&text_color=FFFFFF&langs_count=6"/>
 
 </div>
 
 <div align="center">
-  <img src="https://streak-stats.demolab.com/?user=Apple-beep&theme=tokyonight-duo&hide_border=true&fire=DD2727&ring=58A6FF" />
-</div>
-
----
-
-<!-- 3D CONTRIBUTION GRAPH -->
-## 🌐 3D Contribution Map
-
-<div align="center">
-  <a href="https://github.com/Apple-beep">
-    <img src="https://github-readme-activity-graph.vercel.app/graph?username=Apple-beep&theme=tokyo-night&hide_border=true&area=true&area_color=58A6FF&line=58A6FF&point=FFFFFF&bg_color=1a1b27" width="100%"/>
-  </a>
+  <img src="https://streak-stats.demolab.com/?user=Apple-beep&theme=dark&hide_border=true&background=0D1117&ring=00FFFF&fire=FF00FF&currStreakLabel=00FF88&sideNums=FFFFFF&sideLabels=AAAAAA&dates=666666"/>
 </div>
 
 ---
 
-<!-- TROPHIES -->
-## 🏆 Hall of Trophies
-
-<div align="center">
-  <img src="https://github-profile-trophy.vercel.app/?username=Apple-beep&theme=tokyonight&no-frame=true&margin-w=8&row=1&column=7"/>
-</div>
-
----
-
-<!-- SNAKE GAME -->
-## 🐍 Watch My Commits Get Devoured
+<!-- PACMAN CONTRIBUTION GRAPH -->
+## 👾 `PAC-MAN://EATING_MY_COMMITS`
 
 <div align="center">
   <picture>
     <source media="(prefers-color-scheme: dark)"
-      srcset="https://raw.githubusercontent.com/Apple-beep/Apple-beep/output/github-contribution-grid-snake-dark.svg"/>
+      srcset="https://raw.githubusercontent.com/Apple-beep/Apple-beep/output/pacman-contribution-graph-dark.svg"/>
     <source media="(prefers-color-scheme: light)"
-      srcset="https://raw.githubusercontent.com/Apple-beep/Apple-beep/output/github-contribution-grid-snake.svg"/>
-    <img alt="🐍 Snake eating my contributions" src="https://raw.githubusercontent.com/Apple-beep/Apple-beep/output/github-contribution-grid-snake-dark.svg"/>
+      srcset="https://raw.githubusercontent.com/Apple-beep/Apple-beep/output/pacman-contribution-graph.svg"/>
+    <img alt="👾 Pac-Man eating my commits" src="https://raw.githubusercontent.com/Apple-beep/Apple-beep/output/pacman-contribution-graph-dark.svg" width="100%"/>
   </picture>
 </div>
 
 ---
 
+<!-- MISSION BOARD -->
+## 🗺️ `ACTIVE_MISSIONS://`
+
+<div align="center">
+
+| 🎯 Mission | 🔧 Stack | 📊 Status |
+|---|---|---|
+| 🏗️ Scalable REST API Platform | Java · Spring Boot · PostgreSQL | `🟢 LIVE` |
+| 🚀 Event-Driven Microservices | Kafka · Docker · AWS | `🟡 IN DEV` |
+| 🌐 Portfolio v2 | Next.js · Vercel | `🟢 LIVE` |
+| 🤖 Data Clustering Research | Python · Scikit-learn | `✅ COMPLETE` |
+| 📱 iOS App (Swift) | Swift · SwiftUI | `🔵 LEARNING` |
+
+</div>
+
+---
+
+<!-- ACTIVITY GRAPH -->
+## 🌊 `COMMIT_WAVE://LIVE`
+
+<div align="center">
+  <img src="https://github-readme-activity-graph.vercel.app/graph?username=Apple-beep&theme=react-dark&hide_border=true&area=true&area_color=00FFFF&line=00FF88&point=FF00FF&bg_color=0D1117&color=FFFFFF" width="100%"/>
+</div>
+
+---
+
 <!-- RANDOM DEV JOKE -->
-## 😂 Dev Joke of the Day
+## 💀 `HUMOR.exe://RUNNING`
 
 <div align="center">
-  <img src="https://readme-jokes.vercel.app/api?theme=tokyonight&hideBorder" alt="Dev Jokes"/>
+  <img src="https://readme-jokes.vercel.app/api?bgColor=%230D1117&borderColor=%2300FFFF&qColor=%2300FF88&aColor=%23FF00FF&textColor=%23FFFFFF&codeColor=%2300FFFF" width="500"/>
 </div>
 
 ---
 
-<!-- CURRENTLY PLAYING / VIBING TO -->
-## 🎵 Currently Vibing To
-
-<div align="center">
-  <img src="https://spotify-recently-played-readme.vercel.app/api?user=YOUR-SPOTIFY-ID&unique=true" alt="Spotify" width="500"/>
-</div>
-
-> Don't have Spotify? Remove this section 😄
-
----
-
-<!-- CURRENT STATUS -->
-## 🔭 What I'm Up To
-
-```json
-{
-  "role":        "👨‍💻 Software Engineer Intern @ Colorado",
-  "building":    "🏗️  Scalable REST APIs with Spring Boot",
-  "learning":    "📖  Go -  Kafka -  Cloud-Native Architecture",
-  "seeking":     "💼  Full-Time SWE roles (2026)",
-  "community":   "🤝  Volunteering with Chartwells @ IIT",
-  "fun":         "🎮  Debugging at 2AM and pretending it's fine"
-}
-```
-
----
-
-<!-- FOOTER WAVE -->
+<!-- QUOTE -->
 <div align="center">
 
-### 💬 "Code is like humor. When you have to explain it, it's bad."
+<img src="https://quotes-github-readme.vercel.app/api?type=horizontal&theme=dark" width="600"/>
 
-⭐ **Drop a star on repos you like — it means the world!** ⭐
+<br/><br/>
 
-[![Buy Me A Coffee](https://img.shields.io/badge/Buy%20Me%20A%20Coffee-FFDD00?style=for-the-badge&logo=buy-me-a-coffee&logoColor=black)](https://www.buymeacoffee.com/YOUR-USERNAME)
+### `> SYSTEM MESSAGE:`
+### *"Every expert was once a beginner. Every pro was once an amateur."*
+
+<br/>
+
+**⭐ If my work helped you — drop a star. It costs $0 and means everything.**
+
+<br/>
+
+[![LinkedIn](https://img.shields.io/badge/📩_Let's_Connect-0077B5?style=for-the-badge&logo=linkedin&logoColor=white)](https://linkedin.com/in/musharaf-khan-pathan)
+[![Portfolio](https://img.shields.io/badge/🌐_See_My_Work-FF5722?style=for-the-badge&logo=vercel&logoColor=white)](https://musharafportfolio.vercel.app)
 
 </div>
 
-<img width="100%" src="https://capsule-render.vercel.app/api?type=waving&color=gradient&customColorList=0,2,2,5,30&height=100&section=footer"/>
+<!-- FOOTER SCAN LINE -->
+<img width="100%" src="https://capsule-render.vercel.app/api?type=rect&color=gradient&customColorList=12,14,17,24&height=3&section=footer"/>
+<img width="100%" src="https://capsule-render.vercel.app/api?type=soft&color=gradient&customColorList=12,14,17,24&height=80&section=footer"/>
