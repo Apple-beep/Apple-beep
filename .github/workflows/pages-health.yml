@@ -1,6 +1,13 @@
 name: 🩺 Pages Health Check
 
 on:
+  push:
+    branches:
+      - main
+    paths:
+      - site/**
+      - .github/workflows/pages.yml
+      - .github/workflows/pages-health.yml
   workflow_dispatch:
   schedule:
     - cron: "17 14 * * 1"
