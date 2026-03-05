@@ -11,13 +11,12 @@
         --line: #1f2a44;
         --teal: #22d3ee;
         --orange: #fb923c;
+        --violet: #a78bfa;
         --text: #e2e8f0;
         --muted: #94a3b8;
       }
 
-      * {
-        box-sizing: border-box;
-      }
+      * { box-sizing: border-box; }
 
       body {
         margin: 0;
@@ -26,6 +25,7 @@
         background:
           radial-gradient(circle at 15% 20%, rgba(34, 211, 238, 0.17), transparent 40%),
           radial-gradient(circle at 80% 10%, rgba(251, 146, 60, 0.18), transparent 35%),
+          radial-gradient(circle at 70% 80%, rgba(167, 139, 250, 0.15), transparent 35%),
           linear-gradient(140deg, #05070c, #0b1221 55%, #101827);
         color: var(--text);
         display: grid;
@@ -34,7 +34,7 @@
       }
 
       .shell {
-        width: min(980px, 100%);
+        width: min(1080px, 100%);
         background: linear-gradient(160deg, rgba(15, 23, 42, 0.95), rgba(2, 6, 23, 0.95));
         border: 1px solid var(--line);
         border-radius: 24px;
@@ -42,16 +42,9 @@
         box-shadow: 0 20px 80px rgba(2, 8, 30, 0.65);
       }
 
-      h1 {
-        margin: 0 0 10px;
-        font-size: clamp(28px, 5vw, 48px);
-      }
+      h1 { margin: 0 0 10px; font-size: clamp(30px, 5vw, 52px); }
 
-      p {
-        margin: 0;
-        color: var(--muted);
-        line-height: 1.55;
-      }
+      p { margin: 0; color: var(--muted); line-height: 1.55; }
 
       .grid {
         margin-top: 22px;
@@ -59,10 +52,8 @@
         gap: 14px;
       }
 
-      @media (min-width: 900px) {
-        .grid {
-          grid-template-columns: repeat(2, minmax(0, 1fr));
-        }
+      @media (min-width: 980px) {
+        .grid { grid-template-columns: repeat(3, minmax(0, 1fr)); }
       }
 
       .card {
@@ -80,10 +71,7 @@
         border-color: rgba(34, 211, 238, 0.8);
       }
 
-      .card h2 {
-        margin: 0 0 8px;
-        font-size: 22px;
-      }
+      .card h2 { margin: 0 0 8px; font-size: 22px; }
 
       .tag {
         display: inline-block;
@@ -95,15 +83,9 @@
         text-transform: uppercase;
       }
 
-      .tag.teal {
-        background: rgba(34, 211, 238, 0.18);
-        color: var(--teal);
-      }
-
-      .tag.orange {
-        background: rgba(251, 146, 60, 0.18);
-        color: var(--orange);
-      }
+      .tag.teal { background: rgba(34, 211, 238, 0.18); color: var(--teal); }
+      .tag.orange { background: rgba(251, 146, 60, 0.18); color: var(--orange); }
+      .tag.violet { background: rgba(167, 139, 250, 0.18); color: var(--violet); }
 
       .home-link {
         display: inline-block;
@@ -116,21 +98,27 @@
     <main class="shell">
       <h1>Musharaf Arcade</h1>
       <p>
-        Two recruiter-facing mini games focused on engineering instincts: optimizing latency and making
-        tradeoffs during production incidents.
+        Recruiter-facing engineering mini games built to showcase systems thinking,
+        incident decision quality, and live scaling instincts.
       </p>
 
       <section class="grid">
         <a class="card" href="./games/latency-lab.html">
           <h2>Latency Lab</h2>
-          <p>Find the fastest route across a distributed system graph before the timer expires.</p>
+          <p>Route traffic through a service graph and beat the optimal latency path.</p>
           <span class="tag teal">Systems Thinking</span>
         </a>
 
         <a class="card" href="./games/incident-commander.html">
           <h2>Incident Commander</h2>
-          <p>Handle incidents with balanced decisions across uptime, trust, and budget.</p>
-          <span class="tag orange">Decision Making</span>
+          <p>Handle production incidents while balancing uptime, trust, and budget.</p>
+          <span class="tag orange">Tradeoff Decisions</span>
+        </a>
+
+        <a class="card" href="./games/autoscale-arena.html">
+          <h2>Autoscale Arena</h2>
+          <p>Survive traffic waves by tuning pods and controls to keep SLOs healthy.</p>
+          <span class="tag violet">Reliability Ops</span>
         </a>
       </section>
 

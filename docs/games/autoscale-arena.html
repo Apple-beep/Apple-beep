@@ -1,0 +1,512 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Autoscale Arena</title>
+    <style>
+      :root {
+        --bg: #05070d;
+        --panel: #0f172a;
+        --line: #24324d;
+        --teal: #22d3ee;
+        --lime: #84cc16;
+        --orange: #fb923c;
+        --rose: #fb7185;
+        --text: #e2e8f0;
+        --muted: #94a3b8;
+      }
+
+      * { box-sizing: border-box; }
+
+      body {
+        margin: 0;
+        min-height: 100vh;
+        color: var(--text);
+        font-family: "Space Grotesk", "Avenir Next", "Segoe UI", sans-serif;
+        background:
+          radial-gradient(circle at 12% 14%, rgba(34, 211, 238, 0.2), transparent 35%),
+          radial-gradient(circle at 87% 12%, rgba(132, 204, 22, 0.2), transparent 34%),
+          linear-gradient(145deg, #060a15, #0b1221 58%, #131726);
+        padding: 20px;
+      }
+
+      .wrap {
+        width: min(1100px, 100%);
+        margin: 0 auto;
+      }
+
+      .top {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin-bottom: 10px;
+      }
+
+      .top a {
+        color: var(--teal);
+        text-decoration: none;
+      }
+
+      h1 {
+        margin: 0;
+        font-size: clamp(30px, 4vw, 44px);
+      }
+
+      .subtitle {
+        margin: 8px 0 14px;
+        color: var(--muted);
+      }
+
+      .panel {
+        background: linear-gradient(160deg, rgba(15, 23, 42, 0.95), rgba(2, 6, 23, 0.95));
+        border: 1px solid var(--line);
+        border-radius: 18px;
+        padding: 16px;
+        box-shadow: 0 20px 70px rgba(0, 0, 0, 0.35);
+      }
+
+      .hud {
+        display: grid;
+        grid-template-columns: repeat(4, minmax(0, 1fr));
+        gap: 10px;
+      }
+
+      .stat {
+        border: 1px solid #263957;
+        border-radius: 12px;
+        padding: 10px;
+        background: rgba(2, 6, 23, 0.44);
+      }
+
+      .stat .k {
+        color: var(--muted);
+        font-size: 11px;
+        text-transform: uppercase;
+        letter-spacing: 0.08em;
+      }
+
+      .stat .v {
+        margin-top: 6px;
+        font-size: 24px;
+        font-weight: 700;
+      }
+
+      .arena {
+        margin-top: 12px;
+        border: 1px solid #2a3f63;
+        border-radius: 14px;
+        overflow: hidden;
+        background: radial-gradient(circle at 20% 25%, #102341, #091529 60%, #050a13);
+      }
+
+      canvas {
+        display: block;
+        width: 100%;
+        height: auto;
+      }
+
+      .controls {
+        margin-top: 12px;
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 12px;
+      }
+
+      .box {
+        border: 1px solid #243858;
+        border-radius: 12px;
+        padding: 12px;
+        background: rgba(2, 6, 23, 0.4);
+      }
+
+      .row {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 10px;
+        margin-top: 10px;
+      }
+
+      .row:first-child {
+        margin-top: 0;
+      }
+
+      button {
+        border: 1px solid #355075;
+        background: #0b1a2f;
+        color: var(--text);
+        border-radius: 10px;
+        padding: 8px 12px;
+        font: inherit;
+        cursor: pointer;
+      }
+
+      button:hover {
+        border-color: #5f8dc3;
+      }
+
+      .primary {
+        background: linear-gradient(90deg, #0891b2, #0284c7);
+        border: none;
+      }
+
+      .pill {
+        display: inline-block;
+        padding: 5px 8px;
+        border-radius: 999px;
+        border: 1px solid #31517f;
+        font-size: 12px;
+      }
+
+      .pill.on {
+        color: #86efac;
+        border-color: #166534;
+        background: rgba(34, 197, 94, 0.15);
+      }
+
+      .pill.off {
+        color: #fda4af;
+        border-color: #7f1d1d;
+        background: rgba(244, 63, 94, 0.12);
+      }
+
+      .log {
+        margin-top: 12px;
+        border: 1px solid #2a3f63;
+        border-radius: 12px;
+        padding: 10px;
+        color: var(--muted);
+        min-height: 54px;
+      }
+
+      .log strong {
+        color: var(--text);
+      }
+
+      @media (max-width: 860px) {
+        .hud {
+          grid-template-columns: repeat(2, minmax(0, 1fr));
+        }
+
+        .controls {
+          grid-template-columns: 1fr;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <main class="wrap">
+      <div class="top">
+        <a href="../index.html">← Back to Arcade</a>
+      </div>
+
+      <h1>Autoscale Arena</h1>
+      <p class="subtitle">
+        Keep your service healthy for <strong>90 seconds</strong>. Balance capacity, latency, error rate,
+        and cloud cost under traffic waves.
+      </p>
+
+      <section class="panel">
+        <div class="hud">
+          <article class="stat">
+            <div class="k">Time Left</div>
+            <div class="v" id="timeLeft">90s</div>
+          </article>
+          <article class="stat">
+            <div class="k">Latency</div>
+            <div class="v" id="latency">120 ms</div>
+          </article>
+          <article class="stat">
+            <div class="k">Error Rate</div>
+            <div class="v" id="errorRate">0.2%</div>
+          </article>
+          <article class="stat">
+            <div class="k">Score</div>
+            <div class="v" id="score">0</div>
+          </article>
+        </div>
+
+        <div class="arena">
+          <canvas id="chart" width="980" height="360" aria-label="Traffic simulation chart"></canvas>
+        </div>
+
+        <div class="controls">
+          <div class="box">
+            <div class="row">
+              <strong>Pods</strong>
+              <div>
+                <button id="podDown">-</button>
+                <span id="pods">4</span>
+                <button id="podUp">+</button>
+              </div>
+            </div>
+            <div class="row">
+              <strong>Cache Layer</strong>
+              <button id="toggleCache"><span id="cacheState" class="pill off">OFF</span></button>
+            </div>
+            <div class="row">
+              <strong>Rate Limit</strong>
+              <button id="toggleRate"><span id="rateState" class="pill off">OFF</span></button>
+            </div>
+          </div>
+
+          <div class="box">
+            <div class="row"><strong>Capacity</strong><span id="capacity">280 rps</span></div>
+            <div class="row"><strong>Incoming Traffic</strong><span id="incoming">260 rps</span></div>
+            <div class="row"><strong>Cost Burn</strong><span id="cost">$0 / min</span></div>
+            <div class="row">
+              <button id="restart" class="primary">Restart Run</button>
+            </div>
+          </div>
+        </div>
+
+        <div id="log" class="log"><strong>Tip:</strong> Add pods early before big traffic peaks hit.</div>
+      </section>
+    </main>
+
+    <script>
+      const state = {
+        totalTime: 90,
+        t: 0,
+        pods: 4,
+        cache: false,
+        rateLimit: false,
+        latency: 120,
+        errorRate: 0.2,
+        score: 0,
+        running: true,
+        timer: null,
+        historyTraffic: [],
+        historyCapacity: [],
+      };
+
+      const el = {
+        timeLeft: document.getElementById("timeLeft"),
+        latency: document.getElementById("latency"),
+        errorRate: document.getElementById("errorRate"),
+        score: document.getElementById("score"),
+        pods: document.getElementById("pods"),
+        cacheState: document.getElementById("cacheState"),
+        rateState: document.getElementById("rateState"),
+        capacity: document.getElementById("capacity"),
+        incoming: document.getElementById("incoming"),
+        cost: document.getElementById("cost"),
+        log: document.getElementById("log"),
+      };
+
+      const canvas = document.getElementById("chart");
+      const ctx = canvas.getContext("2d");
+
+      function trafficAt(second) {
+        const base = 190;
+        const waveA = 55 * Math.sin(second / 6);
+        const waveB = 70 * Math.sin((second + 10) / 12);
+        const spike = second > 58 && second < 72 ? 140 : 0;
+        return Math.max(90, Math.round(base + waveA + waveB + spike));
+      }
+
+      function computeCapacity() {
+        let capacity = state.pods * 70;
+        if (state.cache) {
+          capacity *= 1.32;
+        }
+        if (state.rateLimit) {
+          capacity *= 1.1;
+        }
+        return Math.round(capacity);
+      }
+
+      function computeCostPerMinute() {
+        let cost = state.pods * 8;
+        if (state.cache) {
+          cost += 7;
+        }
+        if (state.rateLimit) {
+          cost += 4;
+        }
+        return cost;
+      }
+
+      function updateMetrics() {
+        const incoming = trafficAt(state.t);
+        const capacity = computeCapacity();
+        const overload = Math.max(0, incoming - capacity);
+
+        state.latency = Math.round(85 + overload * 0.95 + (state.cache ? -18 : 0) + (state.rateLimit ? 8 : 0));
+        state.latency = Math.max(55, state.latency);
+
+        state.errorRate = Number((0.15 + overload * 0.02 + (state.rateLimit ? -0.08 : 0)).toFixed(2));
+        state.errorRate = Math.max(0.02, state.errorRate);
+
+        const latencySlo = state.latency <= 220 ? 1 : 0;
+        const errorSlo = state.errorRate <= 1 ? 1 : 0;
+
+        let delta = 0;
+        if (latencySlo && errorSlo) {
+          delta = 14;
+        } else if (latencySlo || errorSlo) {
+          delta = 6;
+        } else {
+          delta = -10;
+        }
+
+        delta -= Math.round(computeCostPerMinute() / 14);
+        state.score += delta;
+
+        state.historyTraffic.push(incoming);
+        state.historyCapacity.push(capacity);
+        if (state.historyTraffic.length > state.totalTime) {
+          state.historyTraffic.shift();
+          state.historyCapacity.shift();
+        }
+
+        renderHud(incoming, capacity);
+        drawChart();
+
+        if (!latencySlo || !errorSlo) {
+          el.log.innerHTML = "<strong>Warning:</strong> SLO drifting. Adjust pods/cache/rate-limit.";
+        } else {
+          el.log.innerHTML = "<strong>Stable:</strong> Service is healthy under current load.";
+        }
+      }
+
+      function renderHud(incoming, capacity) {
+        const left = state.totalTime - state.t;
+        el.timeLeft.textContent = `${left}s`;
+        el.latency.textContent = `${state.latency} ms`;
+        el.errorRate.textContent = `${state.errorRate}%`;
+        el.score.textContent = String(state.score);
+        el.pods.textContent = String(state.pods);
+        el.incoming.textContent = `${incoming} rps`;
+        el.capacity.textContent = `${capacity} rps`;
+        el.cost.textContent = `$${computeCostPerMinute()} / min`;
+
+        el.cacheState.textContent = state.cache ? "ON" : "OFF";
+        el.cacheState.className = `pill ${state.cache ? "on" : "off"}`;
+        el.rateState.textContent = state.rateLimit ? "ON" : "OFF";
+        el.rateState.className = `pill ${state.rateLimit ? "on" : "off"}`;
+      }
+
+      function drawChart() {
+        ctx.clearRect(0, 0, canvas.width, canvas.height);
+
+        ctx.fillStyle = "rgba(10, 20, 34, 0.65)";
+        ctx.fillRect(0, 0, canvas.width, canvas.height);
+
+        ctx.strokeStyle = "rgba(100, 120, 150, 0.25)";
+        ctx.lineWidth = 1;
+        for (let y = 30; y < canvas.height; y += 42) {
+          ctx.beginPath();
+          ctx.moveTo(0, y);
+          ctx.lineTo(canvas.width, y);
+          ctx.stroke();
+        }
+
+        const maxRps = 520;
+        const n = state.historyTraffic.length;
+        if (n < 2) {
+          return;
+        }
+
+        const xStep = canvas.width / (state.totalTime - 1);
+
+        function drawSeries(values, color) {
+          ctx.strokeStyle = color;
+          ctx.lineWidth = 3;
+          ctx.beginPath();
+          for (let i = 0; i < values.length; i += 1) {
+            const x = i * xStep;
+            const y = canvas.height - (values[i] / maxRps) * (canvas.height - 30) - 12;
+            if (i === 0) {
+              ctx.moveTo(x, y);
+            } else {
+              ctx.lineTo(x, y);
+            }
+          }
+          ctx.stroke();
+        }
+
+        drawSeries(state.historyTraffic, "#fb923c");
+        drawSeries(state.historyCapacity, "#22d3ee");
+
+        ctx.fillStyle = "#fb923c";
+        ctx.fillRect(22, 16, 14, 14);
+        ctx.fillStyle = "#e2e8f0";
+        ctx.font = "13px 'Space Grotesk', sans-serif";
+        ctx.fillText("Traffic", 44, 27);
+
+        ctx.fillStyle = "#22d3ee";
+        ctx.fillRect(128, 16, 14, 14);
+        ctx.fillStyle = "#e2e8f0";
+        ctx.fillText("Capacity", 150, 27);
+      }
+
+      function endRun() {
+        state.running = false;
+        clearInterval(state.timer);
+
+        let title = "Decent Operator";
+        if (state.score >= 700) {
+          title = "Staff-Level Autoscaler";
+        } else if (state.score >= 500) {
+          title = "Strong On-Call Engineer";
+        }
+
+        el.log.innerHTML = `<strong>Run complete:</strong> ${title}. Final score ${state.score}.`;
+      }
+
+      function tick() {
+        if (!state.running) {
+          return;
+        }
+        state.t += 1;
+        updateMetrics();
+        if (state.t >= state.totalTime) {
+          endRun();
+        }
+      }
+
+      function restart() {
+        state.t = 0;
+        state.pods = 4;
+        state.cache = false;
+        state.rateLimit = false;
+        state.latency = 120;
+        state.errorRate = 0.2;
+        state.score = 0;
+        state.running = true;
+        state.historyTraffic = [];
+        state.historyCapacity = [];
+
+        clearInterval(state.timer);
+        updateMetrics();
+        state.timer = setInterval(tick, 1000);
+      }
+
+      document.getElementById("podUp").addEventListener("click", () => {
+        state.pods = Math.min(12, state.pods + 1);
+        updateMetrics();
+      });
+
+      document.getElementById("podDown").addEventListener("click", () => {
+        state.pods = Math.max(1, state.pods - 1);
+        updateMetrics();
+      });
+
+      document.getElementById("toggleCache").addEventListener("click", () => {
+        state.cache = !state.cache;
+        updateMetrics();
+      });
+
+      document.getElementById("toggleRate").addEventListener("click", () => {
+        state.rateLimit = !state.rateLimit;
+        updateMetrics();
+      });
+
+      document.getElementById("restart").addEventListener("click", restart);
+
+      restart();
+    </script>
+  </body>
+</html>

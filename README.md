@@ -47,6 +47,7 @@ focus: AI systems, security engineering, scalable backend delivery
 
 [![Play Latency Lab](https://img.shields.io/badge/PLAY-LATENCY%20LAB-0EA5E9?style=for-the-badge&labelColor=1f2937)](https://apple-beep.github.io/games/latency-lab.html)
 [![Play Incident Commander](https://img.shields.io/badge/PLAY-INCIDENT%20COMMANDER-F97316?style=for-the-badge&labelColor=1f2937)](https://apple-beep.github.io/games/incident-commander.html)
+[![Play Autoscale Arena](https://img.shields.io/badge/PLAY-AUTOSCALE%20ARENA-A78BFA?style=for-the-badge&labelColor=1f2937)](https://apple-beep.github.io/games/autoscale-arena.html)
 
 </div>
 
@@ -74,4 +75,4 @@ focus: AI systems, security engineering, scalable backend delivery
 - [LinkedIn](https://linkedin.com/in/musharaf-khan-pathan)
 - [Email](mailto:mpathan2work@gmail.com)
 
-> If game links show 404, enable once: Settings -> Pages -> Build and deployment -> GitHub Actions.
+> If game links show 404, enable Pages once: [Repository Pages Settings](https://github.com/Apple-beep/Apple-beep/settings/pages) -> Build and deployment -> GitHub Actions. Official docs: [GitHub Pages](https://docs.github.com/en/pages).
