@@ -49,10 +49,12 @@ focus: AI systems, security engineering, scalable backend delivery
 [![Play Latency Lab](https://img.shields.io/badge/PLAY-LATENCY%20LAB-0EA5E9?style=for-the-badge&labelColor=1f2937)](https://apple-beep.github.io/games/latency-lab.html)
 [![Play Incident Commander](https://img.shields.io/badge/PLAY-INCIDENT%20COMMANDER-F97316?style=for-the-badge&labelColor=1f2937)](https://apple-beep.github.io/games/incident-commander.html)
 [![Play Autoscale Arena](https://img.shields.io/badge/PLAY-AUTOSCALE%20ARENA-A78BFA?style=for-the-badge&labelColor=1f2937)](https://apple-beep.github.io/games/autoscale-arena.html)
+[![Season HQ](https://img.shields.io/badge/SEASON-HQ-84CC16?style=for-the-badge&labelColor=1f2937)](https://apple-beep.github.io/games/season-hq.html)
 
 </div>
 
-- **Command Center**: flagship simulation with incident spikes, SLO tracking, sound FX, local leaderboard, and exportable run token.
+- **Command Center**: flagship simulation with live commit-driven boss difficulty, SLO tracking, sound FX, local leaderboard, and one-click challenge card image.
+- **Season Mode**: shared XP, unlockable ranks, and badge progression across all game modes.
 
 ## `LIVE://COMMIT_ART_ENGINE`
 
@@ -85,3 +87,4 @@ focus: AI systems, security engineering, scalable backend delivery
 > - [Latency Lab](https://raw.githack.com/Apple-beep/Apple-beep/main/docs/games/latency-lab.html)
 > - [Incident Commander](https://raw.githack.com/Apple-beep/Apple-beep/main/docs/games/incident-commander.html)
 > - [Autoscale Arena](https://raw.githack.com/Apple-beep/Apple-beep/main/docs/games/autoscale-arena.html)
+> - [Season HQ](https://raw.githack.com/Apple-beep/Apple-beep/main/docs/games/season-hq.html)

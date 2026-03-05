@@ -265,6 +265,7 @@
       </section>
     </main>
 
+    <script src="./shared/season.js"></script>
     <script>
       const state = {
         totalTime: 90,
@@ -276,6 +277,7 @@
         errorRate: 0.2,
         score: 0,
         running: true,
+        recorded: false,
         timer: null,
         historyTraffic: [],
         historyCapacity: [],
@@ -453,7 +455,24 @@
           title = "Strong On-Call Engineer";
         }
 
-        el.log.innerHTML = `<strong>Run complete:</strong> ${title}. Final score ${state.score}.`;
+        let seasonNote = "";
+        if (!state.recorded && window.MKPSeason) {
+          state.recorded = true;
+          try {
+            const season = window.MKPSeason.recordRun({
+              game: "autoscale-arena",
+              score: Math.round(state.score),
+              won: state.score >= 450,
+              grade: title,
+              meta: { duration: state.totalTime },
+            });
+            seasonNote = ` Season +${season.xpGain}XP • ${season.rank}.`;
+          } catch (_) {
+            seasonNote = "";
+          }
+        }
+
+        el.log.innerHTML = `<strong>Run complete:</strong> ${title}. Final score ${state.score}.${seasonNote}`;
       }
 
       function tick() {
@@ -476,6 +495,7 @@
         state.errorRate = 0.2;
         state.score = 0;
         state.running = true;
+        state.recorded = false;
         state.historyTraffic = [];
         state.historyCapacity = [];
 

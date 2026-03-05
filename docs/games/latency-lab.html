@@ -224,7 +224,23 @@
       </section>
     </main>
 
+    <script src="./shared/season.js"></script>
     <script>
+      function recordSeasonRun(score, won, meta = {}) {
+        if (!window.MKPSeason) return null;
+        try {
+          return window.MKPSeason.recordRun({
+            game: "latency-lab",
+            score,
+            won,
+            grade: won ? "Latency Win" : "Latency Loss",
+            meta,
+          });
+        } catch (_) {
+          return null;
+        }
+      }
+
       const levels = [
         {
           time: 45,
@@ -590,7 +606,11 @@
           verdict = "Strong Systems Thinker";
         }
 
-        setLog(`Campaign complete. ${verdict} (${pct}%). Click Next to restart from Level 1.`, "good");
+        const season = recordSeasonRun(state.score, pct >= 70, { campaignPercent: pct });
+        const seasonNote = season
+          ? ` | Season +${season.xpGain}XP • ${season.rank}${season.unlockedBadges.length ? ` • Badge: ${season.unlockedBadges[0]}` : ""}`
+          : "";
+        setLog(`Campaign complete. ${verdict} (${pct}%).${seasonNote} Click Next to restart from Level 1.`, "good");
         state.levelIndex = -1;
         el.nextBtn.disabled = false;
       }

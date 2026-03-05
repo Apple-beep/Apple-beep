@@ -216,6 +216,7 @@
       </section>
     </main>
 
+    <script src="./shared/season.js"></script>
     <script>
       const incidents = [
         {
@@ -299,6 +300,7 @@
         round: 0,
         maxRounds: 8,
         chosen: false,
+        recorded: false,
         queue: shuffle([...incidents]).slice(0, 8),
       };
 
@@ -317,6 +319,22 @@
         restartBtn: document.getElementById("restartBtn"),
         log: document.getElementById("log"),
       };
+
+      function recordSeason(score, won, meta = {}) {
+        if (!window.MKPSeason || state.recorded) return null;
+        state.recorded = true;
+        try {
+          return window.MKPSeason.recordRun({
+            game: "incident-commander",
+            score,
+            won,
+            grade: won ? "Incident Victory" : "Incident Fail",
+            meta,
+          });
+        } catch (_) {
+          return null;
+        }
+      }
 
       function shuffle(arr) {
         for (let i = arr.length - 1; i > 0; i -= 1) {
@@ -394,11 +412,14 @@
       }
 
       function knockout() {
+        const collapseScore = Math.round((state.uptime + state.trust + state.budget) / 3);
+        const season = recordSeason(collapseScore, false, { reason: "collapse" });
         els.choices.innerHTML = "";
         els.nextBtn.style.display = "none";
         els.restartBtn.style.display = "inline-block";
-        els.log.innerHTML =
-          "<strong>Service collapse:</strong> One critical metric hit zero. Incident campaign failed.";
+        els.log.innerHTML = `<strong>Service collapse:</strong> One critical metric hit zero. Incident campaign failed.${
+          season ? ` Season +${season.xpGain}XP.` : ""
+        }`;
       }
 
       function endCampaign() {
@@ -411,6 +432,7 @@
           title = "Strong Production Operator";
         }
 
+        const season = recordSeason(avg, true, { rounds: state.maxRounds });
         els.round.textContent = "Campaign Complete";
         els.title.textContent = title;
         els.description.textContent =
@@ -418,7 +440,9 @@
         els.choices.innerHTML = "";
         els.nextBtn.style.display = "none";
         els.restartBtn.style.display = "inline-block";
-        els.log.innerHTML = `<strong>Final score:</strong> ${avg}/100`;
+        els.log.innerHTML = `<strong>Final score:</strong> ${avg}/100${
+          season ? ` | Season +${season.xpGain}XP • ${season.rank}` : ""
+        }`;
       }
 
       function next() {
@@ -431,6 +455,7 @@
         state.trust = 75;
         state.budget = 75;
         state.round = 0;
+        state.recorded = false;
         state.queue = shuffle([...incidents]).slice(0, 8);
         setStats();
         els.log.innerHTML = "<strong>Tip:</strong> Perfect answers do not exist. Balance tradeoffs.";

@@ -91,7 +91,7 @@
       }
 
       @media (min-width: 980px) {
-        .grid { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+        .grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
       }
 
       .card {
@@ -124,6 +124,7 @@
       .tag.teal { background: rgba(34, 211, 238, 0.18); color: var(--teal); }
       .tag.orange { background: rgba(251, 146, 60, 0.18); color: var(--orange); }
       .tag.violet { background: rgba(167, 139, 250, 0.18); color: var(--violet); }
+      .tag.lime { background: rgba(132, 204, 22, 0.18); color: var(--lime); }
 
       .home-link {
         display: inline-block;
@@ -143,8 +144,8 @@
         <span class="feature-tag">Signature Mode</span>
         <h2>Command Center</h2>
         <p>
-          120-second production storm simulator with live SLO tracking, incident spikes,
-          sound toggle, local leaderboard, and exportable run token.
+          120-second production storm simulator with live commit-driven boss mode,
+          season rank progression, challenge card export, and leaderboard tracking.
         </p>
       </a>
 
@@ -165,6 +166,12 @@
           <h2>Autoscale Arena</h2>
           <p>Survive traffic waves by tuning pods and controls to keep SLOs healthy.</p>
           <span class="tag violet">Reliability Ops</span>
+        </a>
+
+        <a class="card" href="./games/season-hq.html">
+          <h2>Season HQ</h2>
+          <p>Track rank progression, badge unlocks, and recent runs across all game modes.</p>
+          <span class="tag lime">Progression</span>
         </a>
       </section>
 

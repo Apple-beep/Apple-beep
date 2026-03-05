@@ -1,0 +1,219 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Season HQ</title>
+    <style>
+      :root {
+        --bg: #05070d;
+        --panel: #0f172a;
+        --line: #24324d;
+        --teal: #22d3ee;
+        --violet: #a78bfa;
+        --text: #e2e8f0;
+        --muted: #94a3b8;
+      }
+
+      * { box-sizing: border-box; }
+
+      body {
+        margin: 0;
+        min-height: 100vh;
+        color: var(--text);
+        font-family: "Space Grotesk", "Avenir Next", "Segoe UI", sans-serif;
+        background:
+          radial-gradient(circle at 15% 18%, rgba(34, 211, 238, 0.18), transparent 35%),
+          radial-gradient(circle at 85% 10%, rgba(167, 139, 250, 0.18), transparent 34%),
+          linear-gradient(150deg, #05070d, #0a1221 58%, #141a29);
+        padding: 22px;
+      }
+
+      .wrap { width: min(1080px, 100%); margin: 0 auto; }
+
+      .top {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        margin-bottom: 10px;
+      }
+
+      .top a { color: var(--teal); text-decoration: none; }
+
+      h1 { margin: 0; font-size: clamp(30px, 4vw, 46px); }
+      p { color: var(--muted); }
+
+      .panel {
+        border: 1px solid var(--line);
+        border-radius: 16px;
+        padding: 14px;
+        background: rgba(15, 23, 42, 0.62);
+        margin-top: 12px;
+      }
+
+      .stats {
+        display: grid;
+        grid-template-columns: repeat(4, minmax(0, 1fr));
+        gap: 8px;
+      }
+
+      .stat {
+        border: 1px solid #2b4063;
+        border-radius: 10px;
+        padding: 10px;
+        background: rgba(3, 8, 22, 0.5);
+      }
+
+      .k { color: var(--muted); font-size: 11px; text-transform: uppercase; letter-spacing: 0.08em; }
+      .v { margin-top: 4px; font-size: 21px; font-weight: 700; }
+
+      .xp-wrap {
+        margin-top: 10px;
+        border: 1px solid #2b4063;
+        border-radius: 10px;
+        overflow: hidden;
+        background: #0a1528;
+      }
+
+      .xp-fill {
+        height: 15px;
+        background: linear-gradient(90deg, #0ea5e9, #22d3ee, #a78bfa);
+        width: 0%;
+      }
+
+      .grid {
+        display: grid;
+        grid-template-columns: 1.2fr 1fr;
+        gap: 12px;
+        margin-top: 12px;
+      }
+
+      .badges {
+        display: grid;
+        gap: 8px;
+      }
+
+      .badge {
+        border: 1px solid #2b4063;
+        border-radius: 10px;
+        padding: 9px;
+        background: rgba(3, 8, 22, 0.45);
+      }
+
+      .badge.locked {
+        opacity: 0.55;
+      }
+
+      ul { margin: 0; padding-left: 18px; }
+      li { margin: 7px 0; }
+
+      button {
+        border: 1px solid #385989;
+        border-radius: 9px;
+        background: #0b1b33;
+        color: var(--text);
+        font: inherit;
+        padding: 8px 12px;
+        cursor: pointer;
+      }
+
+      @media (max-width: 900px) {
+        .stats { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+        .grid { grid-template-columns: 1fr; }
+      }
+    </style>
+  </head>
+  <body>
+    <main class="wrap">
+      <div class="top">
+        <a href="../index.html">← Back to Arcade</a>
+      </div>
+
+      <h1>Season HQ</h1>
+      <p>Track rank progression, badge unlocks, and recent runs across all games.</p>
+
+      <section class="panel">
+        <div class="stats">
+          <article class="stat"><div class="k">Current Rank</div><div class="v" id="rank">-</div></article>
+          <article class="stat"><div class="k">Season XP</div><div class="v" id="xp">0</div></article>
+          <article class="stat"><div class="k">Total Runs</div><div class="v" id="runs">0</div></article>
+          <article class="stat"><div class="k">Distinct Games</div><div class="v" id="games">0</div></article>
+        </div>
+        <div class="xp-wrap"><div class="xp-fill" id="xpFill"></div></div>
+        <p id="xpHint" style="margin:8px 0 0"></p>
+      </section>
+
+      <section class="grid">
+        <article class="panel">
+          <h3 style="margin-top:0">Badges</h3>
+          <div id="badges" class="badges"></div>
+        </article>
+
+        <article class="panel">
+          <h3 style="margin-top:0">Recent Runs</h3>
+          <ul id="runsList"></ul>
+          <button id="reset" style="margin-top:10px">Reset Season Data</button>
+        </article>
+      </section>
+    </main>
+
+    <script src="./shared/season.js"></script>
+    <script>
+      function render() {
+        if (!window.MKPSeason) return;
+        const state = window.MKPSeason.getState();
+
+        document.getElementById("rank").textContent = state.rank;
+        document.getElementById("xp").textContent = state.xp;
+        document.getElementById("runs").textContent = state.runs;
+        document.getElementById("games").textContent = state.distinctGames.length;
+
+        const next = state.nextRank;
+        const fill = document.getElementById("xpFill");
+        const hint = document.getElementById("xpHint");
+
+        if (!next) {
+          fill.style.width = "100%";
+          hint.textContent = "Max rank reached.";
+        } else {
+          const currentMin = state.ranks.find((r) => r.name === state.rank)?.minXp || 0;
+          const span = Math.max(1, next.minXp - currentMin);
+          const pct = Math.max(0, Math.min(100, ((state.xp - currentMin) / span) * 100));
+          fill.style.width = `${pct}%`;
+          hint.textContent = `${next.minXp - state.xp} XP to ${next.name}`;
+        }
+
+        const badges = document.getElementById("badges");
+        badges.innerHTML = "";
+        state.badgeCatalog.forEach((b) => {
+          const div = document.createElement("div");
+          div.className = `badge ${state.badges[b.id] ? "" : "locked"}`;
+          div.innerHTML = `<strong>${b.label}</strong><br/><span style="color:#94a3b8">${b.desc}</span>`;
+          badges.appendChild(div);
+        });
+
+        const list = document.getElementById("runsList");
+        list.innerHTML = "";
+        if (!state.lastRuns.length) {
+          const li = document.createElement("li");
+          li.textContent = "No runs recorded yet.";
+          list.appendChild(li);
+        } else {
+          state.lastRuns.slice(0, 10).forEach((r) => {
+            const li = document.createElement("li");
+            li.textContent = `${r.game} • ${r.score} pts • ${r.won ? "win" : "loss"}`;
+            list.appendChild(li);
+          });
+        }
+      }
+
+      document.getElementById("reset").addEventListener("click", () => {
+        if (!window.confirm("Reset all season progress?")) return;
+        window.MKPSeason.resetSeason();
+        render();
+      });
+
+      render();
+    </script>
+  </body>
+</html>

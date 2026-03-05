@@ -75,7 +75,7 @@
 
       .hud {
         display: grid;
-        grid-template-columns: repeat(6, minmax(0, 1fr));
+        grid-template-columns: repeat(auto-fit, minmax(130px, 1fr));
         gap: 8px;
         padding: 12px;
         border-bottom: 1px solid var(--line);
@@ -230,6 +230,11 @@
         color: var(--muted);
       }
 
+      .card a {
+        color: var(--teal);
+        text-decoration: none;
+      }
+
       .dot {
         width: 10px;
         height: 10px;
@@ -240,7 +245,7 @@
 
       @media (max-width: 980px) {
         .hud {
-          grid-template-columns: repeat(3, minmax(0, 1fr));
+          grid-template-columns: repeat(2, minmax(0, 1fr));
         }
 
         .board {
@@ -270,6 +275,8 @@
           <article class="stat"><div class="k">Latency</div><div class="v" id="latency">0 ms</div></article>
           <article class="stat"><div class="k">Errors</div><div class="v" id="errors">0%</div></article>
           <article class="stat"><div class="k">Score</div><div class="v" id="score">0</div></article>
+          <article class="stat"><div class="k">Commit Boss</div><div class="v" id="boss">SYNC...</div></article>
+          <article class="stat"><div class="k">Season Rank</div><div class="v" id="seasonRank">-</div></article>
         </div>
 
         <div class="board">
@@ -307,6 +314,7 @@
                 <button class="primary" id="restart">Restart Run</button>
                 <button id="pause">Pause</button>
                 <button class="warn" id="export">Export Score</button>
+                <button id="card">Challenge Card</button>
               </div>
               <div class="legend">
                 <span><span class="dot" style="background:#fb923c"></span>Traffic</span>
@@ -314,7 +322,7 @@
                 <span><span class="dot" style="background:#a78bfa"></span>Latency</span>
               </div>
               <div class="legend">
-                Shortcuts: `W/S` pods, `C` cache, `R` rate limit, `B` breaker, `M` sound, `Space` pause
+                Shortcuts: `W/S` pods, `C` cache, `R` rate limit, `B` breaker, `M` sound, `Space` pause, `K` card
               </div>
             </section>
 
@@ -330,11 +338,18 @@
               <strong>Local Leaderboard</strong>
               <ol id="scores" class="scores"></ol>
             </section>
+
+            <section class="card">
+              <strong>Season Mode</strong>
+              <div id="seasonMeta" style="margin-top:8px; color:#94a3b8">Syncing...</div>
+              <a href="./season-hq.html">Open Season HQ →</a>
+            </section>
           </aside>
         </div>
       </section>
     </main>
 
+    <script src="./shared/season.js"></script>
     <script>
       const MAX_SECONDS = 120;
       const STORAGE_KEY = "mkp_command_center_scores_v1";
@@ -359,6 +374,15 @@
         historyLatency: [],
         timer: null,
         audioCtx: null,
+        boss: {
+          level: 1,
+          label: "CALM",
+          multiplier: 1,
+          trafficBias: 0,
+          incidentShift: 0,
+          pushEvents: 0,
+          commitCount: 0,
+        },
       };
 
       const el = {
@@ -368,6 +392,8 @@
         latency: document.getElementById("latency"),
         errors: document.getElementById("errors"),
         score: document.getElementById("score"),
+        boss: document.getElementById("boss"),
+        seasonRank: document.getElementById("seasonRank"),
         pods: document.getElementById("pods"),
         cacheState: document.getElementById("cacheState"),
         rateState: document.getElementById("rateState"),
@@ -376,6 +402,7 @@
         log: document.getElementById("log"),
         scores: document.getElementById("scores"),
         token: document.getElementById("token"),
+        seasonMeta: document.getElementById("seasonMeta"),
       };
 
       const canvas = document.getElementById("canvas");
@@ -407,14 +434,29 @@
         const b = 85 * Math.sin((sec + 18) / 14);
         const c = sec > 72 && sec < 88 ? 180 : 0;
         const d = sec > 100 ? 65 : 0;
-        return Math.max(90, Math.round(base + a + b + c + d));
+        const amplified = (base + a + b + c + d + state.boss.trafficBias) * state.boss.multiplier;
+        return Math.max(90, Math.round(amplified));
       }
 
       function incidentAt(sec) {
-        if (sec === 26) return { msg: "DB hot shard detected", trafficBoost: 80, latencyBoost: 45 };
-        if (sec === 54) return { msg: "Auth dependency slowdown", trafficBoost: 30, latencyBoost: 70 };
-        if (sec === 77) return { msg: "Bot traffic spike", trafficBoost: 120, latencyBoost: 65 };
-        if (sec === 101) return { msg: "Cache eviction storm", trafficBoost: 40, latencyBoost: 55 };
+        const shift = state.boss.incidentShift;
+        const levelFactor = 1 + state.boss.level * 0.07;
+        const incidents = [
+          { at: Math.min(MAX_SECONDS - 20, 26 + shift), msg: "DB hot shard detected", trafficBoost: 80, latencyBoost: 45 },
+          { at: Math.min(MAX_SECONDS - 16, 54 + shift), msg: "Auth dependency slowdown", trafficBoost: 30, latencyBoost: 70 },
+          { at: Math.min(MAX_SECONDS - 13, 77 + shift), msg: "Bot traffic spike", trafficBoost: 120, latencyBoost: 65 },
+          { at: Math.min(MAX_SECONDS - 9, 101 + shift), msg: "Cache eviction storm", trafficBoost: 40, latencyBoost: 55 },
+        ];
+
+        for (const incident of incidents) {
+          if (sec === incident.at) {
+            return {
+              msg: incident.msg,
+              trafficBoost: Math.round(incident.trafficBoost * levelFactor),
+              latencyBoost: Math.round(incident.latencyBoost * levelFactor),
+            };
+          }
+        }
         return null;
       }
 
@@ -447,6 +489,7 @@
         el.latency.textContent = `${state.latency} ms`;
         el.errors.textContent = `${state.errors.toFixed(2)}%`;
         el.score.textContent = Math.round(state.score);
+        el.boss.textContent = `L${state.boss.level} ${state.boss.label}`;
         el.pods.textContent = String(state.pods);
 
         el.cacheState.textContent = state.cache ? "ON" : "OFF";
@@ -544,16 +587,139 @@
         return "On-Call Survivor";
       }
 
+      function syncSeasonPanel() {
+        if (!window.MKPSeason) return;
+        const season = window.MKPSeason.getState();
+        el.seasonRank.textContent = season.rank;
+        el.seasonMeta.textContent = `XP ${season.xp} • Runs ${season.runs} • Badges ${Object.keys(season.badges || {}).length}`;
+      }
+
+      async function loadBossProfile() {
+        const profileName = "Apple-beep";
+        try {
+          const res = await fetch(`https://api.github.com/users/${profileName}/events/public?per_page=100`, {
+            headers: { Accept: "application/vnd.github+json" },
+          });
+          if (!res.ok) throw new Error(`Boss sync failed: ${res.status}`);
+          const events = await res.json();
+
+          let pushEvents = 0;
+          let commitCount = 0;
+          const activeDays = new Set();
+          const weekdayLoad = [0, 0, 0, 0, 0, 0, 0];
+
+          events.forEach((event) => {
+            if (event.type !== "PushEvent") return;
+            pushEvents += 1;
+            commitCount += Number(event.payload && event.payload.size ? event.payload.size : 0);
+            const day = (event.created_at || "").slice(0, 10);
+            if (day) activeDays.add(day);
+            const weekday = new Date(event.created_at).getUTCDay();
+            if (!Number.isNaN(weekday)) weekdayLoad[weekday] += 1;
+          });
+
+          const activityScore = commitCount + pushEvents * 2 + activeDays.size * 3;
+          let level = 1;
+          if (activityScore >= 180) level = 5;
+          else if (activityScore >= 120) level = 4;
+          else if (activityScore >= 70) level = 3;
+          else if (activityScore >= 35) level = 2;
+
+          const labels = ["CALM", "WARM", "HEAVY", "INTENSE", "APEX"];
+          const dominantWeekday = weekdayLoad.indexOf(Math.max(...weekdayLoad));
+
+          state.boss.level = level;
+          state.boss.label = labels[level - 1];
+          state.boss.multiplier = 1 + level * 0.09;
+          state.boss.trafficBias = Math.min(95, Math.round(commitCount / 8));
+          state.boss.incidentShift = dominantWeekday % 6;
+          state.boss.pushEvents = pushEvents;
+          state.boss.commitCount = commitCount;
+
+          el.boss.textContent = `L${state.boss.level} ${state.boss.label}`;
+          statusLog(`Commit Boss synced: L${state.boss.level} ${state.boss.label} (${commitCount} recent commits).`, "good");
+        } catch (_) {
+          state.boss.level = 2;
+          state.boss.label = "WARM";
+          state.boss.multiplier = 1.12;
+          state.boss.trafficBias = 16;
+          state.boss.incidentShift = 1;
+          el.boss.textContent = `L${state.boss.level} ${state.boss.label}`;
+          statusLog("Commit Boss fallback mode active.", "normal");
+        }
+      }
+
       function buildToken(score) {
         return `MKP-CC-${Math.round(score)}-${Date.now().toString(36).toUpperCase()}`;
       }
 
+      function downloadChallengeCard() {
+        const card = document.createElement("canvas");
+        card.width = 1200;
+        card.height = 630;
+        const c = card.getContext("2d");
+
+        const g = c.createLinearGradient(0, 0, 1200, 630);
+        g.addColorStop(0, "#081326");
+        g.addColorStop(0.55, "#10213d");
+        g.addColorStop(1, "#1a1540");
+        c.fillStyle = g;
+        c.fillRect(0, 0, 1200, 630);
+
+        c.fillStyle = "rgba(34,211,238,0.18)";
+        c.fillRect(0, 490, 1200, 140);
+
+        c.fillStyle = "#67e8f9";
+        c.font = "600 30px 'JetBrains Mono', monospace";
+        c.fillText("MUSHARAF COMMAND CENTER CHALLENGE", 55, 80);
+
+        c.fillStyle = "#e2e8f0";
+        c.font = "700 74px 'Space Grotesk', sans-serif";
+        c.fillText(`${Math.round(state.score)} pts`, 55, 180);
+
+        c.font = "500 34px 'Space Grotesk', sans-serif";
+        c.fillText(`Grade: ${scoreGrade(state.score)}`, 55, 235);
+        c.fillText(`Commit Boss: L${state.boss.level} ${state.boss.label}`, 55, 282);
+
+        c.fillStyle = "#cbd5e1";
+        c.font = "500 26px 'Space Grotesk', sans-serif";
+        c.fillText(`Latency ${state.latency}ms  •  Errors ${state.errors.toFixed(2)}%  •  Pods ${state.pods}`, 55, 334);
+
+        const token = buildToken(state.score);
+        c.fillStyle = "#94a3b8";
+        c.font = "500 24px 'JetBrains Mono', monospace";
+        c.fillText(`Run Token: ${token}`, 55, 380);
+        c.fillText(`Generated: ${new Date().toLocaleString()}`, 55, 420);
+
+        c.fillStyle = "#dbeafe";
+        c.font = "600 32px 'Space Grotesk', sans-serif";
+        c.fillText("github.com/Apple-beep", 55, 560);
+
+        const dataUrl = card.toDataURL("image/png");
+        const a = document.createElement("a");
+        a.href = dataUrl;
+        a.download = `mkp-command-center-${Math.round(state.score)}.png`;
+        a.click();
+
+        const caption = `I scored ${Math.round(state.score)} in Command Center (Boss L${state.boss.level} ${state.boss.label}). Can you beat it? #GitHub #SRE #SoftwareEngineering`;
+        navigator.clipboard
+          .writeText(caption)
+          .then(() => statusLog("Challenge card downloaded. Caption copied to clipboard.", "good"))
+          .catch(() => statusLog("Challenge card downloaded. Copy caption manually from this message.", "normal"));
+
+        el.token.textContent = `RUN_TOKEN: ${token}`;
+      }
+
       function exportScore() {
+        const seasonRank = window.MKPSeason ? window.MKPSeason.getState().rank : "N/A";
         const payload = {
           game: "command-center",
           score: Math.round(state.score),
           grade: scoreGrade(state.score),
           time_played: state.t,
+          boss_level: state.boss.level,
+          boss_label: state.boss.label,
+          season_rank: seasonRank,
           timestamp_iso: new Date().toISOString(),
           token: buildToken(state.score),
         };
@@ -575,12 +741,35 @@
         const grade = scoreGrade(state.score);
         el.token.textContent = `RUN_TOKEN: ${token}`;
         addScoreEntry({ score: Math.round(state.score), grade, token });
+        let seasonTail = "";
+
+        if (window.MKPSeason) {
+          try {
+            const season = window.MKPSeason.recordRun({
+              game: "command-center",
+              score: Math.round(state.score),
+              won: reason === "completed",
+              grade,
+              meta: {
+                bossLevel: state.boss.level,
+                bossLabel: state.boss.label,
+                reason,
+              },
+            });
+            syncSeasonPanel();
+            seasonTail = ` | Season +${season.xpGain}XP • ${season.rank}${
+              season.unlockedBadges.length ? ` • Badge: ${season.unlockedBadges[0]}` : ""
+            }`;
+          } catch (_) {
+            seasonTail = "";
+          }
+        }
 
         if (reason === "completed") {
-          statusLog(`Run complete: ${grade} | ${Math.round(state.score)} pts`, "good");
+          statusLog(`Run complete: ${grade} | ${Math.round(state.score)} pts${seasonTail}`, "good");
           tone(660, 200, "triangle", 0.05);
         } else {
-          statusLog(`Run failed: ${reason}. Restart to try again.`, "bad");
+          statusLog(`Run failed: ${reason}. Restart to try again.${seasonTail}`, "bad");
           tone(180, 300, "sawtooth", 0.07);
         }
       }
@@ -680,6 +869,7 @@
         document.getElementById("pause").textContent = "Pause";
 
         updateHud();
+        syncSeasonPanel();
         drawChart();
         statusLog("Run restarted. Prepare for first surge.", "normal");
 
@@ -740,6 +930,7 @@
       document.getElementById("restart").addEventListener("click", restart);
       document.getElementById("pause").addEventListener("click", togglePause);
       document.getElementById("export").addEventListener("click", exportScore);
+      document.getElementById("card").addEventListener("click", downloadChallengeCard);
 
       document.addEventListener("keydown", (event) => {
         if (event.target && (event.target.tagName === "INPUT" || event.target.tagName === "TEXTAREA")) {
@@ -753,14 +944,21 @@
         else if (key === "r") document.getElementById("rateBtn").click();
         else if (key === "b") document.getElementById("breakerBtn").click();
         else if (key === "m") document.getElementById("soundBtn").click();
+        else if (key === "k") downloadChallengeCard();
         else if (event.code === "Space") {
           event.preventDefault();
           togglePause();
         }
       });
 
-      renderScores();
-      restart();
+      async function init() {
+        renderScores();
+        syncSeasonPanel();
+        await loadBossProfile();
+        restart();
+      }
+
+      init();
     </script>
   </body>
 </html>
