@@ -66,6 +66,38 @@
 
 ---
 
+## PROJECTS://CONSTELLATION
+
+<img src="./assets/project-constellation.svg" width="100%" alt="Project Constellation" />
+
+| Mission | Why it stands out | Stack | Link |
+| --- | --- | --- | --- |
+| `HireLens` | AI-assisted resume analysis with practical explainability patterns. | Python, NLP, React | [hirelens](https://github.com/Apple-beep/hirelens) |
+| `CheckURL-ext` | Real-time browser defense against suspicious links and phishing flows. | JavaScript, Browser APIs | [CheckUrl-ext](https://github.com/Apple-beep/CheckUrl-ext) |
+| `VisionVoice` | Accessibility-first iOS app with voice and OCR workflows. | Swift, SwiftUI, Vision | [VisionVoice](https://github.com/Apple-beep/VisionVoice) |
+| `F1 DBMS` | OLAP-style analytics with optimized SQL over large motorsport datasets. | Python, SQL, MySQL | [f1-database-management-system](https://github.com/Apple-beep/f1-database-management-system) |
+| `AI Pathfinding` | Search algorithm playground for A* and Greedy performance behavior. | Python | [AI-Pathfinding-Search-Algorithms](https://github.com/Apple-beep/AI-Pathfinding-Search-Algorithms) |
+
+---
+
+## PACMAN://COMMITS_IN_MOTION
+
+<div align="center">
+  <picture>
+    <source media="(prefers-color-scheme: dark)"
+      srcset="https://raw.githubusercontent.com/Apple-beep/Apple-beep/output/pacman-contribution-graph-dark.svg" />
+    <source media="(prefers-color-scheme: light)"
+      srcset="https://raw.githubusercontent.com/Apple-beep/Apple-beep/output/pacman-contribution-graph.svg" />
+    <img alt="Pac-Man contribution graph"
+      src="https://raw.githubusercontent.com/Apple-beep/Apple-beep/output/pacman-contribution-graph-dark.svg"
+      width="100%" />
+  </picture>
+</div>
+
+`Auto-updated daily via GitHub Actions.`
+
+---
+
 ## FOUNDATION://PHASE_1_STATUS
 
 - GitHub Pages deployment pipeline is active via Actions.
