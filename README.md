@@ -45,11 +45,14 @@ focus: AI systems, security engineering, scalable backend delivery
 
 <div align="center">
 
+[![Signature Game](https://img.shields.io/badge/SIGNATURE-COMMAND%20CENTER-22D3EE?style=for-the-badge&labelColor=1f2937)](https://apple-beep.github.io/games/command-center.html)
 [![Play Latency Lab](https://img.shields.io/badge/PLAY-LATENCY%20LAB-0EA5E9?style=for-the-badge&labelColor=1f2937)](https://apple-beep.github.io/games/latency-lab.html)
 [![Play Incident Commander](https://img.shields.io/badge/PLAY-INCIDENT%20COMMANDER-F97316?style=for-the-badge&labelColor=1f2937)](https://apple-beep.github.io/games/incident-commander.html)
 [![Play Autoscale Arena](https://img.shields.io/badge/PLAY-AUTOSCALE%20ARENA-A78BFA?style=for-the-badge&labelColor=1f2937)](https://apple-beep.github.io/games/autoscale-arena.html)
 
 </div>
+
+- **Command Center**: flagship simulation with incident spikes, SLO tracking, sound FX, local leaderboard, and exportable run token.
 
 ## `LIVE://COMMIT_ART_ENGINE`
 

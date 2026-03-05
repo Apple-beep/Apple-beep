@@ -12,6 +12,7 @@
         --teal: #22d3ee;
         --orange: #fb923c;
         --violet: #a78bfa;
+        --lime: #84cc16;
         --text: #e2e8f0;
         --muted: #94a3b8;
       }
@@ -34,7 +35,7 @@
       }
 
       .shell {
-        width: min(1080px, 100%);
+        width: min(1100px, 100%);
         background: linear-gradient(160deg, rgba(15, 23, 42, 0.95), rgba(2, 6, 23, 0.95));
         border: 1px solid var(--line);
         border-radius: 24px;
@@ -43,11 +44,48 @@
       }
 
       h1 { margin: 0 0 10px; font-size: clamp(30px, 5vw, 52px); }
-
       p { margin: 0; color: var(--muted); line-height: 1.55; }
 
+      .featured {
+        margin-top: 18px;
+        border: 1px solid #2b3f63;
+        border-radius: 18px;
+        padding: 16px;
+        text-decoration: none;
+        color: inherit;
+        display: block;
+        background: linear-gradient(140deg, rgba(15, 23, 42, 0.6), rgba(33, 15, 55, 0.42));
+        transition: transform 160ms ease, border-color 160ms ease;
+      }
+
+      .featured:hover {
+        transform: translateY(-4px);
+        border-color: #60a5fa;
+      }
+
+      .feature-tag {
+        display: inline-block;
+        font-size: 12px;
+        letter-spacing: 0.08em;
+        text-transform: uppercase;
+        background: rgba(34, 211, 238, 0.15);
+        color: var(--teal);
+        border: 1px solid rgba(34, 211, 238, 0.35);
+        border-radius: 999px;
+        padding: 5px 9px;
+      }
+
+      .featured h2 {
+        margin: 9px 0 7px;
+        font-size: 31px;
+      }
+
+      .featured p {
+        color: #c7d6ea;
+      }
+
       .grid {
-        margin-top: 22px;
+        margin-top: 16px;
         display: grid;
         gap: 14px;
       }
@@ -98,9 +136,17 @@
     <main class="shell">
       <h1>Musharaf Arcade</h1>
       <p>
-        Recruiter-facing engineering mini games built to showcase systems thinking,
-        incident decision quality, and live scaling instincts.
+        Engineering games built to signal real software instincts under pressure.
       </p>
+
+      <a class="featured" href="./games/command-center.html">
+        <span class="feature-tag">Signature Mode</span>
+        <h2>Command Center</h2>
+        <p>
+          120-second production storm simulator with live SLO tracking, incident spikes,
+          sound toggle, local leaderboard, and exportable run token.
+        </p>
+      </a>
 
       <section class="grid">
         <a class="card" href="./games/latency-lab.html">
