@@ -1,0 +1,77 @@
+name: 🩺 Pages Health Check
+
+on:
+  workflow_dispatch:
+  schedule:
+    - cron: "17 14 * * 1"
+
+permissions:
+  contents: read
+
+jobs:
+  health-check:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Read Pages URL from API
+        id: pages
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          set +e
+          api_url="https://api.github.com/repos/${GITHUB_REPOSITORY}/pages"
+          http_code="$(curl -sS -o pages.json -w '%{http_code}' \
+            -H "Authorization: Bearer ${GH_TOKEN}" \
+            -H "Accept: application/vnd.github+json" \
+            "${api_url}")"
+
+          if [ "${http_code}" = "200" ]; then
+            pages_url="$(python3 - <<'PY'
+import json
+with open('pages.json', 'r', encoding='utf-8') as f:
+    data = json.load(f)
+print(data.get('html_url', ''))
+PY
+)"
+            echo "enabled=true" >> "${GITHUB_OUTPUT}"
+            echo "url=${pages_url}" >> "${GITHUB_OUTPUT}"
+            exit 0
+          fi
+
+          echo "enabled=false" >> "${GITHUB_OUTPUT}"
+          echo "url=" >> "${GITHUB_OUTPUT}"
+          exit 0
+
+      - name: Skip when Pages is not enabled
+        if: steps.pages.outputs.enabled != 'true'
+        run: |
+          {
+            echo "## Health check skipped"
+            echo
+            echo "GitHub Pages is not enabled for this repository yet."
+          } >> "${GITHUB_STEP_SUMMARY}"
+
+      - name: Validate homepage response
+        if: steps.pages.outputs.enabled == 'true'
+        run: |
+          set -euo pipefail
+          page_url="${{ steps.pages.outputs.url }}"
+          echo "Checking ${page_url}"
+          status="$(curl -sS -L -o body.html -w '%{http_code}' "${page_url}")"
+          if [ "${status}" != "200" ]; then
+            echo "Expected 200 from ${page_url}, got ${status}"
+            exit 1
+          fi
+
+          if ! grep -q "Phase 1 foundation is live" body.html; then
+            echo "Expected marker text not found in homepage response."
+            exit 1
+          fi
+
+      - name: Publish result
+        if: steps.pages.outputs.enabled == 'true'
+        run: |
+          {
+            echo "## Health check passed"
+            echo
+            echo "Homepage is reachable and contains the expected marker text."
+          } >> "${GITHUB_STEP_SUMMARY}"

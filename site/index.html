@@ -1,0 +1,107 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Apple-beep Mission Control</title>
+  <style>
+    :root {
+      color-scheme: dark;
+      --bg: #030a16;
+      --panel: #081a33;
+      --line: #164c7a;
+      --text: #e6f1ff;
+      --muted: #93b5d6;
+      --accent: #31c5ff;
+      --accent-2: #41f5c0;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      min-height: 100vh;
+      display: grid;
+      place-items: center;
+      font-family: "JetBrains Mono", "SFMono-Regular", Menlo, Consolas, monospace;
+      color: var(--text);
+      background:
+        radial-gradient(1200px 420px at 20% 0%, rgba(49, 197, 255, 0.25), transparent 60%),
+        radial-gradient(900px 360px at 80% 100%, rgba(65, 245, 192, 0.20), transparent 58%),
+        var(--bg);
+      padding: 24px;
+    }
+
+    .panel {
+      width: min(860px, 100%);
+      border: 1px solid var(--line);
+      border-radius: 18px;
+      padding: 30px;
+      background: linear-gradient(140deg, rgba(8, 26, 51, 0.84), rgba(2, 10, 24, 0.94));
+      box-shadow: 0 20px 60px rgba(0, 0, 0, 0.40);
+    }
+
+    h1 {
+      margin: 0;
+      font-size: clamp(30px, 5vw, 52px);
+      line-height: 1.1;
+      letter-spacing: 1px;
+    }
+
+    p {
+      margin: 12px 0 0;
+      color: var(--muted);
+      font-size: 17px;
+      line-height: 1.6;
+    }
+
+    .badge {
+      display: inline-block;
+      margin-top: 18px;
+      padding: 8px 14px;
+      border: 1px solid rgba(49, 197, 255, 0.45);
+      border-radius: 999px;
+      color: var(--accent);
+      background: rgba(49, 197, 255, 0.08);
+      font-size: 14px;
+      letter-spacing: 0.4px;
+      text-transform: uppercase;
+    }
+
+    .row {
+      margin-top: 28px;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+    }
+
+    a {
+      text-decoration: none;
+      color: #00141f;
+      background: linear-gradient(90deg, var(--accent), var(--accent-2));
+      padding: 10px 16px;
+      border-radius: 10px;
+      font-weight: 700;
+      letter-spacing: 0.3px;
+    }
+
+    code {
+      color: var(--accent);
+    }
+  </style>
+</head>
+<body>
+  <main class="panel">
+    <span class="badge">Phase 1 Foundation</span>
+    <h1>Mission Control Initializing</h1>
+    <p>Phase 1 foundation is live. GitHub Pages is configured as the deployment backbone for your profile visuals, live sections, and future interactive experiences.</p>
+    <p>Expected project URL pattern: <code>https://apple-beep.github.io/Apple-beep/</code></p>
+    <div class="row">
+      <a href="https://github.com/Apple-beep/Apple-beep">Repository</a>
+      <a href="https://github.com/Apple-beep/Apple-beep/actions">Actions</a>
+    </div>
+  </main>
+</body>
+</html>

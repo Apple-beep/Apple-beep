@@ -1,0 +1,113 @@
+name: 🚀 Deploy Profile Site
+
+on:
+  push:
+    branches:
+      - main
+    paths:
+      - site/**
+      - .github/workflows/pages.yml
+      - .github/workflows/pages-health.yml
+      - README.md
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+concurrency:
+  group: github-pages
+  cancel-in-progress: true
+
+jobs:
+  preflight:
+    name: Preflight Pages Status
+    runs-on: ubuntu-latest
+    outputs:
+      pages_enabled: ${{ steps.pages.outputs.pages_enabled }}
+      pages_url: ${{ steps.pages.outputs.pages_url }}
+    steps:
+      - name: Check if GitHub Pages is enabled for this repository
+        id: pages
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          set +e
+          api_url="https://api.github.com/repos/${GITHUB_REPOSITORY}/pages"
+          http_code="$(curl -sS -o pages.json -w '%{http_code}' \
+            -H "Authorization: Bearer ${GH_TOKEN}" \
+            -H "Accept: application/vnd.github+json" \
+            "${api_url}")"
+
+          if [ "${http_code}" = "200" ]; then
+            pages_url="$(python3 - <<'PY'
+import json
+with open('pages.json', 'r', encoding='utf-8') as f:
+    data = json.load(f)
+print(data.get('html_url', ''))
+PY
+)"
+            echo "pages_enabled=true" >> "${GITHUB_OUTPUT}"
+            echo "pages_url=${pages_url}" >> "${GITHUB_OUTPUT}"
+            exit 0
+          fi
+
+          echo "pages_enabled=false" >> "${GITHUB_OUTPUT}"
+          echo "pages_url=" >> "${GITHUB_OUTPUT}"
+          exit 0
+
+  build:
+    name: Build Pages Artifact
+    runs-on: ubuntu-latest
+    needs: preflight
+    if: needs.preflight.outputs.pages_enabled == 'true'
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v5
+
+      - name: Validate site files
+        run: |
+          test -f site/index.html || (echo "Missing site/index.html" && exit 1)
+          test -f site/404.html || (echo "Missing site/404.html" && exit 1)
+          touch site/.nojekyll
+
+      - name: Configure GitHub Pages
+        uses: actions/configure-pages@v5
+
+      - name: Upload Pages artifact
+        uses: actions/upload-pages-artifact@v4
+        with:
+          path: site
+
+  deploy:
+    name: Deploy to GitHub Pages
+    needs: build
+    if: needs.build.result == 'success'
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - name: Deploy
+        id: deployment
+        uses: actions/deploy-pages@v4
+
+  guidance:
+    name: Pages Setup Guidance
+    runs-on: ubuntu-latest
+    needs: preflight
+    if: needs.preflight.outputs.pages_enabled != 'true'
+    steps:
+      - name: Add one-time setup instructions
+        run: |
+          {
+            echo "## GitHub Pages setup required"
+            echo
+            echo "This workflow skipped deploy because Pages is not enabled yet."
+            echo
+            echo "1. Open repository settings."
+            echo "2. Go to **Pages**."
+            echo "3. Under **Build and deployment**, set **Source** to **GitHub Actions**."
+            echo "4. Rerun this workflow."
+          } >> "${GITHUB_STEP_SUMMARY}"
