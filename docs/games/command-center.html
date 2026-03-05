@@ -305,12 +305,16 @@
               </div>
               <div class="line">
                 <button class="primary" id="restart">Restart Run</button>
+                <button id="pause">Pause</button>
                 <button class="warn" id="export">Export Score</button>
               </div>
               <div class="legend">
                 <span><span class="dot" style="background:#fb923c"></span>Traffic</span>
                 <span><span class="dot" style="background:#22d3ee"></span>Capacity</span>
                 <span><span class="dot" style="background:#a78bfa"></span>Latency</span>
+              </div>
+              <div class="legend">
+                Shortcuts: `W/S` pods, `C` cache, `R` rate limit, `B` breaker, `M` sound, `Space` pause
               </div>
             </section>
 
@@ -343,6 +347,7 @@
         breaker: false,
         sound: false,
         running: true,
+        paused: false,
         traffic: 230,
         capacity: 350,
         latency: 95,
@@ -563,7 +568,9 @@
 
       function finishRun(reason = "completed") {
         state.running = false;
+        state.paused = false;
         clearInterval(state.timer);
+        document.getElementById("pause").textContent = "Pause";
         const token = buildToken(state.score);
         const grade = scoreGrade(state.score);
         el.token.textContent = `RUN_TOKEN: ${token}`;
@@ -665,16 +672,33 @@
         state.score = 0;
         state.budgetPenalty = 0;
         state.running = true;
+        state.paused = false;
         state.historyTraffic = [];
         state.historyCapacity = [];
         state.historyLatency = [];
         el.token.textContent = "RUN_TOKEN: pending...";
+        document.getElementById("pause").textContent = "Pause";
 
         updateHud();
         drawChart();
         statusLog("Run restarted. Prepare for first surge.", "normal");
 
         state.timer = setInterval(simulationStep, 1000);
+      }
+
+      function togglePause() {
+        if (!state.running) return;
+        state.paused = !state.paused;
+        const pauseBtn = document.getElementById("pause");
+        if (state.paused) {
+          clearInterval(state.timer);
+          pauseBtn.textContent = "Resume";
+          statusLog("Simulation paused.", "normal");
+        } else {
+          pauseBtn.textContent = "Pause";
+          statusLog("Simulation resumed.", "good");
+          state.timer = setInterval(simulationStep, 1000);
+        }
       }
 
       document.getElementById("podUp").addEventListener("click", () => {
@@ -714,7 +738,26 @@
       });
 
       document.getElementById("restart").addEventListener("click", restart);
+      document.getElementById("pause").addEventListener("click", togglePause);
       document.getElementById("export").addEventListener("click", exportScore);
+
+      document.addEventListener("keydown", (event) => {
+        if (event.target && (event.target.tagName === "INPUT" || event.target.tagName === "TEXTAREA")) {
+          return;
+        }
+
+        const key = event.key.toLowerCase();
+        if (key === "w") document.getElementById("podUp").click();
+        else if (key === "s") document.getElementById("podDown").click();
+        else if (key === "c") document.getElementById("cacheBtn").click();
+        else if (key === "r") document.getElementById("rateBtn").click();
+        else if (key === "b") document.getElementById("breakerBtn").click();
+        else if (key === "m") document.getElementById("soundBtn").click();
+        else if (event.code === "Space") {
+          event.preventDefault();
+          togglePause();
+        }
+      });
 
       renderScores();
       restart();

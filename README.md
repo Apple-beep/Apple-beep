@@ -79,3 +79,9 @@ focus: AI systems, security engineering, scalable backend delivery
 - [Email](mailto:mpathan2work@gmail.com)
 
 > If game links show 404, enable Pages once: [Repository Pages Settings](https://github.com/Apple-beep/Apple-beep/settings/pages) -> Build and deployment -> GitHub Actions. Official docs: [GitHub Pages](https://docs.github.com/en/pages).
+>
+> Temporary no-Pages previews:
+> - [Command Center](https://raw.githack.com/Apple-beep/Apple-beep/main/docs/games/command-center.html)
+> - [Latency Lab](https://raw.githack.com/Apple-beep/Apple-beep/main/docs/games/latency-lab.html)
+> - [Incident Commander](https://raw.githack.com/Apple-beep/Apple-beep/main/docs/games/incident-commander.html)
+> - [Autoscale Arena](https://raw.githack.com/Apple-beep/Apple-beep/main/docs/games/autoscale-arena.html)
