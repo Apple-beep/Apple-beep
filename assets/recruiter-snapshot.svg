@@ -1,98 +1,100 @@
-<svg width="1200" height="420" viewBox="0 0 1200 420" fill="none" xmlns="http://www.w3.org/2000/svg">
+<svg width="1200" height="430" viewBox="0 0 1200 430" fill="none" xmlns="http://www.w3.org/2000/svg">
   <defs>
-    <linearGradient id="snapBg" x1="0" y1="0" x2="1200" y2="420" gradientUnits="userSpaceOnUse">
-      <stop offset="0" stop-color="#061227"/>
-      <stop offset="1" stop-color="#04172F"/>
+    <linearGradient id="bg" x1="0" y1="0" x2="1200" y2="430" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#071427"/>
+      <stop offset="1" stop-color="#0A294A"/>
+    </linearGradient>
+    <linearGradient id="line" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0" stop-color="#2CD7FF"/>
+      <stop offset="0.5" stop-color="#5CF6CF"/>
+      <stop offset="1" stop-color="#8B93FF"/>
     </linearGradient>
     <linearGradient id="scan" x1="0" y1="0" x2="0" y2="1">
-      <stop offset="0" stop-color="#40F6BF" stop-opacity="0"/>
-      <stop offset="0.5" stop-color="#40F6BF" stop-opacity="0.34"/>
-      <stop offset="1" stop-color="#40F6BF" stop-opacity="0"/>
+      <stop offset="0" stop-color="#5CF6CF" stop-opacity="0"/>
+      <stop offset="0.5" stop-color="#5CF6CF" stop-opacity="0.22"/>
+      <stop offset="1" stop-color="#5CF6CF" stop-opacity="0"/>
     </linearGradient>
-    <linearGradient id="barA" x1="0" y1="0" x2="1" y2="0">
-      <stop offset="0" stop-color="#2AD7FF"/>
-      <stop offset="1" stop-color="#68FADE"/>
-    </linearGradient>
-    <filter id="softGlow" x="-15%" y="-15%" width="130%" height="130%">
+    <filter id="glow" x="-30%" y="-30%" width="160%" height="160%">
       <feGaussianBlur stdDeviation="4" result="g"/>
       <feMerge>
         <feMergeNode in="g"/>
         <feMergeNode in="SourceGraphic"/>
       </feMerge>
     </filter>
-    <style>
-      .sweep { animation: sweep 4.8s linear infinite; }
-      .blink { animation: blink 1.3s steps(2, end) infinite; }
-      .meter1 { animation: meter1 2.4s ease-in-out infinite; }
-      .meter2 { animation: meter2 2.8s ease-in-out infinite; }
-      .meter3 { animation: meter3 2.1s ease-in-out infinite; }
-      .meter4 { animation: meter4 3.1s ease-in-out infinite; }
-      @keyframes sweep {
-        from { transform: translateY(0px); }
-        to { transform: translateY(320px); }
-      }
-      @keyframes blink {
-        0%,45% { opacity: 1; }
-        46%,100% { opacity: 0.35; }
-      }
-      @keyframes meter1 { 0%,100% { width: 178px; } 50% { width: 214px; } }
-      @keyframes meter2 { 0%,100% { width: 182px; } 50% { width: 236px; } }
-      @keyframes meter3 { 0%,100% { width: 166px; } 50% { width: 206px; } }
-      @keyframes meter4 { 0%,100% { width: 196px; } 50% { width: 240px; } }
-    </style>
   </defs>
 
-  <rect width="1200" height="420" rx="22" fill="url(#snapBg)"/>
+  <rect width="1200" height="430" rx="20" fill="url(#bg)"/>
 
-  <rect x="42" y="44" width="744" height="332" rx="16" fill="#0A1A31" stroke="#1C3E66"/>
-  <text x="70" y="84" fill="#A8D0F5" font-family="'JetBrains Mono', Menlo, monospace" font-size="24">RECRUITER://QUICK_SCAN</text>
-  <text class="blink" x="378" y="84" fill="#40F6BF" font-family="'JetBrains Mono', Menlo, monospace" font-size="24">_</text>
+  <g transform="translate(36 60)">
+    <rect width="760" height="330" rx="18" fill="#0A203C" stroke="#28689A"/>
+    <text x="24" y="38" fill="#A4CCEB" font-family="'JetBrains Mono', Menlo, monospace" font-size="24">QUICK_SCAN://CANDIDATE_BRIEF</text>
 
-  <text x="70" y="134" fill="#77F9BF" font-family="'JetBrains Mono', Menlo, monospace" font-size="34">candidate:</text>
-  <text x="286" y="134" fill="#DCEEFF" font-family="'JetBrains Mono', Menlo, monospace" font-size="34">Musharaf Khan Pathan</text>
+    <g transform="translate(24 58)">
+      <rect x="0" y="0" width="712" height="42" rx="10" fill="#0D2A4B"/>
+      <text x="16" y="27" fill="#70F5C1" font-family="'JetBrains Mono', Menlo, monospace" font-size="19">candidate</text>
+      <text x="180" y="27" fill="#EAF6FF" font-family="'IBM Plex Sans', Arial, sans-serif" font-size="22">Musharaf Khan Pathan</text>
 
-  <text x="70" y="178" fill="#77F9BF" font-family="'JetBrains Mono', Menlo, monospace" font-size="34">location:</text>
-  <text x="242" y="178" fill="#DCEEFF" font-family="'JetBrains Mono', Menlo, monospace" font-size="34">Chicago, IL</text>
+      <rect x="0" y="54" width="712" height="42" rx="10" fill="#0D2A4B"/>
+      <text x="16" y="81" fill="#70F5C1" font-family="'JetBrains Mono', Menlo, monospace" font-size="19">location</text>
+      <text x="180" y="81" fill="#EAF6FF" font-family="'IBM Plex Sans', Arial, sans-serif" font-size="22">Chicago, IL</text>
 
-  <text x="70" y="222" fill="#77F9BF" font-family="'JetBrains Mono', Menlo, monospace" font-size="34">education:</text>
-  <text x="278" y="222" fill="#DCEEFF" font-family="'JetBrains Mono', Menlo, monospace" font-size="34">IIT (BS CS, May 2026)</text>
+      <rect x="0" y="108" width="712" height="42" rx="10" fill="#0D2A4B"/>
+      <text x="16" y="135" fill="#70F5C1" font-family="'JetBrains Mono', Menlo, monospace" font-size="19">education</text>
+      <text x="180" y="135" fill="#EAF6FF" font-family="'IBM Plex Sans', Arial, sans-serif" font-size="22">IIT (BS CS, May 2026)</text>
 
-  <text x="70" y="266" fill="#77F9BF" font-family="'JetBrains Mono', Menlo, monospace" font-size="34">target:</text>
-  <text x="216" y="266" fill="#DCEEFF" font-family="'JetBrains Mono', Menlo, monospace" font-size="34">Full-Time SWE 2026</text>
+      <rect x="0" y="162" width="712" height="42" rx="10" fill="#0D2A4B"/>
+      <text x="16" y="189" fill="#70F5C1" font-family="'JetBrains Mono', Menlo, monospace" font-size="19">target</text>
+      <text x="180" y="189" fill="#EAF6FF" font-family="'IBM Plex Sans', Arial, sans-serif" font-size="22">Full-Time SWE Roles (2026)</text>
 
-  <text x="70" y="310" fill="#77F9BF" font-family="'JetBrains Mono', Menlo, monospace" font-size="34">core:</text>
-  <text x="178" y="310" fill="#DCEEFF" font-family="'JetBrains Mono', Menlo, monospace" font-size="34">Secure AI + Scalable Backend</text>
+      <rect x="0" y="216" width="712" height="42" rx="10" fill="#0D2A4B"/>
+      <text x="16" y="243" fill="#70F5C1" font-family="'JetBrains Mono', Menlo, monospace" font-size="19">core focus</text>
+      <text x="180" y="243" fill="#EAF6FF" font-family="'IBM Plex Sans', Arial, sans-serif" font-size="22">Secure AI + scalable backend systems</text>
+    </g>
 
-  <g clip-path="url(#clip)">
-    <rect class="sweep" x="42" y="44" width="744" height="42" fill="url(#scan)"/>
+    <rect x="24" y="116" width="712" height="36" fill="url(#scan)">
+      <animate attributeName="y" values="116;274;116" dur="5.2s" repeatCount="indefinite"/>
+    </rect>
   </g>
 
-  <g transform="translate(828 44)">
-    <rect width="330" height="332" rx="16" fill="#08172C" stroke="#1C3E66"/>
-    <text x="24" y="48" fill="#A8D0F5" font-family="'JetBrains Mono', Menlo, monospace" font-size="24">SIGNAL://PROOF</text>
+  <g transform="translate(820 60)">
+    <rect width="344" height="330" rx="18" fill="#091D36" stroke="#28689A"/>
+    <text x="22" y="38" fill="#A4CCEB" font-family="'JetBrains Mono', Menlo, monospace" font-size="24">SIGNAL://PROOF</text>
+    <circle cx="314" cy="30" r="6" fill="#5CF6CF" filter="url(#glow)"/>
 
-    <text x="24" y="94" fill="#DCEEFF" font-family="'IBM Plex Sans', Arial, sans-serif" font-size="24">Execution</text>
-    <rect x="24" y="106" width="246" height="12" rx="6" fill="#0F2B48"/>
-    <rect class="meter1" x="24" y="106" width="214" height="12" rx="6" fill="url(#barA)"/>
+    <text x="22" y="80" fill="#EAF6FF" font-family="'Space Grotesk', 'Segoe UI', sans-serif" font-size="27" font-weight="700">Execution</text>
+    <rect x="22" y="92" width="220" height="12" rx="6" fill="#163F65"/>
+    <rect x="22" y="92" width="189" height="12" rx="6" fill="url(#line)">
+      <animate attributeName="width" values="176;196;184;189" dur="3.2s" repeatCount="indefinite"/>
+    </rect>
+    <text x="254" y="104" fill="#A3CAE9" font-family="'JetBrains Mono', Menlo, monospace" font-size="14">86%</text>
 
-    <text x="24" y="156" fill="#DCEEFF" font-family="'IBM Plex Sans', Arial, sans-serif" font-size="24">Security Mindset</text>
-    <rect x="24" y="168" width="246" height="12" rx="6" fill="#0F2B48"/>
-    <rect class="meter2" x="24" y="168" width="236" height="12" rx="6" fill="url(#barA)"/>
+    <text x="22" y="138" fill="#EAF6FF" font-family="'Space Grotesk', 'Segoe UI', sans-serif" font-size="27" font-weight="700">Security Mindset</text>
+    <rect x="22" y="150" width="220" height="12" rx="6" fill="#163F65"/>
+    <rect x="22" y="150" width="198" height="12" rx="6" fill="url(#line)">
+      <animate attributeName="width" values="186;206;192;198" dur="3.4s" repeatCount="indefinite"/>
+    </rect>
+    <text x="254" y="162" fill="#A3CAE9" font-family="'JetBrains Mono', Menlo, monospace" font-size="14">90%</text>
 
-    <text x="24" y="218" fill="#DCEEFF" font-family="'IBM Plex Sans', Arial, sans-serif" font-size="24">AI Product Delivery</text>
-    <rect x="24" y="230" width="246" height="12" rx="6" fill="#0F2B48"/>
-    <rect class="meter3" x="24" y="230" width="206" height="12" rx="6" fill="url(#barA)"/>
+    <text x="22" y="196" fill="#EAF6FF" font-family="'Space Grotesk', 'Segoe UI', sans-serif" font-size="27" font-weight="700">AI Product Delivery</text>
+    <rect x="22" y="208" width="220" height="12" rx="6" fill="#163F65"/>
+    <rect x="22" y="208" width="194" height="12" rx="6" fill="url(#line)">
+      <animate attributeName="width" values="180;202;188;194" dur="3s" repeatCount="indefinite"/>
+    </rect>
+    <text x="254" y="220" fill="#A3CAE9" font-family="'JetBrains Mono', Menlo, monospace" font-size="14">88%</text>
 
-    <text x="24" y="280" fill="#DCEEFF" font-family="'IBM Plex Sans', Arial, sans-serif" font-size="24">Scale + Reliability</text>
-    <rect x="24" y="292" width="246" height="12" rx="6" fill="#0F2B48"/>
-    <rect class="meter4" x="24" y="292" width="240" height="12" rx="6" fill="url(#barA)"/>
+    <text x="22" y="254" fill="#EAF6FF" font-family="'Space Grotesk', 'Segoe UI', sans-serif" font-size="27" font-weight="700">Scale + Reliability</text>
+    <rect x="22" y="266" width="220" height="12" rx="6" fill="#163F65"/>
+    <rect x="22" y="266" width="205" height="12" rx="6" fill="url(#line)">
+      <animate attributeName="width" values="192;214;198;205" dur="3.6s" repeatCount="indefinite"/>
+    </rect>
+    <text x="254" y="278" fill="#A3CAE9" font-family="'JetBrains Mono', Menlo, monospace" font-size="14">93%</text>
 
-    <circle cx="288" cy="48" r="6" fill="#40F6BF" filter="url(#softGlow)"/>
+    <rect x="22" y="294" width="300" height="18" rx="9" fill="#123459"/>
+    <rect x="22" y="294" width="257" height="18" rx="9" fill="url(#line)">
+      <animate attributeName="width" values="240;268;252;257" dur="4s" repeatCount="indefinite"/>
+    </rect>
+    <text x="28" y="307" fill="#0B1930" font-family="'JetBrains Mono', Menlo, monospace" font-size="11">HIRING_READINESS://HIGH</text>
   </g>
 
-  <defs>
-    <clipPath id="clip">
-      <rect x="42" y="44" width="744" height="332" rx="16"/>
-    </clipPath>
-  </defs>
+  <rect x="1.5" y="1.5" width="1197" height="427" rx="18.5" stroke="#2FAFE9" stroke-opacity="0.25" stroke-width="3"/>
 </svg>

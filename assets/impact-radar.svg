@@ -1,84 +1,70 @@
 <svg width="1200" height="430" viewBox="0 0 1200 430" fill="none" xmlns="http://www.w3.org/2000/svg">
   <defs>
-    <linearGradient id="impactBg" x1="0" y1="0" x2="1200" y2="430" gradientUnits="userSpaceOnUse">
-      <stop offset="0" stop-color="#071026"/>
-      <stop offset="1" stop-color="#051A33"/>
+    <linearGradient id="bg" x1="0" y1="0" x2="1200" y2="430" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#061127"/>
+      <stop offset="1" stop-color="#072546"/>
     </linearGradient>
-    <radialGradient id="sweep" cx="0" cy="0" r="1" gradientUnits="userSpaceOnUse" gradientTransform="translate(240 214) rotate(90) scale(170)">
-      <stop offset="0" stop-color="#46F6C7" stop-opacity="0.34"/>
-      <stop offset="1" stop-color="#46F6C7" stop-opacity="0"/>
-    </radialGradient>
-    <linearGradient id="card" x1="0" y1="0" x2="360" y2="120" gradientUnits="userSpaceOnUse">
-      <stop offset="0" stop-color="#0B2444"/>
-      <stop offset="1" stop-color="#10315A"/>
+    <linearGradient id="card" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#11345A"/>
+      <stop offset="1" stop-color="#0D2A49"/>
     </linearGradient>
-    <filter id="radGlow" x="-30%" y="-30%" width="160%" height="160%">
+    <filter id="glow" x="-25%" y="-25%" width="150%" height="150%">
       <feGaussianBlur stdDeviation="4" result="g"/>
       <feMerge>
         <feMergeNode in="g"/>
         <feMergeNode in="SourceGraphic"/>
       </feMerge>
     </filter>
-    <style>
-      .ringDot { animation: ping 2.6s ease-out infinite; transform-origin: center; }
-      .ringDot2 { animation: ping 3.1s ease-out infinite; transform-origin: center; }
-      .ringDot3 { animation: ping 2.2s ease-out infinite; transform-origin: center; }
-      .cardA { animation: cardA 2.6s ease-in-out infinite; }
-      .cardB { animation: cardB 2.9s ease-in-out infinite; }
-      .cardC { animation: cardC 2.3s ease-in-out infinite; }
-      @keyframes ping {
-        0%,100% { opacity: 0.6; transform: scale(1); }
-        50% { opacity: 1; transform: scale(1.23); }
-      }
-      @keyframes cardA { 0%,100% { transform: translateY(0); } 50% { transform: translateY(-4px); } }
-      @keyframes cardB { 0%,100% { transform: translateY(-2px); } 50% { transform: translateY(2px); } }
-      @keyframes cardC { 0%,100% { transform: translateY(1px); } 50% { transform: translateY(-3px); } }
-    </style>
   </defs>
 
-  <rect width="1200" height="430" rx="22" fill="url(#impactBg)"/>
+  <rect width="1200" height="430" rx="20" fill="url(#bg)"/>
 
-  <g transform="translate(60 44)">
-    <rect width="360" height="342" rx="16" fill="#08172F" stroke="#1C3F68"/>
-    <circle cx="180" cy="170" r="132" stroke="#1B5E8D" stroke-width="2"/>
-    <circle cx="180" cy="170" r="99" stroke="#1B5E8D" stroke-width="1.5"/>
-    <circle cx="180" cy="170" r="66" stroke="#1B5E8D" stroke-width="1.2"/>
-    <circle cx="180" cy="170" r="33" stroke="#1B5E8D" stroke-width="1"/>
-    <path d="M180 32V308M48 170H312" stroke="#1B5E8D" stroke-width="1"/>
+  <text x="40" y="44" fill="#D8ECFF" font-family="'Space Grotesk', 'Segoe UI', sans-serif" font-size="44" font-weight="700">IMPACT://HIGH_SIGNAL</text>
+  <line x1="40" y1="58" x2="1160" y2="58" stroke="#255A88" stroke-opacity="0.7"/>
 
-    <path d="M180 170L300 95A132 132 0 0 1 252 278Z" fill="url(#sweep)">
-      <animateTransform attributeName="transform" type="rotate" from="0 180 170" to="360 180 170" dur="6s" repeatCount="indefinite"/>
+  <g transform="translate(40 78)">
+    <rect width="378" height="312" rx="16" fill="#091B35" stroke="#225A8A"/>
+    <text x="26" y="36" fill="#9FC7EA" font-family="'JetBrains Mono', Menlo, monospace" font-size="24">IMPACT://RADAR_SCAN</text>
+
+    <circle cx="190" cy="170" r="118" stroke="#1D5D8D" stroke-width="2"/>
+    <circle cx="190" cy="170" r="88" stroke="#1D5D8D" stroke-width="1.5"/>
+    <circle cx="190" cy="170" r="58" stroke="#1D5D8D" stroke-width="1.2"/>
+    <circle cx="190" cy="170" r="28" stroke="#1D5D8D" stroke-width="1"/>
+    <path d="M190 52V288M72 170H308" stroke="#1D5D8D"/>
+
+    <path d="M190 170L294 104A118 118 0 0 1 234 276Z" fill="#58F6CE" fill-opacity="0.2">
+      <animateTransform attributeName="transform" type="rotate" from="0 190 170" to="360 190 170" dur="6.5s" repeatCount="indefinite"/>
     </path>
 
-    <circle class="ringDot" cx="252" cy="120" r="6" fill="#2AD7FF" filter="url(#radGlow)"/>
-    <circle class="ringDot2" cx="225" cy="214" r="6" fill="#70FFDD" filter="url(#radGlow)"/>
-    <circle class="ringDot3" cx="128" cy="225" r="6" fill="#9E8FFF" filter="url(#radGlow)"/>
-
-    <text x="28" y="42" fill="#A5D2F7" font-family="'JetBrains Mono', Menlo, monospace" font-size="22">IMPACT://RADAR_SCAN</text>
+    <circle cx="254" cy="126" r="6" fill="#2BD7FF" filter="url(#glow)">
+      <animate attributeName="opacity" values="0.55;1;0.55" dur="2.5s" repeatCount="indefinite"/>
+    </circle>
+    <circle cx="184" cy="224" r="6" fill="#5CF6CF" filter="url(#glow)">
+      <animate attributeName="opacity" values="0.55;1;0.55" dur="3s" repeatCount="indefinite"/>
+    </circle>
+    <circle cx="106" cy="228" r="6" fill="#8B93FF" filter="url(#glow)">
+      <animate attributeName="opacity" values="0.55;1;0.55" dur="2.2s" repeatCount="indefinite"/>
+    </circle>
   </g>
 
-  <g transform="translate(456 54)">
-    <rect width="688" height="322" rx="16" fill="#08172E" stroke="#1C3F68"/>
+  <g transform="translate(446 78)">
+    <rect width="714" height="312" rx="16" fill="#081A32" stroke="#225A8A"/>
 
-    <g class="cardA" transform="translate(26 28)">
-      <rect width="304" height="118" rx="14" fill="url(#card)"/>
-      <text x="18" y="36" fill="#9ED0F6" font-family="'JetBrains Mono', Menlo, monospace" font-size="18">DEPLOYMENT IMPACT</text>
-      <text x="18" y="78" fill="#F2FAFF" font-family="'Space Grotesk', 'Segoe UI', sans-serif" font-size="46" font-weight="800">4h -> 15m</text>
-      <text x="18" y="102" fill="#99BFE4" font-family="'IBM Plex Sans', Arial, sans-serif" font-size="20">Release pipeline acceleration</text>
-    </g>
+    <rect x="22" y="22" width="324" height="124" rx="14" fill="url(#card)"/>
+    <text x="40" y="54" fill="#9FC7EA" font-family="'JetBrains Mono', Menlo, monospace" font-size="18">DEPLOYMENT IMPACT</text>
+    <text x="40" y="96" fill="#F0F9FF" font-family="'Space Grotesk', 'Segoe UI', sans-serif" font-size="56" font-weight="800">4h -> 15m</text>
+    <text x="40" y="124" fill="#9CC2E6" font-family="'IBM Plex Sans', Arial, sans-serif" font-size="22">Release workflow acceleration</text>
 
-    <g class="cardB" transform="translate(358 28)">
-      <rect width="304" height="118" rx="14" fill="url(#card)"/>
-      <text x="18" y="36" fill="#9ED0F6" font-family="'JetBrains Mono', Menlo, monospace" font-size="18">SECURITY IMPACT</text>
-      <text x="18" y="78" fill="#F2FAFF" font-family="'Space Grotesk', 'Segoe UI', sans-serif" font-size="46" font-weight="800">92% / -84%</text>
-      <text x="18" y="102" fill="#99BFE4" font-family="'IBM Plex Sans', Arial, sans-serif" font-size="20">Detection and risky-click reduction</text>
-    </g>
+    <rect x="368" y="22" width="324" height="124" rx="14" fill="url(#card)"/>
+    <text x="386" y="54" fill="#9FC7EA" font-family="'JetBrains Mono', Menlo, monospace" font-size="18">SECURITY IMPACT</text>
+    <text x="386" y="96" fill="#F0F9FF" font-family="'Space Grotesk', 'Segoe UI', sans-serif" font-size="56" font-weight="800">92% / -84%</text>
+    <text x="386" y="124" fill="#9CC2E6" font-family="'IBM Plex Sans', Arial, sans-serif" font-size="22">Detection accuracy and risky-click drop</text>
 
-    <g class="cardC" transform="translate(26 176)">
-      <rect width="636" height="118" rx="14" fill="url(#card)"/>
-      <text x="18" y="36" fill="#9ED0F6" font-family="'JetBrains Mono', Menlo, monospace" font-size="18">LEADERSHIP SIGNAL</text>
-      <text x="18" y="78" fill="#F2FAFF" font-family="'Space Grotesk', 'Segoe UI', sans-serif" font-size="46" font-weight="800">100+ Students Mentored</text>
-      <text x="18" y="102" fill="#99BFE4" font-family="'IBM Plex Sans', Arial, sans-serif" font-size="20">Systems programming and Java OOP coaching</text>
-    </g>
+    <rect x="22" y="166" width="670" height="124" rx="14" fill="url(#card)"/>
+    <text x="40" y="198" fill="#9FC7EA" font-family="'JetBrains Mono', Menlo, monospace" font-size="18">LEADERSHIP SIGNAL</text>
+    <text x="40" y="240" fill="#F0F9FF" font-family="'Space Grotesk', 'Segoe UI', sans-serif" font-size="56" font-weight="800">100+ Students Mentored</text>
+    <text x="40" y="268" fill="#9CC2E6" font-family="'IBM Plex Sans', Arial, sans-serif" font-size="22">Systems programming and Java OOP coaching</text>
   </g>
+
+  <rect x="1.5" y="1.5" width="1197" height="427" rx="18.5" stroke="#2FAFE9" stroke-opacity="0.25" stroke-width="3"/>
 </svg>
