@@ -1,0 +1,60 @@
+<svg width="1200" height="360" viewBox="0 0 1200 360" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1200" y2="360" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#060F21"/>
+      <stop offset="1" stop-color="#082546"/>
+    </linearGradient>
+    <linearGradient id="line" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0" stop-color="#2DD8FF"/>
+      <stop offset="0.6" stop-color="#66F8D9"/>
+      <stop offset="1" stop-color="#8494FF"/>
+    </linearGradient>
+    <style>
+      .pulse { animation: pulse 2.8s ease-in-out infinite; transform-origin: center; }
+      .scan { animation: scan 5.5s linear infinite; }
+      @keyframes pulse {
+        0%,100% { opacity: 0.65; transform: scale(1); }
+        50% { opacity: 1; transform: scale(1.2); }
+      }
+      @keyframes scan {
+        from { transform: translateX(-140px); }
+        to { transform: translateX(1240px); }
+      }
+    </style>
+  </defs>
+
+  <rect width="1200" height="360" rx="18" fill="url(#bg)"/>
+  <path d="M40 284H1160" stroke="#123357" stroke-width="2"/>
+
+  <g fill="#0F2E50" stroke="#1F4D79">
+    <rect x="80" y="210" width="38" height="74"/>
+    <rect x="132" y="186" width="44" height="98"/>
+    <rect x="188" y="170" width="32" height="114"/>
+    <rect x="234" y="222" width="26" height="62"/>
+    <rect x="274" y="196" width="42" height="88"/>
+    <rect x="332" y="156" width="30" height="128"/>
+    <rect x="374" y="174" width="36" height="110"/>
+    <rect x="422" y="132" width="50" height="152"/>
+    <rect x="490" y="212" width="22" height="72"/>
+    <rect x="524" y="182" width="34" height="102"/>
+    <rect x="572" y="162" width="40" height="122"/>
+    <rect x="626" y="196" width="26" height="88"/>
+    <rect x="666" y="224" width="30" height="60"/>
+    <rect x="710" y="170" width="48" height="114"/>
+    <rect x="774" y="148" width="36" height="136"/>
+    <rect x="824" y="190" width="28" height="94"/>
+    <rect x="864" y="204" width="40" height="80"/>
+    <rect x="918" y="166" width="34" height="118"/>
+    <rect x="966" y="192" width="28" height="92"/>
+    <rect x="1008" y="214" width="44" height="70"/>
+  </g>
+
+  <rect class="scan" x="-140" y="100" width="120" height="170" rx="8" fill="url(#line)" opacity="0.22"/>
+
+  <circle class="pulse" cx="422" cy="132" r="6" fill="#2DD8FF"/>
+  <circle class="pulse" cx="774" cy="148" r="6" fill="#66F8D9"/>
+  <circle class="pulse" cx="918" cy="166" r="6" fill="#8494FF"/>
+
+  <text x="42" y="52" fill="#A8D3F7" font-family="'JetBrains Mono', Menlo, monospace" font-size="24">SKYLINE://LIVE_COMMIT_CITY</text>
+  <text x="42" y="84" fill="#88B0D4" font-family="'IBM Plex Sans', Arial, sans-serif" font-size="18">Initial skyline placeholder loaded. Workflow will replace this with real live 3D commit city.</text>
+</svg>

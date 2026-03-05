@@ -98,6 +98,24 @@
 
 ---
 
+## SKYLINE://LIVE_COMMIT_CITY
+
+<div align="center">
+  <picture>
+    <source media="(prefers-color-scheme: dark)"
+      srcset="https://raw.githubusercontent.com/Apple-beep/Apple-beep/main/profile-3d-contrib/profile-night-rainbow.svg" />
+    <source media="(prefers-color-scheme: light)"
+      srcset="https://raw.githubusercontent.com/Apple-beep/Apple-beep/main/profile-3d-contrib/profile-green.svg" />
+    <img alt="3D contribution skyline"
+      src="./assets/skyline-placeholder.svg"
+      width="100%" />
+  </picture>
+</div>
+
+`Auto-updated every 8 hours via GitHub Actions.`
+
+---
+
 ## FOUNDATION://PHASE_1_STATUS
 
 - GitHub Pages deployment pipeline is active via Actions.
