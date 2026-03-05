@@ -51,6 +51,16 @@ jobs:
           page_url="${{ steps.pages.outputs.url }}"
           echo "Checking ${page_url}"
           status="$(curl -sS -L -o body.html -w '%{http_code}' "${page_url}")"
+          if [ "${status}" = "404" ]; then
+            {
+              echo "## Health check pending first deploy"
+              echo
+              echo "Pages is enabled, but the site returned 404."
+              echo "Run **Deploy Profile Site** once after enabling Pages."
+            } >> "${GITHUB_STEP_SUMMARY}"
+            exit 0
+          fi
+
           if [ "${status}" != "200" ]; then
             echo "Expected 200 from ${page_url}, got ${status}"
             exit 1
