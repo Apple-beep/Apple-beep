@@ -2,8 +2,12 @@ name: 🌆 3D Contribution Skyline
 
 on:
   schedule:
-    - cron: "30 3 * * *"
+    - cron: "0 */6 * * *"
   workflow_dispatch:
+  push:
+    branches: [main]
+    paths-ignore:
+      - profile-3d-contrib/**
 
 permissions:
   contents: write

@@ -1,0 +1,37 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1280 160" role="img" aria-label="Contact beacon">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#050a14"/>
+      <stop offset="100%" stop-color="#111827"/>
+    </linearGradient>
+    <linearGradient id="wave" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0%" stop-color="#0ea5e9" stop-opacity="0.08"/>
+      <stop offset="50%" stop-color="#22d3ee" stop-opacity="0.35"/>
+      <stop offset="100%" stop-color="#4f46e5" stop-opacity="0.08"/>
+    </linearGradient>
+  </defs>
+
+  <rect width="1280" height="160" rx="14" fill="url(#bg)"/>
+
+  <path d="M0 110 C220 80, 420 130, 640 100 S1060 80, 1280 110 L1280 160 L0 160 Z" fill="url(#wave)">
+    <animate attributeName="d" dur="5.5s" repeatCount="indefinite"
+      values="M0 110 C220 80, 420 130, 640 100 S1060 80, 1280 110 L1280 160 L0 160 Z;
+              M0 115 C220 95, 420 75, 640 110 S1060 130, 1280 100 L1280 160 L0 160 Z;
+              M0 110 C220 80, 420 130, 640 100 S1060 80, 1280 110 L1280 160 L0 160 Z"/>
+  </path>
+
+  <g transform="translate(640 72)">
+    <circle r="6" fill="#22d3ee"/>
+    <circle r="20" fill="none" stroke="#22d3ee" stroke-opacity="0.5">
+      <animate attributeName="r" values="8;42" dur="2.6s" repeatCount="indefinite"/>
+      <animate attributeName="opacity" values="1;0" dur="2.6s" repeatCount="indefinite"/>
+    </circle>
+    <circle r="20" fill="none" stroke="#67e8f9" stroke-opacity="0.45">
+      <animate attributeName="r" values="8;42" dur="2.6s" begin="1.3s" repeatCount="indefinite"/>
+      <animate attributeName="opacity" values="1;0" dur="2.6s" begin="1.3s" repeatCount="indefinite"/>
+    </circle>
+  </g>
+
+  <text x="42" y="52" font-family="'JetBrains Mono', monospace" font-size="14" fill="#67e8f9">CONTACT BEACON</text>
+  <text x="42" y="84" font-family="'JetBrains Mono', monospace" font-size="30" font-weight="700" fill="#e2e8f0">Let’s Build Something Real</text>
+</svg>

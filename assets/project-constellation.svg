@@ -1,0 +1,60 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1280 340" role="img" aria-label="Project constellation">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#050a16"/>
+      <stop offset="50%" stop-color="#091631"/>
+      <stop offset="100%" stop-color="#121827"/>
+    </linearGradient>
+    <linearGradient id="pathA" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0%" stop-color="#22d3ee" stop-opacity="0.2"/>
+      <stop offset="100%" stop-color="#22d3ee" stop-opacity="0.9"/>
+    </linearGradient>
+    <linearGradient id="pathB" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0%" stop-color="#fb923c" stop-opacity="0.2"/>
+      <stop offset="100%" stop-color="#fb923c" stop-opacity="0.85"/>
+    </linearGradient>
+    <filter id="g">
+      <feGaussianBlur stdDeviation="3" result="b"/>
+      <feMerge>
+        <feMergeNode in="b"/>
+        <feMergeNode in="SourceGraphic"/>
+      </feMerge>
+    </filter>
+    <path id="route1" d="M140 265 C280 120, 510 95, 640 175 S900 310, 1130 142"/>
+    <path id="route2" d="M140 170 C300 300, 450 290, 640 175 S900 90, 1130 230"/>
+  </defs>
+
+  <rect width="1280" height="340" rx="16" fill="url(#bg)"/>
+
+  <g fill="none" stroke-width="2" opacity="0.72">
+    <path d="M140 265 C280 120, 510 95, 640 175 S900 310, 1130 142" stroke="url(#pathA)"/>
+    <path d="M140 170 C300 300, 450 290, 640 175 S900 90, 1130 230" stroke="url(#pathB)"/>
+  </g>
+
+  <g filter="url(#g)">
+    <circle cx="140" cy="265" r="9" fill="#67e8f9"/>
+    <circle cx="640" cy="175" r="10" fill="#a78bfa"/>
+    <circle cx="1130" cy="142" r="10" fill="#fb923c"/>
+
+    <circle r="6" fill="#22d3ee">
+      <animateMotion dur="4.8s" repeatCount="indefinite"><mpath href="#route1"/></animateMotion>
+    </circle>
+    <circle r="5" fill="#f97316">
+      <animateMotion dur="5.2s" repeatCount="indefinite" begin="0.8s"><mpath href="#route2"/></animateMotion>
+    </circle>
+  </g>
+
+  <g font-family="'JetBrains Mono', monospace" fill="#e2e8f0">
+    <text x="64" y="64" font-size="16" fill="#67e8f9">PROJECT CONSTELLATION</text>
+    <text x="64" y="98" font-size="32" font-weight="700">Core Project Signals</text>
+
+    <text x="84" y="246" font-size="17" fill="#93c5fd">HIRELENS</text>
+    <text x="84" y="270" font-size="14" fill="#94a3b8">Bias-aware AI resume analysis</text>
+
+    <text x="574" y="154" font-size="17" fill="#c4b5fd">CHECKURL</text>
+    <text x="574" y="178" font-size="14" fill="#94a3b8">Real-time phishing scanner</text>
+
+    <text x="990" y="120" font-size="17" fill="#fdba74">VISIONVOICE</text>
+    <text x="990" y="144" font-size="14" fill="#94a3b8">Accessibility-first iOS assistant</text>
+  </g>
+</svg>
