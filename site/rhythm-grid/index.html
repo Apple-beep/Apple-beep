@@ -1,0 +1,637 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Rhythm Grid | Apple-beep</title>
+  <meta name="description" content="Commit cadence transformed into an interactive rhythm sequencer." />
+  <style>
+    :root {
+      --bg: #050d1d;
+      --bg-2: #0a2446;
+      --panel: rgba(9, 26, 48, 0.85);
+      --stroke: #204d79;
+      --text: #e8f3ff;
+      --muted: #9dc0e2;
+      --accent-a: #27d7ff;
+      --accent-b: #55f6ce;
+      --accent-c: #8893ff;
+      --cell-off: #132a45;
+      --cell-on: #26d7ff;
+      --cell-mid: #52f6cb;
+      --cell-hot: #8893ff;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      min-height: 100vh;
+      color: var(--text);
+      font-family: "JetBrains Mono", "SFMono-Regular", Menlo, Consolas, monospace;
+      background:
+        radial-gradient(1100px 520px at 15% -8%, rgba(39, 215, 255, 0.2), transparent 58%),
+        radial-gradient(1100px 600px at 85% 115%, rgba(85, 246, 206, 0.18), transparent 56%),
+        linear-gradient(140deg, var(--bg), var(--bg-2));
+      padding: 20px;
+    }
+
+    .wrap {
+      max-width: 1260px;
+      margin: 0 auto;
+    }
+
+    .hero {
+      border: 1px solid var(--stroke);
+      border-radius: 18px;
+      background: linear-gradient(145deg, rgba(8, 23, 43, 0.92), rgba(7, 29, 56, 0.86));
+      padding: 18px 20px;
+      box-shadow: 0 20px 40px rgba(0, 0, 0, 0.35);
+    }
+
+    .kicker {
+      margin: 0;
+      font-size: 14px;
+      letter-spacing: 0.15em;
+      color: #9ec7eb;
+      text-transform: uppercase;
+    }
+
+    h1 {
+      margin: 8px 0 10px;
+      font-size: clamp(30px, 4.2vw, 56px);
+      line-height: 1.05;
+    }
+
+    .hero p {
+      margin: 0;
+      color: var(--muted);
+      font-size: clamp(14px, 2vw, 18px);
+      line-height: 1.6;
+    }
+
+    .layout {
+      margin-top: 16px;
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 16px;
+    }
+
+    .panel {
+      border: 1px solid var(--stroke);
+      border-radius: 18px;
+      background: var(--panel);
+      padding: 14px;
+      backdrop-filter: blur(6px);
+    }
+
+    .toolbar {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: 10px;
+    }
+
+    .left-controls,
+    .right-controls {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      align-items: center;
+    }
+
+    button,
+    select,
+    input[type="range"] {
+      font: inherit;
+      color: var(--text);
+      border: 1px solid var(--stroke);
+      border-radius: 10px;
+      background: #0c2747;
+      padding: 8px 12px;
+    }
+
+    button {
+      cursor: pointer;
+      background: linear-gradient(90deg, rgba(39, 215, 255, 0.24), rgba(85, 246, 206, 0.20));
+    }
+
+    button:hover {
+      border-color: #3b7cb3;
+    }
+
+    input[type="range"] {
+      padding: 0;
+      width: 130px;
+      height: 34px;
+      accent-color: var(--accent-a);
+    }
+
+    .grid-shell {
+      overflow-x: auto;
+      border: 1px solid var(--stroke);
+      border-radius: 14px;
+      padding: 12px;
+      background: #091d36;
+    }
+
+    .grid {
+      min-width: 980px;
+      display: grid;
+      grid-template-columns: repeat(36, 24px);
+      grid-template-rows: repeat(7, 24px);
+      gap: 6px;
+      position: relative;
+    }
+
+    .cell {
+      border-radius: 6px;
+      background: var(--cell-off);
+      box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.02);
+      transition: transform 120ms ease, box-shadow 140ms ease, background 180ms ease;
+    }
+
+    .cell.l1 {
+      background: #1f7ea0;
+    }
+
+    .cell.l2 {
+      background: var(--cell-on);
+    }
+
+    .cell.l3 {
+      background: var(--cell-mid);
+    }
+
+    .cell.l4 {
+      background: var(--cell-hot);
+    }
+
+    .cell.active-step {
+      transform: translateY(-1px) scale(1.05);
+      box-shadow: 0 0 0 1px rgba(186, 236, 255, 0.45), 0 0 14px rgba(38, 215, 255, 0.45);
+    }
+
+    .legend {
+      margin-top: 10px;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      align-items: center;
+      color: var(--muted);
+      font-size: 13px;
+    }
+
+    .legend span {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    .swatch {
+      width: 12px;
+      height: 12px;
+      border-radius: 3px;
+      display: inline-block;
+    }
+
+    .metrics {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(170px, 1fr));
+      gap: 10px;
+      margin-top: 12px;
+    }
+
+    .metric {
+      border: 1px solid var(--stroke);
+      border-radius: 12px;
+      padding: 10px;
+      background: rgba(11, 32, 58, 0.72);
+    }
+
+    .metric p {
+      margin: 0;
+      color: var(--muted);
+      font-size: 12px;
+    }
+
+    .metric strong {
+      display: block;
+      margin-top: 6px;
+      font-size: 24px;
+    }
+
+    .note {
+      margin-top: 12px;
+      border-left: 2px solid var(--accent-a);
+      padding-left: 10px;
+      color: var(--muted);
+      font-size: 13px;
+      line-height: 1.5;
+    }
+
+    .footer-links {
+      margin-top: 12px;
+      display: flex;
+      gap: 10px;
+      flex-wrap: wrap;
+    }
+
+    .footer-links a {
+      color: #041226;
+      text-decoration: none;
+      font-weight: 700;
+      background: linear-gradient(90deg, var(--accent-a), var(--accent-b));
+      border-radius: 10px;
+      padding: 8px 12px;
+    }
+
+    @media (max-width: 760px) {
+      body {
+        padding: 12px;
+      }
+
+      .hero,
+      .panel {
+        border-radius: 14px;
+      }
+
+      .toolbar {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="wrap">
+    <section class="hero">
+      <p class="kicker">Rhythm Mode</p>
+      <h1>RHYTHM://GRID_ENGINE</h1>
+      <p>
+        Public GitHub activity is transformed into a 7-lane sequencer. Each weekly column is a time-step.
+        Higher activity drives brighter cells and stronger notes.
+      </p>
+    </section>
+
+    <section class="layout">
+      <div class="panel">
+        <div class="toolbar">
+          <div class="left-controls">
+            <button id="playBtn" type="button">Play</button>
+            <button id="regenBtn" type="button">Refresh Data</button>
+            <label for="modeSel">Mode</label>
+            <select id="modeSel">
+              <option value="focus">Focus</option>
+              <option value="ship" selected>Ship</option>
+              <option value="storm">Storm</option>
+            </select>
+          </div>
+          <div class="right-controls">
+            <label for="tempo">Tempo</label>
+            <input id="tempo" type="range" min="72" max="162" value="116" />
+            <span id="tempoLabel">116 BPM</span>
+          </div>
+        </div>
+
+        <div class="grid-shell">
+          <div id="grid" class="grid" aria-label="Rhythm Grid" role="grid"></div>
+        </div>
+
+        <div class="legend">
+          <span><i class="swatch" style="background:#1f7ea0"></i>Low</span>
+          <span><i class="swatch" style="background:#26d7ff"></i>Moderate</span>
+          <span><i class="swatch" style="background:#52f6cb"></i>High</span>
+          <span><i class="swatch" style="background:#8893ff"></i>Peak</span>
+        </div>
+
+        <div class="metrics">
+          <div class="metric">
+            <p>Total Pulses</p>
+            <strong id="pulseCount">0</strong>
+          </div>
+          <div class="metric">
+            <p>Active Weeks</p>
+            <strong id="activeWeeks">0</strong>
+          </div>
+          <div class="metric">
+            <p>Longest Streak</p>
+            <strong id="longestStreak">0</strong>
+          </div>
+          <div class="metric">
+            <p>Data Source</p>
+            <strong id="sourceType">Booting...</strong>
+          </div>
+        </div>
+
+        <p class="note">
+          Recruiter note: this panel maps engineering consistency into a visible and audible cadence.
+          It highlights momentum, regularity, and sustained execution over time.
+        </p>
+
+        <div class="footer-links">
+          <a href="https://github.com/Apple-beep/Apple-beep">Profile Repo</a>
+          <a href="https://github.com/Apple-beep?tab=repositories">All Projects</a>
+          <a href="https://musharafportfolio.vercel.app">Portfolio</a>
+        </div>
+      </div>
+    </section>
+  </div>
+
+  <script>
+    const USER = "Apple-beep";
+    const WEEKS = 36;
+    const DAYS = 7;
+    const GRID_SIZE = WEEKS * DAYS;
+
+    const modeProfiles = {
+      focus: { swing: 0.0, gain: 0.04, type: "sine" },
+      ship: { swing: 0.03, gain: 0.06, type: "triangle" },
+      storm: { swing: 0.07, gain: 0.09, type: "sawtooth" },
+    };
+
+    let matrix = [];
+    let step = 0;
+    let timer = null;
+    let isPlaying = false;
+    let audioCtx = null;
+
+    const gridEl = document.getElementById("grid");
+    const playBtn = document.getElementById("playBtn");
+    const regenBtn = document.getElementById("regenBtn");
+    const modeSel = document.getElementById("modeSel");
+    const tempoEl = document.getElementById("tempo");
+    const tempoLabel = document.getElementById("tempoLabel");
+
+    const pulseCountEl = document.getElementById("pulseCount");
+    const activeWeeksEl = document.getElementById("activeWeeks");
+    const longestStreakEl = document.getElementById("longestStreak");
+    const sourceTypeEl = document.getElementById("sourceType");
+
+    const laneFreq = [130.81, 146.83, 164.81, 196.0, 220.0, 246.94, 293.66];
+
+    function mulberry32(seed) {
+      return function () {
+        let t = (seed += 0x6d2b79f5);
+        t = Math.imul(t ^ (t >>> 15), t | 1);
+        t ^= t + Math.imul(t ^ (t >>> 7), t | 61);
+        return ((t ^ (t >>> 14)) >>> 0) / 4294967296;
+      };
+    }
+
+    function formatDateKey(d) {
+      return d.toISOString().slice(0, 10);
+    }
+
+    function startOfDay(d) {
+      const x = new Date(d);
+      x.setHours(0, 0, 0, 0);
+      return x;
+    }
+
+    function buildEmptyMatrix() {
+      return Array.from({ length: DAYS }, () => Array.from({ length: WEEKS }, () => 0));
+    }
+
+    function renderGrid() {
+      gridEl.innerHTML = "";
+      for (let r = 0; r < DAYS; r += 1) {
+        for (let c = 0; c < WEEKS; c += 1) {
+          const cell = document.createElement("div");
+          const v = matrix[r][c];
+          cell.className = "cell" + (v > 0 ? ` l${v}` : "");
+          cell.dataset.row = String(r);
+          cell.dataset.col = String(c);
+          gridEl.appendChild(cell);
+        }
+      }
+      highlightStep(step);
+      updateMetrics();
+    }
+
+    function highlightStep(col) {
+      const cells = gridEl.children;
+      for (let i = 0; i < cells.length; i += 1) {
+        const item = cells[i];
+        if (Number(item.dataset.col) === col) {
+          item.classList.add("active-step");
+        } else {
+          item.classList.remove("active-step");
+        }
+      }
+    }
+
+    function updateMetrics() {
+      let pulses = 0;
+      let activeWeeks = 0;
+      let longest = 0;
+      let current = 0;
+
+      for (let c = 0; c < WEEKS; c += 1) {
+        let weekTotal = 0;
+        for (let r = 0; r < DAYS; r += 1) {
+          const v = matrix[r][c];
+          pulses += v;
+          weekTotal += v;
+        }
+        if (weekTotal > 0) {
+          activeWeeks += 1;
+          current += 1;
+          if (current > longest) longest = current;
+        } else {
+          current = 0;
+        }
+      }
+
+      pulseCountEl.textContent = String(pulses);
+      activeWeeksEl.textContent = String(activeWeeks);
+      longestStreakEl.textContent = String(longest);
+    }
+
+    function schedule() {
+      const bpm = Number(tempoEl.value);
+      const mode = modeProfiles[modeSel.value];
+      const base = (60000 / bpm) / 2;
+      const swing = (step % 2 === 0) ? 0 : base * mode.swing;
+
+      timer = window.setTimeout(() => {
+        tick();
+        schedule();
+      }, base + swing);
+    }
+
+    function playTone(freq, level) {
+      if (!audioCtx) return;
+      const mode = modeProfiles[modeSel.value];
+      const now = audioCtx.currentTime;
+      const osc = audioCtx.createOscillator();
+      const gain = audioCtx.createGain();
+
+      osc.type = mode.type;
+      osc.frequency.value = freq;
+
+      const amp = (level / 4) * mode.gain;
+      gain.gain.setValueAtTime(0.0001, now);
+      gain.gain.exponentialRampToValueAtTime(Math.max(amp, 0.001), now + 0.01);
+      gain.gain.exponentialRampToValueAtTime(0.0001, now + 0.18);
+
+      osc.connect(gain);
+      gain.connect(audioCtx.destination);
+
+      osc.start(now);
+      osc.stop(now + 0.2);
+    }
+
+    function tick() {
+      step = (step + 1) % WEEKS;
+      highlightStep(step);
+      for (let r = 0; r < DAYS; r += 1) {
+        const level = matrix[r][step];
+        if (level > 0) {
+          playTone(laneFreq[r], level);
+        }
+      }
+    }
+
+    function stopPlayback() {
+      if (timer) {
+        clearTimeout(timer);
+        timer = null;
+      }
+      isPlaying = false;
+      playBtn.textContent = "Play";
+    }
+
+    async function ensureAudio() {
+      if (!audioCtx) {
+        audioCtx = new (window.AudioContext || window.webkitAudioContext)();
+      }
+      if (audioCtx.state === "suspended") {
+        await audioCtx.resume();
+      }
+    }
+
+    function fallbackData() {
+      const fallback = buildEmptyMatrix();
+      const seed = Number(new Date().toISOString().slice(0, 10).replace(/-/g, ""));
+      const rng = mulberry32(seed);
+
+      for (let c = 0; c < WEEKS; c += 1) {
+        for (let r = 0; r < DAYS; r += 1) {
+          const base = rng();
+          let v = 0;
+          if (base > 0.80) v = 1;
+          if (base > 0.88) v = 2;
+          if (base > 0.94) v = 3;
+          if (base > 0.985) v = 4;
+          fallback[r][c] = v;
+        }
+      }
+      sourceTypeEl.textContent = "Fallback";
+      return fallback;
+    }
+
+    function buildMatrixFromEvents(events) {
+      const out = buildEmptyMatrix();
+      const now = startOfDay(new Date());
+      const start = new Date(now);
+      start.setDate(start.getDate() - (WEEKS * DAYS - 1));
+
+      const dayCounts = new Map();
+      for (const ev of events) {
+        if (!ev || !ev.created_at) continue;
+        const dt = startOfDay(new Date(ev.created_at));
+        if (dt < start || dt > now) continue;
+
+        let weight = 1;
+        if (ev.type === "PushEvent") weight = 2;
+        if (ev.type === "PullRequestEvent") weight = 3;
+        if (ev.type === "IssuesEvent") weight = 2;
+
+        const key = formatDateKey(dt);
+        dayCounts.set(key, (dayCounts.get(key) || 0) + weight);
+      }
+
+      for (let i = 0; i < WEEKS * DAYS; i += 1) {
+        const d = new Date(start);
+        d.setDate(start.getDate() + i);
+        const key = formatDateKey(d);
+        const count = dayCounts.get(key) || 0;
+        let v = 0;
+        if (count >= 1) v = 1;
+        if (count >= 3) v = 2;
+        if (count >= 6) v = 3;
+        if (count >= 10) v = 4;
+
+        const col = Math.floor(i / DAYS);
+        const row = i % DAYS;
+        out[row][col] = v;
+      }
+
+      sourceTypeEl.textContent = "GitHub Events";
+      return out;
+    }
+
+    async function loadActivity() {
+      sourceTypeEl.textContent = "Loading...";
+      try {
+        const res = await fetch(`https://api.github.com/users/${USER}/events/public?per_page=100`, {
+          headers: { Accept: "application/vnd.github+json" },
+        });
+        if (!res.ok) throw new Error(`GitHub API ${res.status}`);
+        const events = await res.json();
+        if (!Array.isArray(events) || events.length === 0) {
+          matrix = fallbackData();
+        } else {
+          matrix = buildMatrixFromEvents(events);
+        }
+      } catch (err) {
+        matrix = fallbackData();
+      }
+      renderGrid();
+    }
+
+    playBtn.addEventListener("click", async () => {
+      if (isPlaying) {
+        stopPlayback();
+        return;
+      }
+      await ensureAudio();
+      isPlaying = true;
+      playBtn.textContent = "Pause";
+      schedule();
+    });
+
+    regenBtn.addEventListener("click", async () => {
+      stopPlayback();
+      step = 0;
+      await loadActivity();
+    });
+
+    tempoEl.addEventListener("input", () => {
+      tempoLabel.textContent = `${tempoEl.value} BPM`;
+      if (isPlaying) {
+        clearTimeout(timer);
+        schedule();
+      }
+    });
+
+    modeSel.addEventListener("change", () => {
+      if (isPlaying) {
+        clearTimeout(timer);
+        schedule();
+      }
+    });
+
+    (async () => {
+      matrix = fallbackData();
+      renderGrid();
+      await loadActivity();
+    })();
+  </script>
+</body>
+</html>

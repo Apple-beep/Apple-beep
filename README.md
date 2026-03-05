@@ -116,6 +116,16 @@
 
 ---
 
+## RHYTHM://GRID_ENGINE
+
+<img src="./assets/rhythm-grid-preview.svg" width="100%" alt="Rhythm Grid Preview" />
+
+`Live sequencer:` [Open Rhythm Grid](https://apple-beep.github.io/Apple-beep/rhythm-grid/)
+
+The engine maps weekly activity into seven audio lanes so commit cadence becomes a visual and sonic signal.
+
+---
+
 ## FOUNDATION://PHASE_1_STATUS
 
 - GitHub Pages deployment pipeline is active via Actions.
