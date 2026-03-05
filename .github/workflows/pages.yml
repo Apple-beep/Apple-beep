@@ -41,13 +41,7 @@ jobs:
             "${api_url}")"
 
           if [ "${http_code}" = "200" ]; then
-            pages_url="$(python3 - <<'PY'
-import json
-with open('pages.json', 'r', encoding='utf-8') as f:
-    data = json.load(f)
-print(data.get('html_url', ''))
-PY
-)"
+            pages_url="$(python3 -c "import json;print(json.load(open('pages.json', 'r', encoding='utf-8')).get('html_url', ''))")"
             echo "pages_enabled=true" >> "${GITHUB_OUTPUT}"
             echo "pages_url=${pages_url}" >> "${GITHUB_OUTPUT}"
             exit 0
