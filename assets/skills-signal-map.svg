@@ -1,0 +1,127 @@
+<svg width="1200" height="430" viewBox="0 0 1200 430" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1200" y2="430" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#061022"/>
+      <stop offset="1" stop-color="#071B35"/>
+    </linearGradient>
+    <linearGradient id="lane" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0" stop-color="#2DD7FF"/>
+      <stop offset="0.55" stop-color="#63F5D0"/>
+      <stop offset="1" stop-color="#7A95FF"/>
+    </linearGradient>
+    <filter id="glow" x="-25%" y="-25%" width="150%" height="150%">
+      <feGaussianBlur stdDeviation="4" result="g"/>
+      <feMerge>
+        <feMergeNode in="g"/>
+        <feMergeNode in="SourceGraphic"/>
+      </feMerge>
+    </filter>
+    <style>
+      .beam { stroke-dasharray: 8 10; animation: flow 14s linear infinite; }
+      .corePulse { animation: corePulse 2.9s ease-in-out infinite; transform-origin: center; }
+      .dotA { animation: dotA 2.4s ease-in-out infinite; transform-origin: center; }
+      .dotB { animation: dotB 2.1s ease-in-out infinite; transform-origin: center; }
+      .dotC { animation: dotC 2.7s ease-in-out infinite; transform-origin: center; }
+      .dotD { animation: dotD 3.2s ease-in-out infinite; transform-origin: center; }
+      .lvl1 { animation: lvl1 3s ease-in-out infinite; }
+      .lvl2 { animation: lvl2 2.5s ease-in-out infinite; }
+      .lvl3 { animation: lvl3 3.4s ease-in-out infinite; }
+      .lvl4 { animation: lvl4 2.8s ease-in-out infinite; }
+
+      @keyframes flow {
+        to { stroke-dashoffset: -360; }
+      }
+      @keyframes corePulse {
+        0%,100% { opacity: 0.75; transform: scale(1); }
+        50% { opacity: 1; transform: scale(1.12); }
+      }
+      @keyframes dotA {
+        0%,100% { opacity: 0.7; transform: scale(1); }
+        50% { opacity: 1; transform: scale(1.3); }
+      }
+      @keyframes dotB {
+        0%,100% { opacity: 0.6; transform: scale(0.95); }
+        50% { opacity: 1; transform: scale(1.25); }
+      }
+      @keyframes dotC {
+        0%,100% { opacity: 0.7; transform: scale(0.92); }
+        50% { opacity: 1; transform: scale(1.2); }
+      }
+      @keyframes dotD {
+        0%,100% { opacity: 0.65; transform: scale(1); }
+        50% { opacity: 1; transform: scale(1.2); }
+      }
+      @keyframes lvl1 {
+        0%,100% { width: 250px; }
+        50% { width: 308px; }
+      }
+      @keyframes lvl2 {
+        0%,100% { width: 238px; }
+        50% { width: 292px; }
+      }
+      @keyframes lvl3 {
+        0%,100% { width: 220px; }
+        50% { width: 276px; }
+      }
+      @keyframes lvl4 {
+        0%,100% { width: 232px; }
+        50% { width: 286px; }
+      }
+    </style>
+  </defs>
+
+  <rect width="1200" height="430" rx="22" fill="url(#bg)"/>
+
+  <g transform="translate(44 40)">
+    <rect width="470" height="350" rx="16" fill="#0A1730" stroke="#1D3D65"/>
+
+    <text x="24" y="42" fill="#A8D0F5" font-family="'JetBrains Mono', Menlo, monospace" font-size="22">SKILLS://SIGNAL_MAP</text>
+
+    <path class="beam" d="M235 87V278" stroke="#2DD7FF" stroke-opacity="0.7" stroke-width="2"/>
+    <path class="beam" d="M138 182H332" stroke="#63F5D0" stroke-opacity="0.75" stroke-width="2"/>
+    <path class="beam" d="M165 112L305 252" stroke="#7A95FF" stroke-opacity="0.7" stroke-width="2"/>
+    <path class="beam" d="M305 112L165 252" stroke="#2DD7FF" stroke-opacity="0.65" stroke-width="2"/>
+
+    <circle class="corePulse" cx="235" cy="182" r="28" fill="#123C65"/>
+    <circle class="corePulse" cx="235" cy="182" r="14" fill="#63F5D0" filter="url(#glow)"/>
+
+    <circle class="dotA" cx="235" cy="87" r="8" fill="#2DD7FF" filter="url(#glow)"/>
+    <circle class="dotB" cx="332" cy="182" r="8" fill="#63F5D0" filter="url(#glow)"/>
+    <circle class="dotC" cx="235" cy="278" r="8" fill="#7A95FF" filter="url(#glow)"/>
+    <circle class="dotD" cx="138" cy="182" r="8" fill="#9FE7FF" filter="url(#glow)"/>
+
+    <text x="194" y="188" fill="#E3F2FF" font-family="'JetBrains Mono', Menlo, monospace" font-size="17">CORE</text>
+
+    <text x="198" y="73" fill="#BFE1FF" font-family="'IBM Plex Sans', Arial, sans-serif" font-size="18">Backend</text>
+    <text x="344" y="187" fill="#BFE1FF" font-family="'IBM Plex Sans', Arial, sans-serif" font-size="18">AI/Sec</text>
+    <text x="187" y="307" fill="#BFE1FF" font-family="'IBM Plex Sans', Arial, sans-serif" font-size="18">Cloud</text>
+    <text x="67" y="187" fill="#BFE1FF" font-family="'IBM Plex Sans', Arial, sans-serif" font-size="18">Execution</text>
+
+    <text x="24" y="330" fill="#89AED2" font-family="'JetBrains Mono', Menlo, monospace" font-size="18">Signal engine: build quality + security + delivery speed</text>
+  </g>
+
+  <g transform="translate(548 40)">
+    <rect width="608" height="350" rx="16" fill="#09172F" stroke="#1D3D65"/>
+    <text x="24" y="42" fill="#A8D0F5" font-family="'JetBrains Mono', Menlo, monospace" font-size="22">SKILLS://LIVE_LEVELS</text>
+
+    <text x="24" y="94" fill="#E2F3FF" font-family="'IBM Plex Sans', Arial, sans-serif" font-size="24">Backend Systems</text>
+    <rect x="24" y="108" width="330" height="14" rx="7" fill="#0E2B4A"/>
+    <rect class="lvl1" x="24" y="108" width="308" height="14" rx="7" fill="url(#lane)"/>
+    <text x="372" y="121" fill="#97C1E8" font-family="'JetBrains Mono', Menlo, monospace" font-size="18">Spring Boot, APIs, SQL</text>
+
+    <text x="24" y="162" fill="#E2F3FF" font-family="'IBM Plex Sans', Arial, sans-serif" font-size="24">AI + Security Engineering</text>
+    <rect x="24" y="176" width="330" height="14" rx="7" fill="#0E2B4A"/>
+    <rect class="lvl2" x="24" y="176" width="292" height="14" rx="7" fill="url(#lane)"/>
+    <text x="372" y="189" fill="#97C1E8" font-family="'JetBrains Mono', Menlo, monospace" font-size="18">NLP, audits, secure flows</text>
+
+    <text x="24" y="230" fill="#E2F3FF" font-family="'IBM Plex Sans', Arial, sans-serif" font-size="24">Cloud + DevOps</text>
+    <rect x="24" y="244" width="330" height="14" rx="7" fill="#0E2B4A"/>
+    <rect class="lvl3" x="24" y="244" width="276" height="14" rx="7" fill="url(#lane)"/>
+    <text x="372" y="257" fill="#97C1E8" font-family="'JetBrains Mono', Menlo, monospace" font-size="18">Docker, CI/CD, AWS</text>
+
+    <text x="24" y="298" fill="#E2F3FF" font-family="'IBM Plex Sans', Arial, sans-serif" font-size="24">Product Execution</text>
+    <rect x="24" y="312" width="330" height="14" rx="7" fill="#0E2B4A"/>
+    <rect class="lvl4" x="24" y="312" width="286" height="14" rx="7" fill="url(#lane)"/>
+    <text x="372" y="325" fill="#97C1E8" font-family="'JetBrains Mono', Menlo, monospace" font-size="18">Ship fast, iterate safely</text>
+  </g>
+</svg>
