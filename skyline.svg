@@ -1,0 +1,468 @@
+<svg width="900" height="340" viewBox="0 0 900 340" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="bg7" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%"   style="stop-color:#010810"/>
+      <stop offset="50%"  style="stop-color:#020b18"/>
+      <stop offset="100%" style="stop-color:#030912"/>
+    </linearGradient>
+
+    <!-- City horizon gradient -->
+    <linearGradient id="cityGrad" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%"   style="stop-color:#00f5d4;stop-opacity:0.18"/>
+      <stop offset="60%"  style="stop-color:#a855f7;stop-opacity:0.08"/>
+      <stop offset="100%" style="stop-color:#020c1b;stop-opacity:0"/>
+    </linearGradient>
+
+    <!-- Ground glow -->
+    <linearGradient id="groundGlow" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%"   style="stop-color:#00f5d4;stop-opacity:0.12"/>
+      <stop offset="100%" style="stop-color:#00f5d4;stop-opacity:0"/>
+    </linearGradient>
+
+    <!-- Isometric building gradients -->
+    <linearGradient id="bFace" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%"   style="stop-color:#00f5d4;stop-opacity:0.5"/>
+      <stop offset="100%" style="stop-color:#00c9a7;stop-opacity:0.3"/>
+    </linearGradient>
+    <linearGradient id="bSide" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%"   style="stop-color:#005a52;stop-opacity:0.6"/>
+      <stop offset="100%" style="stop-color:#003d38;stop-opacity:0.4"/>
+    </linearGradient>
+    <linearGradient id="bTop" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%"   style="stop-color:#00f5d4;stop-opacity:0.8"/>
+      <stop offset="100%" style="stop-color:#00e5c4;stop-opacity:0.6"/>
+    </linearGradient>
+
+    <!-- Purple building -->
+    <linearGradient id="pFace" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%"   style="stop-color:#a855f7;stop-opacity:0.5"/>
+      <stop offset="100%" style="stop-color:#7c3aed;stop-opacity:0.3"/>
+    </linearGradient>
+    <linearGradient id="pSide" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%"   style="stop-color:#4c1d95;stop-opacity:0.6"/>
+      <stop offset="100%" style="stop-color:#2e1065;stop-opacity:0.4"/>
+    </linearGradient>
+    <linearGradient id="pTop" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%"   style="stop-color:#a855f7;stop-opacity:0.85"/>
+      <stop offset="100%" style="stop-color:#9333ea;stop-opacity:0.6"/>
+    </linearGradient>
+
+    <!-- Amber building -->
+    <linearGradient id="aFace" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%"   style="stop-color:#f59e0b;stop-opacity:0.5"/>
+      <stop offset="100%" style="stop-color:#d97706;stop-opacity:0.3"/>
+    </linearGradient>
+    <linearGradient id="aSide" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%"   style="stop-color:#78350f;stop-opacity:0.6"/>
+      <stop offset="100%" style="stop-color:#451a03;stop-opacity:0.4"/>
+    </linearGradient>
+    <linearGradient id="aTop" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%"   style="stop-color:#f59e0b;stop-opacity:0.85"/>
+      <stop offset="100%" style="stop-color:#fbbf24;stop-opacity:0.6"/>
+    </linearGradient>
+
+    <!-- Red building -->
+    <linearGradient id="rFace" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%"   style="stop-color:#f87171;stop-opacity:0.45"/>
+      <stop offset="100%" style="stop-color:#dc2626;stop-opacity:0.3"/>
+    </linearGradient>
+    <linearGradient id="rSide" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%"   style="stop-color:#7f1d1d;stop-opacity:0.6"/>
+      <stop offset="100%" style="stop-color:#450a0a;stop-opacity:0.4"/>
+    </linearGradient>
+    <linearGradient id="rTop" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%"   style="stop-color:#f87171;stop-opacity:0.8"/>
+      <stop offset="100%" style="stop-color:#ef4444;stop-opacity:0.6"/>
+    </linearGradient>
+
+    <!-- Sweep gradient for scan -->
+    <linearGradient id="sweepH" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%"   style="stop-color:#00f5d4;stop-opacity:0"/>
+      <stop offset="50%"  style="stop-color:#00f5d4;stop-opacity:0.5"/>
+      <stop offset="100%" style="stop-color:#00f5d4;stop-opacity:0"/>
+    </linearGradient>
+
+    <filter id="g7T" x="-60%" y="-60%" width="220%" height="220%">
+      <feGaussianBlur stdDeviation="10" result="b"/>
+      <feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge>
+    </filter>
+    <filter id="g7M" x="-30%" y="-30%" width="160%" height="160%">
+      <feGaussianBlur stdDeviation="4" result="b"/>
+      <feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge>
+    </filter>
+    <filter id="g7S" x="-15%" y="-15%" width="130%" height="130%">
+      <feGaussianBlur stdDeviation="2" result="b"/>
+      <feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge>
+    </filter>
+
+    <clipPath id="clip7">
+      <rect x="1" y="1" width="898" height="338" rx="14"/>
+    </clipPath>
+  </defs>
+
+  <!-- Background -->
+  <rect width="900" height="340" rx="14" fill="url(#bg7)"/>
+
+  <!-- Stars -->
+  <g clip-path="url(#clip7)">
+    <circle cx="42"  cy="55"  r="1"   fill="#ffffff" opacity="0.5"/>
+    <circle cx="118" cy="32"  r="1.2" fill="#00f5d4" opacity="0.4">
+      <animate attributeName="opacity" values="0.4;0.9;0.4" dur="2.8s" repeatCount="indefinite"/>
+    </circle>
+    <circle cx="220" cy="48"  r="0.8" fill="#ffffff" opacity="0.45"/>
+    <circle cx="358" cy="22"  r="1"   fill="#ffffff" opacity="0.35"/>
+    <circle cx="490" cy="38"  r="1.2" fill="#a855f7" opacity="0.45">
+      <animate attributeName="opacity" values="0.45;1;0.45" dur="3.2s" repeatCount="indefinite"/>
+    </circle>
+    <circle cx="612" cy="28"  r="0.8" fill="#ffffff" opacity="0.4"/>
+    <circle cx="720" cy="52"  r="1"   fill="#f59e0b" opacity="0.4">
+      <animate attributeName="opacity" values="0.4;0.85;0.4" dur="2.1s" repeatCount="indefinite"/>
+    </circle>
+    <circle cx="830" cy="35"  r="1.2" fill="#ffffff" opacity="0.5"/>
+    <circle cx="875" cy="68"  r="0.8" fill="#00f5d4" opacity="0.35"/>
+    <circle cx="155" cy="88"  r="0.8" fill="#ffffff" opacity="0.3"/>
+    <circle cx="640" cy="75"  r="1"   fill="#ffffff" opacity="0.3"/>
+    <circle cx="780" cy="90"  r="0.8" fill="#a855f7" opacity="0.4">
+      <animate attributeName="opacity" values="0.4;0.8;0.4" dur="1.9s" repeatCount="indefinite"/>
+    </circle>
+  </g>
+
+  <!-- Grid -->
+  <g opacity="0.055" clip-path="url(#clip7)">
+    <line x1="0" y1="85"  x2="900" y2="85"  stroke="#00f5d4" stroke-width="0.5"/>
+    <line x1="0" y1="170" x2="900" y2="170" stroke="#00f5d4" stroke-width="0.5"/>
+    <line x1="0" y1="255" x2="900" y2="255" stroke="#00f5d4" stroke-width="0.5"/>
+    <line x1="180" y1="0" x2="180" y2="340" stroke="#00f5d4" stroke-width="0.5"/>
+    <line x1="360" y1="0" x2="360" y2="340" stroke="#00f5d4" stroke-width="0.5"/>
+    <line x1="540" y1="0" x2="540" y2="340" stroke="#00f5d4" stroke-width="0.5"/>
+    <line x1="720" y1="0" x2="720" y2="340" stroke="#00f5d4" stroke-width="0.5"/>
+  </g>
+
+  <!-- Ambient glow -->
+  <ellipse cx="450" cy="210" rx="380" ry="80" fill="url(#groundGlow)"/>
+  <ellipse cx="450" cy="160" rx="300" ry="120" fill="url(#cityGrad)"/>
+
+  <!-- Outer border -->
+  <rect x="1" y="1" width="898" height="338" rx="14" fill="none" stroke="#00f5d4" stroke-width="1" stroke-opacity="0.4"/>
+  <rect x="3" y="3" width="894" height="334" rx="12" fill="none" stroke="#00f5d4" stroke-width="0.4" stroke-opacity="0.12"/>
+  <!-- Corners -->
+  <polyline points="1,28 1,1 28,1"       fill="none" stroke="#00f5d4" stroke-width="1.5" stroke-opacity="0.7"/>
+  <polyline points="872,1 899,1 899,28"  fill="none" stroke="#00f5d4" stroke-width="1.5" stroke-opacity="0.7"/>
+  <polyline points="1,312 1,339 28,339"  fill="none" stroke="#00f5d4" stroke-width="1.5" stroke-opacity="0.7"/>
+  <polyline points="872,339 899,339 899,312" fill="none" stroke="#00f5d4" stroke-width="1.5" stroke-opacity="0.7"/>
+
+  <!-- Section label -->
+  <foreignObject x="20" y="11" width="860" height="24">
+    <div xmlns="http://www.w3.org/1999/xhtml">
+      <style>
+        @keyframes sl7p{0%,100%{opacity:.8}50%{opacity:1;text-shadow:0 0 16px rgba(0,245,212,.9)}}
+        .sl7{font-family:'Courier New',monospace;font-size:10px;font-weight:700;color:#00f5d4;letter-spacing:4px;text-transform:uppercase;animation:sl7p 4s ease-in-out infinite;display:flex;align-items:center;gap:10px}
+        .sl7-ln{flex:1;height:1px;background:linear-gradient(to right,rgba(0,245,212,.45),transparent)}
+        .sl7-id{color:rgba(148,163,184,.4);font-size:9px;letter-spacing:2px}
+      </style>
+      <div class="sl7">
+        <span>SKYLINE://COMMIT_CITY</span>
+        <span class="sl7-ln"></span>
+        <span class="sl7-id">SEC_07 · CONTRIBUTION_ARCHITECTURE · AUTO-UPDATED 8H</span>
+      </div>
+    </div>
+  </foreignObject>
+  <line x1="20" y1="37" x2="880" y2="37" stroke="#00f5d4" stroke-width=".5" stroke-opacity=".18"/>
+
+  <!-- ════════════════════════════════════════════ -->
+  <!-- ISOMETRIC CITY SKYLINE (pure SVG)           -->
+  <!-- ════════════════════════════════════════════ -->
+
+  <!-- Ground plane -->
+  <ellipse cx="450" cy="230" rx="390" ry="30" fill="none" stroke="#00f5d4" stroke-width="0.5" stroke-opacity="0.1"/>
+  <ellipse cx="450" cy="230" rx="300" ry="22" fill="none" stroke="#00f5d4" stroke-width="0.5" stroke-opacity="0.08"/>
+
+  <!-- ── HELPER: isometric building macro
+       Each building: top rhombus + left face rect + right face rect
+       Using isometric projection: x-axis goes right-down, y-axis goes left-down, z goes up
+       Base unit: 20px wide, 10px tall for iso tiles
+  ── -->
+
+  <!-- ROW 1 — BACKGROUND BUILDINGS (smaller, muted) -->
+  <!-- Building BG-1 teal small -->
+  <g opacity="0.4">
+    <polygon points="180,148 200,138 220,148 200,158" fill="url(#bTop)"/>
+    <polygon points="180,148 200,158 200,200 180,190" fill="url(#bSide)"/>
+    <polygon points="200,158 220,148 220,190 200,200" fill="url(#bFace)"/>
+  </g>
+
+  <!-- Building BG-2 purple tall -->
+  <g opacity="0.35">
+    <polygon points="240,130 260,120 280,130 260,140" fill="url(#pTop)"/>
+    <polygon points="240,130 260,140 260,200 240,190" fill="url(#pSide)"/>
+    <polygon points="260,140 280,130 280,200 260,200" fill="url(#pFace)"/>
+  </g>
+
+  <!-- Building BG-3 amber medium -->
+  <g opacity="0.35">
+    <polygon points="580,140 600,130 620,140 600,150" fill="url(#aTop)"/>
+    <polygon points="580,140 600,150 600,200 580,190" fill="url(#aSide)"/>
+    <polygon points="600,150 620,140 620,200 600,200" fill="url(#aFace)"/>
+  </g>
+
+  <!-- Building BG-4 red small -->
+  <g opacity="0.3">
+    <polygon points="640,152 660,142 680,152 660,162" fill="url(#rTop)"/>
+    <polygon points="640,152 660,162 660,200 640,190" fill="url(#rSide)"/>
+    <polygon points="660,162 680,152 680,200 660,200" fill="url(#rFace)"/>
+  </g>
+
+  <!-- ROW 2 — MID BUILDINGS -->
+
+  <!-- Building M-1 teal -->
+  <g>
+    <polygon points="140,170 168,155 196,170 168,185" fill="url(#bTop)"/>
+    <polygon points="140,170 168,185 168,230 140,215" fill="url(#bSide)"/>
+    <polygon points="168,185 196,170 196,230 168,230" fill="url(#bFace)"/>
+    <!-- Windows -->
+    <rect x="171" y="190" width="6" height="5" rx="1" fill="rgba(0,245,212,0.4)">
+      <animate attributeName="opacity" values="1;0.2;1" dur="2.3s" repeatCount="indefinite"/>
+    </rect>
+    <rect x="180" y="190" width="6" height="5" rx="1" fill="rgba(0,245,212,0.4)">
+      <animate attributeName="opacity" values="0.3;1;0.3" dur="1.8s" repeatCount="indefinite" begin="0.5s"/>
+    </rect>
+    <rect x="171" y="200" width="6" height="5" rx="1" fill="rgba(0,245,212,0.3)">
+      <animate attributeName="opacity" values="1;0.3;1" dur="3.1s" repeatCount="indefinite" begin="1s"/>
+    </rect>
+    <rect x="180" y="200" width="6" height="5" rx="1" fill="rgba(0,245,212,0.4)">
+      <animate attributeName="opacity" values="0.5;1;0.5" dur="2.7s" repeatCount="indefinite" begin="0.3s"/>
+    </rect>
+  </g>
+
+  <!-- Building M-2 purple (tallest left) -->
+  <g>
+    <polygon points="196,155 224,140 252,155 224,170" fill="url(#pTop)">
+      <animate attributeName="fill-opacity" values="0.85;1;0.85" dur="3s" repeatCount="indefinite"/>
+    </polygon>
+    <polygon points="196,155 224,170 224,230 196,215" fill="url(#pSide)"/>
+    <polygon points="224,170 252,155 252,230 224,230" fill="url(#pFace)"/>
+    <!-- Windows -->
+    <rect x="228" y="178" width="5" height="5" rx="1" fill="rgba(168,85,247,0.6)">
+      <animate attributeName="opacity" values="1;0.2;1" dur="1.9s" repeatCount="indefinite"/>
+    </rect>
+    <rect x="235" y="178" width="5" height="5" rx="1" fill="rgba(168,85,247,0.4)">
+      <animate attributeName="opacity" values="0.4;1;0.4" dur="2.5s" repeatCount="indefinite" begin="0.7s"/>
+    </rect>
+    <rect x="228" y="188" width="5" height="5" rx="1" fill="rgba(168,85,247,0.5)">
+      <animate attributeName="opacity" values="0.8;0.2;0.8" dur="3.3s" repeatCount="indefinite" begin="1.2s"/>
+    </rect>
+    <rect x="235" y="188" width="5" height="5" rx="1" fill="rgba(168,85,247,0.6)">
+      <animate attributeName="opacity" values="0.2;1;0.2" dur="2.1s" repeatCount="indefinite" begin="0.4s"/>
+    </rect>
+    <rect x="228" y="198" width="5" height="5" rx="1" fill="rgba(168,85,247,0.4)">
+      <animate attributeName="opacity" values="1;0.3;1" dur="1.7s" repeatCount="indefinite" begin="0.9s"/>
+    </rect>
+    <!-- Antenna -->
+    <line x1="224" y1="140" x2="224" y2="118" stroke="#a855f7" stroke-width="1.5" stroke-opacity="0.8"/>
+    <circle cx="224" cy="115" r="3" fill="#a855f7" filter="url(#g7S)">
+      <animate attributeName="opacity" values="1;0.1;1" dur="1s" repeatCount="indefinite"/>
+    </circle>
+  </g>
+
+  <!-- Building M-3 amber (center-left) -->
+  <g>
+    <polygon points="320,162 348,147 376,162 348,177" fill="url(#aTop)"/>
+    <polygon points="320,162 348,177 348,230 320,215" fill="url(#aSide)"/>
+    <polygon points="348,177 376,162 376,230 348,230" fill="url(#aFace)"/>
+    <rect x="351" y="185" width="6" height="5" rx="1" fill="rgba(245,158,11,0.5)">
+      <animate attributeName="opacity" values="1;0.3;1" dur="2.2s" repeatCount="indefinite"/>
+    </rect>
+    <rect x="360" y="185" width="6" height="5" rx="1" fill="rgba(245,158,11,0.4)">
+      <animate attributeName="opacity" values="0.3;1;0.3" dur="2.8s" repeatCount="indefinite" begin="0.6s"/>
+    </rect>
+    <rect x="351" y="196" width="6" height="5" rx="1" fill="rgba(245,158,11,0.5)">
+      <animate attributeName="opacity" values="0.7;0.2;0.7" dur="1.6s" repeatCount="indefinite" begin="1.1s"/>
+    </rect>
+  </g>
+
+  <!-- ROW 3 — HERO CENTER BUILDINGS -->
+
+  <!-- Building H-1 MEGA teal (tallest — most commits!) -->
+  <g filter="url(#g7S)">
+    <polygon points="430,110 466,90 502,110 466,130" fill="url(#bTop)">
+      <animate attributeName="fill-opacity" values="0.8;1;0.8" dur="4s" repeatCount="indefinite"/>
+    </polygon>
+    <polygon points="430,110 466,130 466,230 430,210" fill="url(#bSide)"/>
+    <polygon points="466,130 502,110 502,230 466,230" fill="url(#bFace)"/>
+    <!-- Windows grid -->
+    <rect x="469" y="140" width="7" height="6" rx="1" fill="rgba(0,245,212,0.55)">
+      <animate attributeName="opacity" values="1;0.2;1" dur="2.4s" repeatCount="indefinite"/>
+    </rect>
+    <rect x="479" y="140" width="7" height="6" rx="1" fill="rgba(0,245,212,0.4)">
+      <animate attributeName="opacity" values="0.3;1;0.3" dur="1.9s" repeatCount="indefinite" begin="0.5s"/>
+    </rect>
+    <rect x="489" y="140" width="7" height="6" rx="1" fill="rgba(0,245,212,0.5)">
+      <animate attributeName="opacity" values="0.8;0.1;0.8" dur="3.1s" repeatCount="indefinite" begin="1.2s"/>
+    </rect>
+    <rect x="469" y="152" width="7" height="6" rx="1" fill="rgba(0,245,212,0.45)">
+      <animate attributeName="opacity" values="0.5;1;0.5" dur="2.7s" repeatCount="indefinite" begin="0.3s"/>
+    </rect>
+    <rect x="479" y="152" width="7" height="6" rx="1" fill="rgba(0,245,212,0.6)">
+      <animate attributeName="opacity" values="1;0.3;1" dur="2.0s" repeatCount="indefinite" begin="0.8s"/>
+    </rect>
+    <rect x="489" y="152" width="7" height="6" rx="1" fill="rgba(0,245,212,0.35)">
+      <animate attributeName="opacity" values="0.2;0.9;0.2" dur="1.7s" repeatCount="indefinite" begin="1.5s"/>
+    </rect>
+    <rect x="469" y="165" width="7" height="6" rx="1" fill="rgba(0,245,212,0.5)">
+      <animate attributeName="opacity" values="0.9;0.2;0.9" dur="2.3s" repeatCount="indefinite" begin="0.2s"/>
+    </rect>
+    <rect x="479" y="165" width="7" height="6" rx="1" fill="rgba(0,245,212,0.4)">
+      <animate attributeName="opacity" values="0.3;1;0.3" dur="3.4s" repeatCount="indefinite" begin="1.1s"/>
+    </rect>
+    <rect x="489" y="165" width="7" height="6" rx="1" fill="rgba(0,245,212,0.55)">
+      <animate attributeName="opacity" values="1;0.1;1" dur="2.6s" repeatCount="indefinite" begin="0.6s"/>
+    </rect>
+    <!-- Top antenna -->
+    <line x1="466" y1="90" x2="466" y2="62" stroke="#00f5d4" stroke-width="1.5" stroke-opacity="0.9"/>
+    <circle cx="466" cy="58" r="4" fill="#00f5d4" filter="url(#g7T)">
+      <animate attributeName="r" values="3;6;3" dur="1.2s" repeatCount="indefinite"/>
+      <animate attributeName="opacity" values="1;0.2;1" dur="1.2s" repeatCount="indefinite"/>
+    </circle>
+  </g>
+
+  <!-- Building H-2 purple (right of center) -->
+  <g>
+    <polygon points="502,128 534,112 566,128 534,144" fill="url(#pTop)"/>
+    <polygon points="502,128 534,144 534,230 502,214" fill="url(#pSide)"/>
+    <polygon points="534,144 566,128 566,230 534,230" fill="url(#pFace)"/>
+    <rect x="537" y="155" width="6" height="5" rx="1" fill="rgba(168,85,247,0.5)">
+      <animate attributeName="opacity" values="1;0.2;1" dur="2.1s" repeatCount="indefinite"/>
+    </rect>
+    <rect x="546" y="155" width="6" height="5" rx="1" fill="rgba(168,85,247,0.4)">
+      <animate attributeName="opacity" values="0.2;1;0.2" dur="1.8s" repeatCount="indefinite" begin="0.7s"/>
+    </rect>
+    <rect x="537" y="165" width="6" height="5" rx="1" fill="rgba(168,85,247,0.55)">
+      <animate attributeName="opacity" values="0.8;0.1;0.8" dur="2.9s" repeatCount="indefinite" begin="0.4s"/>
+    </rect>
+    <rect x="546" y="165" width="6" height="5" rx="1" fill="rgba(168,85,247,0.4)">
+      <animate attributeName="opacity" values="0.3;0.9;0.3" dur="2.4s" repeatCount="indefinite" begin="1.3s"/>
+    </rect>
+    <line x1="534" y1="112" x2="534" y2="90" stroke="#a855f7" stroke-width="1.2" stroke-opacity="0.8"/>
+    <circle cx="534" cy="87" r="3" fill="#a855f7" filter="url(#g7S)">
+      <animate attributeName="opacity" values="1;0.1;1" dur="1.5s" repeatCount="indefinite" begin="0.6s"/>
+    </circle>
+  </g>
+
+  <!-- Building H-3 amber (far right) -->
+  <g>
+    <polygon points="620,145 652,128 684,145 652,162" fill="url(#aTop)"/>
+    <polygon points="620,145 652,162 652,230 620,214" fill="url(#aSide)"/>
+    <polygon points="652,162 684,145 684,230 652,230" fill="url(#aFace)"/>
+    <rect x="655" y="172" width="6" height="5" rx="1" fill="rgba(245,158,11,0.5)">
+      <animate attributeName="opacity" values="0.8;0.2;0.8" dur="2.6s" repeatCount="indefinite"/>
+    </rect>
+    <rect x="664" y="172" width="6" height="5" rx="1" fill="rgba(245,158,11,0.4)">
+      <animate attributeName="opacity" values="0.2;1;0.2" dur="2.0s" repeatCount="indefinite" begin="0.8s"/>
+    </rect>
+    <rect x="655" y="183" width="6" height="5" rx="1" fill="rgba(245,158,11,0.55)">
+      <animate attributeName="opacity" values="1;0.3;1" dur="3.2s" repeatCount="indefinite" begin="1.4s"/>
+    </rect>
+  </g>
+
+  <!-- Building H-4 red small (far right) -->
+  <g opacity="0.8">
+    <polygon points="690,158 716,144 742,158 716,172" fill="url(#rTop)"/>
+    <polygon points="690,158 716,172 716,230 690,216" fill="url(#rSide)"/>
+    <polygon points="716,172 742,158 742,230 716,230" fill="url(#rFace)"/>
+    <rect x="719" y="181" width="5" height="4" rx="1" fill="rgba(248,113,113,0.5)">
+      <animate attributeName="opacity" values="1;0.2;1" dur="1.6s" repeatCount="indefinite"/>
+    </rect>
+    <rect x="727" y="181" width="5" height="4" rx="1" fill="rgba(248,113,113,0.4)">
+      <animate attributeName="opacity" values="0.3;1;0.3" dur="2.3s" repeatCount="indefinite" begin="0.5s"/>
+    </rect>
+  </g>
+
+  <!-- Ground line -->
+  <line x1="60" y1="230" x2="840" y2="230" stroke="#00f5d4" stroke-width="0.8" stroke-opacity="0.18"/>
+
+  <!-- Ground reflection / glow -->
+  <ellipse cx="450" cy="232" rx="370" ry="8" fill="#00f5d4" opacity="0.04"/>
+
+  <!-- Horizontal scan sweep across skyline -->
+  <rect x="20" y="90" width="860" height="3" fill="url(#sweepH)" opacity="0.7">
+    <animate attributeName="y" values="90;230;90" dur="5s" ease-in-out="true" repeatCount="indefinite"/>
+    <animate attributeName="opacity" values="0;0.7;0" dur="5s" repeatCount="indefinite"/>
+  </rect>
+
+  <!-- ════ BOTTOM INFO BAR ════ -->
+  <rect x="20" y="248" width="860" height="72" rx="8" fill="rgba(5,15,30,0.9)" stroke="#00f5d4" stroke-width=".5" stroke-opacity=".2"/>
+  <line x1="30" y1="248" x2="870" y2="248" stroke="#00f5d4" stroke-width="1.2" stroke-opacity=".4"/>
+  <rect x="20" y="248" width="860" height="3" rx="2" fill="#00f5d4" opacity=".35"/>
+
+  <foreignObject x="28" y="254" width="844" height="62">
+    <div xmlns="http://www.w3.org/1999/xhtml">
+      <style>
+        @keyframes infoIn{from{opacity:0;transform:translateY(10px)}to{opacity:1;transform:translateY(0)}}
+        @keyframes numPop{from{opacity:0;transform:scale(.6)}to{opacity:1;transform:scale(1)}}
+        @keyframes actionPulse{0%,100%{opacity:.6}50%{opacity:1;text-shadow:0 0 10px rgba(74,222,128,.6)}}
+        @keyframes blinkInfo{0%,100%{opacity:1}50%{opacity:.1}}
+
+        .info-bar{
+          font-family:'Courier New',monospace;
+          display:flex;align-items:center;gap:0;
+          height:60px;
+        }
+        .info-block{
+          display:flex;flex-direction:column;justify-content:center;
+          padding:0 20px;border-right:1px solid rgba(0,245,212,.12);
+          animation:infoIn .5s ease-out both;
+          height:100%;
+        }
+        .info-block:last-child{border-right:none}
+        .ib-1{animation-delay:.2s;flex:1}
+        .ib-2{animation-delay:.4s;min-width:110px}
+        .ib-3{animation-delay:.6s;min-width:110px}
+        .ib-4{animation-delay:.8s;min-width:110px}
+        .ib-5{animation-delay:1s;min-width:170px}
+
+        .ib-label{font-size:8px;font-weight:700;color:rgba(148,163,184,.4);letter-spacing:2px;text-transform:uppercase;margin-bottom:5px}
+        .ib-val{font-size:15px;font-weight:900;letter-spacing:-0.5px;animation:numPop .6s cubic-bezier(.34,1.56,.64,1) both}
+        .ib-1 .ib-val{color:#00f5d4;text-shadow:0 0 12px rgba(0,245,212,.5);animation-delay:.5s}
+        .ib-2 .ib-val{color:#a855f7;text-shadow:0 0 12px rgba(168,85,247,.5);animation-delay:.7s}
+        .ib-3 .ib-val{color:#f59e0b;text-shadow:0 0 12px rgba(245,158,11,.5);animation-delay:.9s}
+        .ib-4 .ib-val{color:#4ade80;text-shadow:0 0 12px rgba(74,222,128,.5);animation-delay:1.1s}
+        .ib-sub{font-size:9px;color:rgba(148,163,184,.4);letter-spacing:.5px;margin-top:2px}
+
+        .action-row{display:flex;align-items:center;gap:6px}
+        .act-dot{width:6px;height:6px;border-radius:50%;background:#4ade80;animation:blinkInfo 1.4s step-end infinite;box-shadow:0 0 5px #4ade80}
+        .act-text{font-size:9px;font-weight:700;color:rgba(74,222,128,.7);letter-spacing:1.5px;animation:actionPulse 2s ease-in-out infinite}
+        .act-sub{font-size:8px;color:rgba(148,163,184,.35);letter-spacing:.5px;margin-top:3px}
+      </style>
+      <div class="info-bar">
+        <div class="info-block ib-1">
+          <div class="ib-label">SKYLINE PERIOD</div>
+          <div class="ib-val">2025 → 2026</div>
+          <div class="ib-sub">Mar 09, 2025 — Mar 11, 2026</div>
+        </div>
+        <div class="info-block ib-2">
+          <div class="ib-label">CONTRIBUTIONS</div>
+          <div class="ib-val">47+</div>
+          <div class="ib-sub">commits tracked</div>
+        </div>
+        <div class="info-block ib-3">
+          <div class="ib-label">REPOS ACTIVE</div>
+          <div class="ib-val">14</div>
+          <div class="ib-sub">public repos</div>
+        </div>
+        <div class="info-block ib-4">
+          <div class="ib-label">STARS EARNED</div>
+          <div class="ib-val">⭐ 1</div>
+          <div class="ib-sub">across projects</div>
+        </div>
+        <div class="info-block ib-5">
+          <div class="ib-label">AUTO-UPDATE STATUS</div>
+          <div class="action-row">
+            <span class="act-dot"></span>
+            <span class="act-text">LIVE — every 8 hours</span>
+          </div>
+          <div class="act-sub">via GitHub Actions workflow</div>
+        </div>
+      </div>
+    </div>
+  </foreignObject>
+</svg>

@@ -1,0 +1,546 @@
+<svg width="900" height="460" viewBox="0 0 900 460" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="bg4" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#020c1b"/>
+      <stop offset="100%" style="stop-color:#03091a"/>
+    </linearGradient>
+    <linearGradient id="leftPanel4" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#071a30;stop-opacity:0.95"/>
+      <stop offset="100%" style="stop-color:#040e1e;stop-opacity:0.98"/>
+    </linearGradient>
+    <linearGradient id="rightPanel4" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#0a0f20;stop-opacity:0.95"/>
+      <stop offset="100%" style="stop-color:#050810;stop-opacity:0.98"/>
+    </linearGradient>
+
+    <!-- Glow filters -->
+    <filter id="g4T" x="-60%" y="-60%" width="220%" height="220%">
+      <feGaussianBlur stdDeviation="9" result="b"/>
+      <feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge>
+    </filter>
+    <filter id="g4M" x="-35%" y="-35%" width="170%" height="170%">
+      <feGaussianBlur stdDeviation="5" result="b"/>
+      <feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge>
+    </filter>
+    <filter id="g4S" x="-20%" y="-20%" width="140%" height="140%">
+      <feGaussianBlur stdDeviation="2.5" result="b"/>
+      <feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge>
+    </filter>
+
+    <!-- Node gradients -->
+    <radialGradient id="nodeCore" cx="50%" cy="35%" r="65%">
+      <stop offset="0%" style="stop-color:#00f5d4;stop-opacity:0.9"/>
+      <stop offset="100%" style="stop-color:#00897a;stop-opacity:0.7"/>
+    </radialGradient>
+    <radialGradient id="nodeBackend" cx="50%" cy="35%" r="65%">
+      <stop offset="0%" style="stop-color:#38bdf8;stop-opacity:0.9"/>
+      <stop offset="100%" style="stop-color:#0284c7;stop-opacity:0.7"/>
+    </radialGradient>
+    <radialGradient id="nodeAI" cx="50%" cy="35%" r="65%">
+      <stop offset="0%" style="stop-color:#a855f7;stop-opacity:0.9"/>
+      <stop offset="100%" style="stop-color:#6d28d9;stop-opacity:0.7"/>
+    </radialGradient>
+    <radialGradient id="nodeCloud" cx="50%" cy="35%" r="65%">
+      <stop offset="0%" style="stop-color:#f59e0b;stop-opacity:0.9"/>
+      <stop offset="100%" style="stop-color:#b45309;stop-opacity:0.7"/>
+    </radialGradient>
+    <radialGradient id="nodeExec" cx="50%" cy="35%" r="65%">
+      <stop offset="0%" style="stop-color:#4ade80;stop-opacity:0.9"/>
+      <stop offset="100%" style="stop-color:#15803d;stop-opacity:0.7"/>
+    </radialGradient>
+
+    <!-- Shimmer for bars -->
+    <linearGradient id="shimmer4" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" style="stop-color:rgba(255,255,255,0)"/>
+      <stop offset="50%" style="stop-color:rgba(255,255,255,0.45)"/>
+      <stop offset="100%" style="stop-color:rgba(255,255,255,0)"/>
+    </linearGradient>
+
+    <clipPath id="clip4">
+      <rect x="1" y="1" width="898" height="458" rx="14"/>
+    </clipPath>
+  </defs>
+
+  <!-- Background -->
+  <rect width="900" height="460" rx="14" fill="url(#bg4)"/>
+
+  <!-- Hex grid pattern background (subtle) -->
+  <g opacity="0.055" clip-path="url(#clip4)">
+    <!-- Vertical columns -->
+    <line x1="90"  y1="0" x2="90"  y2="460" stroke="#a855f7" stroke-width="0.5"/>
+    <line x1="180" y1="0" x2="180" y2="460" stroke="#a855f7" stroke-width="0.5"/>
+    <line x1="270" y1="0" x2="270" y2="460" stroke="#a855f7" stroke-width="0.5"/>
+    <line x1="360" y1="0" x2="360" y2="460" stroke="#a855f7" stroke-width="0.5"/>
+    <line x1="450" y1="0" x2="450" y2="460" stroke="#a855f7" stroke-width="0.5"/>
+    <line x1="540" y1="0" x2="540" y2="460" stroke="#a855f7" stroke-width="0.5"/>
+    <line x1="630" y1="0" x2="630" y2="460" stroke="#a855f7" stroke-width="0.5"/>
+    <line x1="720" y1="0" x2="720" y2="460" stroke="#a855f7" stroke-width="0.5"/>
+    <line x1="810" y1="0" x2="810" y2="460" stroke="#a855f7" stroke-width="0.5"/>
+    <!-- Horizontals -->
+    <line x1="0" y1="92"  x2="900" y2="92"  stroke="#a855f7" stroke-width="0.5"/>
+    <line x1="0" y1="184" x2="900" y2="184" stroke="#a855f7" stroke-width="0.5"/>
+    <line x1="0" y1="276" x2="900" y2="276" stroke="#a855f7" stroke-width="0.5"/>
+    <line x1="0" y1="368" x2="900" y2="368" stroke="#a855f7" stroke-width="0.5"/>
+  </g>
+
+  <!-- Deep ambient glows -->
+  <circle cx="240" cy="240" r="200" fill="#00f5d4" opacity="0.018"/>
+  <circle cx="680" cy="220" r="180" fill="#a855f7" opacity="0.022"/>
+  <circle cx="680" cy="380" r="120" fill="#f59e0b" opacity="0.018"/>
+
+  <!-- Outer border -->
+  <rect x="1" y="1" width="898" height="458" rx="14" fill="none" stroke="#a855f7" stroke-width="1" stroke-opacity="0.4"/>
+  <!-- Corner ticks — purple theme -->
+  <polyline points="1,30 1,1 30,1"     fill="none" stroke="#a855f7" stroke-width="1.5" stroke-opacity="0.7"/>
+  <polyline points="870,1 899,1 899,30" fill="none" stroke="#a855f7" stroke-width="1.5" stroke-opacity="0.7"/>
+  <polyline points="1,430 1,459 30,459" fill="none" stroke="#a855f7" stroke-width="1.5" stroke-opacity="0.7"/>
+  <polyline points="870,459 899,459 899,430" fill="none" stroke="#a855f7" stroke-width="1.5" stroke-opacity="0.7"/>
+
+  <!-- Section label -->
+  <foreignObject x="20" y="12" width="860" height="26">
+    <div xmlns="http://www.w3.org/1999/xhtml">
+      <style>
+        @keyframes sl4pulse { 0%,100%{opacity:.8} 50%{opacity:1;text-shadow:0 0 16px rgba(168,85,247,.9);} }
+        .sl4 { font-family:'Courier New',monospace; font-size:10px; font-weight:700; color:#a855f7; letter-spacing:4px; text-transform:uppercase; animation:sl4pulse 4s ease-in-out infinite; display:flex; align-items:center; gap:10px; }
+        .sl4-ln { flex:1; height:1px; background:linear-gradient(to right,rgba(168,85,247,.5),transparent); }
+        .sl4-id { color:rgba(148,163,184,.45); font-size:9px; letter-spacing:2px; }
+      </style>
+      <div class="sl4">
+        <span>SKILLS://SIGNAL_MAP</span>
+        <span class="sl4-ln"></span>
+        <span class="sl4-id">SEC_04 · NEURAL_STACK_ANALYSIS</span>
+      </div>
+    </div>
+  </foreignObject>
+  <line x1="20" y1="40" x2="880" y2="40" stroke="#a855f7" stroke-width="0.5" stroke-opacity="0.2"/>
+
+  <!-- ══════════════════════════════════════════════ -->
+  <!-- LEFT — CONSTELLATION NODE NETWORK              -->
+  <!-- ══════════════════════════════════════════════ -->
+  <rect x="20" y="52" width="430" height="392" rx="10" fill="url(#leftPanel4)" stroke="#a855f7" stroke-width=".75" stroke-opacity=".25"/>
+  <line x1="30" y1="52" x2="440" y2="52" stroke="#a855f7" stroke-width="1.5" stroke-opacity=".5"/>
+
+  <!-- Panel header -->
+  <foreignObject x="27" y="57" width="415" height="20">
+    <div xmlns="http://www.w3.org/1999/xhtml">
+      <style>
+        .ph4 { font-family:'Courier New',monospace; font-size:9px; font-weight:700; color:#a855f7; letter-spacing:2.5px; text-transform:uppercase; opacity:.8; }
+      </style>
+      <div class="ph4">SKILLS://CORE_SIGNAL · CONSTELLATION_MAP</div>
+    </div>
+  </foreignObject>
+
+  <!-- ── Constellation edges (drawn first, behind nodes) ── -->
+  <!-- These animate stroke-dashoffset for line-draw effect -->
+
+  <!-- CORE → BACKEND  (up) -->
+  <line x1="230" y1="248" x2="230" y2="130" stroke="#38bdf8" stroke-width="1.2" stroke-opacity="0.35"
+    stroke-dasharray="120" stroke-dashoffset="120">
+    <animate attributeName="stroke-dashoffset" values="120;0" dur="1s" fill="freeze" begin="0.4s"/>
+    <animate attributeName="stroke-opacity" values="0.35;0.6;0.35" dur="3s" repeatCount="indefinite" begin="1.5s"/>
+  </line>
+
+  <!-- CORE → AI/SEC  (right) -->
+  <line x1="230" y1="248" x2="370" y2="248" stroke="#a855f7" stroke-width="1.2" stroke-opacity="0.35"
+    stroke-dasharray="140" stroke-dashoffset="140">
+    <animate attributeName="stroke-dashoffset" values="140;0" dur="1s" fill="freeze" begin="0.6s"/>
+    <animate attributeName="stroke-opacity" values="0.35;0.6;0.35" dur="3.5s" repeatCount="indefinite" begin="1.7s"/>
+  </line>
+
+  <!-- CORE → CLOUD  (down) -->
+  <line x1="230" y1="248" x2="230" y2="366" stroke="#f59e0b" stroke-width="1.2" stroke-opacity="0.35"
+    stroke-dasharray="120" stroke-dashoffset="120">
+    <animate attributeName="stroke-dashoffset" values="120;0" dur="1s" fill="freeze" begin="0.8s"/>
+    <animate attributeName="stroke-opacity" values="0.35;0.6;0.35" dur="4s" repeatCount="indefinite" begin="1.9s"/>
+  </line>
+
+  <!-- CORE → EXECUTION  (left) -->
+  <line x1="230" y1="248" x2="90" y2="248" stroke="#4ade80" stroke-width="1.2" stroke-opacity="0.35"
+    stroke-dasharray="140" stroke-dashoffset="140">
+    <animate attributeName="stroke-dashoffset" values="140;0" dur="1s" fill="freeze" begin="1.0s"/>
+    <animate attributeName="stroke-opacity" values="0.35;0.6;0.35" dur="2.8s" repeatCount="indefinite" begin="2.1s"/>
+  </line>
+
+  <!-- Cross connections (subtle) -->
+  <!-- BACKEND → AI/SEC -->
+  <line x1="230" y1="130" x2="370" y2="248" stroke="#a855f7" stroke-width="0.6" stroke-opacity="0.12"
+    stroke-dasharray="180" stroke-dashoffset="180">
+    <animate attributeName="stroke-dashoffset" values="180;0" dur="1.2s" fill="freeze" begin="1.4s"/>
+  </line>
+  <!-- EXECUTION → CLOUD -->
+  <line x1="90" y1="248" x2="230" y2="366" stroke="#f59e0b" stroke-width="0.6" stroke-opacity="0.12"
+    stroke-dasharray="180" stroke-dashoffset="180">
+    <animate attributeName="stroke-dashoffset" values="180;0" dur="1.2s" fill="freeze" begin="1.6s"/>
+  </line>
+  <!-- BACKEND → EXECUTION -->
+  <line x1="230" y1="130" x2="90" y2="248" stroke="#4ade80" stroke-width="0.6" stroke-opacity="0.12"
+    stroke-dasharray="180" stroke-dashoffset="180">
+    <animate attributeName="stroke-dashoffset" values="180;0" dur="1.2s" fill="freeze" begin="1.8s"/>
+  </line>
+  <!-- AI/SEC → CLOUD -->
+  <line x1="370" y1="248" x2="230" y2="366" stroke="#f59e0b" stroke-width="0.6" stroke-opacity="0.12"
+    stroke-dasharray="180" stroke-dashoffset="180">
+    <animate attributeName="stroke-dashoffset" values="180;0" dur="1.2s" fill="freeze" begin="2.0s"/>
+  </line>
+
+  <!-- ── Data pulse traveling along edges ── -->
+  <!-- Teal pulse: CORE → BACKEND -->
+  <circle r="3" fill="#00f5d4" opacity="0.9" filter="url(#g4S)">
+    <animateMotion dur="2s" repeatCount="indefinite" begin="1.5s">
+      <mpath href="#path-core-backend"/>
+    </animateMotion>
+    <animate attributeName="opacity" values="0;1;1;0" dur="2s" repeatCount="indefinite" begin="1.5s"/>
+  </circle>
+  <path id="path-core-backend" d="M 230 248 L 230 130" fill="none"/>
+
+  <!-- Purple pulse: CORE → AI -->
+  <circle r="3" fill="#a855f7" opacity="0.9" filter="url(#g4S)">
+    <animateMotion dur="2.5s" repeatCount="indefinite" begin="2s">
+      <mpath href="#path-core-ai"/>
+    </animateMotion>
+    <animate attributeName="opacity" values="0;1;1;0" dur="2.5s" repeatCount="indefinite" begin="2s"/>
+  </circle>
+  <path id="path-core-ai" d="M 230 248 L 370 248" fill="none"/>
+
+  <!-- Amber pulse: CORE → CLOUD -->
+  <circle r="3" fill="#f59e0b" opacity="0.9" filter="url(#g4S)">
+    <animateMotion dur="2.2s" repeatCount="indefinite" begin="2.5s">
+      <mpath href="#path-core-cloud"/>
+    </animateMotion>
+    <animate attributeName="opacity" values="0;1;1;0" dur="2.2s" repeatCount="indefinite" begin="2.5s"/>
+  </circle>
+  <path id="path-core-cloud" d="M 230 248 L 230 366" fill="none"/>
+
+  <!-- Green pulse: CORE → EXEC -->
+  <circle r="3" fill="#4ade80" opacity="0.9" filter="url(#g4S)">
+    <animateMotion dur="1.9s" repeatCount="indefinite" begin="3s">
+      <mpath href="#path-core-exec"/>
+    </animateMotion>
+    <animate attributeName="opacity" values="0;1;1;0" dur="1.9s" repeatCount="indefinite" begin="3s"/>
+  </circle>
+  <path id="path-core-exec" d="M 230 248 L 90 248" fill="none"/>
+
+  <!-- ── CORE NODE (center) ── -->
+  <!-- Outer glow ring -->
+  <circle cx="230" cy="248" r="42" fill="none" stroke="#00f5d4" stroke-width="0.8" stroke-opacity="0.15">
+    <animate attributeName="r" values="38;50;38" dur="4s" repeatCount="indefinite"/>
+    <animate attributeName="stroke-opacity" values="0.15;0.3;0.15" dur="4s" repeatCount="indefinite"/>
+  </circle>
+  <!-- Orbit ring (static) -->
+  <circle cx="230" cy="248" r="34" fill="none" stroke="#00f5d4" stroke-width="0.5" stroke-opacity="0.25" stroke-dasharray="4 6"/>
+  <!-- Node background -->
+  <circle cx="230" cy="248" r="28" fill="url(#nodeCore)" filter="url(#g4M)"/>
+  <circle cx="230" cy="248" r="22" fill="rgba(0,245,212,0.12)"/>
+  <circle cx="230" cy="248" r="22" fill="none" stroke="#00f5d4" stroke-width="1.5" stroke-opacity="0.8"/>
+  <!-- Node pulse -->
+  <circle cx="230" cy="248" r="22" fill="none" stroke="#00f5d4" stroke-width="1">
+    <animate attributeName="r" values="22;40;22" dur="3s" repeatCount="indefinite"/>
+    <animate attributeName="stroke-opacity" values="0.6;0;0.6" dur="3s" repeatCount="indefinite"/>
+  </circle>
+  <!-- Label -->
+  <foreignObject x="209" y="239" width="42" height="18">
+    <div xmlns="http://www.w3.org/1999/xhtml">
+      <style>
+        @keyframes coreGlow { 0%,100%{text-shadow:0 0 6px rgba(0,245,212,.7)} 50%{text-shadow:0 0 14px rgba(0,245,212,1),0 0 24px rgba(0,245,212,.5)} }
+        .cn { font-family:'Courier New',monospace; font-size:10px; font-weight:900; color:#00f5d4; text-align:center; letter-spacing:1px; animation:coreGlow 2.5s ease-in-out infinite; }
+      </style>
+      <div class="cn">CORE</div>
+    </div>
+  </foreignObject>
+
+  <!-- ── BACKEND NODE (top) ── -->
+  <circle cx="230" cy="130" r="22" fill="none" stroke="#38bdf8" stroke-width="1">
+    <animate attributeName="r" values="22;34;22" dur="3.2s" repeatCount="indefinite" begin="0.4s"/>
+    <animate attributeName="stroke-opacity" values="0.5;0;0.5" dur="3.2s" repeatCount="indefinite" begin="0.4s"/>
+  </circle>
+  <circle cx="230" cy="130" r="20" fill="url(#nodeBackend)" filter="url(#g4S)"/>
+  <circle cx="230" cy="130" r="16" fill="rgba(56,189,248,0.1)"/>
+  <circle cx="230" cy="130" r="16" fill="none" stroke="#38bdf8" stroke-width="1.5" stroke-opacity="0.8"/>
+  <foreignObject x="196" y="103" width="68" height="24">
+    <div xmlns="http://www.w3.org/1999/xhtml">
+      <style>
+        @keyframes nodePulse { 0%,100%{opacity:.85} 50%{opacity:1} }
+        .nd { font-family:'Courier New',monospace; font-size:9px; font-weight:700; color:#38bdf8; text-align:center; letter-spacing:.5px; line-height:1.3; animation:nodePulse 3s ease-in-out infinite; }
+      </style>
+      <div class="nd">BACKEND<br/><span style="font-size:8px;opacity:.6">Spring·SQL·API</span></div>
+    </div>
+  </foreignObject>
+
+  <!-- ── AI/SEC NODE (right) ── -->
+  <circle cx="370" cy="248" r="22" fill="none" stroke="#a855f7" stroke-width="1">
+    <animate attributeName="r" values="22;34;22" dur="2.8s" repeatCount="indefinite" begin="0.8s"/>
+    <animate attributeName="stroke-opacity" values="0.5;0;0.5" dur="2.8s" repeatCount="indefinite" begin="0.8s"/>
+  </circle>
+  <circle cx="370" cy="248" r="20" fill="url(#nodeAI)" filter="url(#g4S)"/>
+  <circle cx="370" cy="248" r="16" fill="rgba(168,85,247,0.1)"/>
+  <circle cx="370" cy="248" r="16" fill="none" stroke="#a855f7" stroke-width="1.5" stroke-opacity="0.8"/>
+  <foreignObject x="336" y="254" width="68" height="22">
+    <div xmlns="http://www.w3.org/1999/xhtml">
+      <style>
+        .nd2 { font-family:'Courier New',monospace; font-size:9px; font-weight:700; color:#a855f7; text-align:center; letter-spacing:.5px; line-height:1.3; animation:nodePulse 2.5s ease-in-out infinite .5s; }
+      </style>
+      <div class="nd2">AI/SEC<br/><span style="font-size:8px;opacity:.6">NLP·Audits</span></div>
+    </div>
+  </foreignObject>
+
+  <!-- ── CLOUD NODE (bottom) ── -->
+  <circle cx="230" cy="366" r="22" fill="none" stroke="#f59e0b" stroke-width="1">
+    <animate attributeName="r" values="22;34;22" dur="3.6s" repeatCount="indefinite" begin="1.2s"/>
+    <animate attributeName="stroke-opacity" values="0.5;0;0.5" dur="3.6s" repeatCount="indefinite" begin="1.2s"/>
+  </circle>
+  <circle cx="230" cy="366" r="20" fill="url(#nodeCloud)" filter="url(#g4S)"/>
+  <circle cx="230" cy="366" r="16" fill="rgba(245,158,11,0.1)"/>
+  <circle cx="230" cy="366" r="16" fill="none" stroke="#f59e0b" stroke-width="1.5" stroke-opacity="0.8"/>
+  <foreignObject x="196" y="372" width="68" height="22">
+    <div xmlns="http://www.w3.org/1999/xhtml">
+      <style>
+        .nd3 { font-family:'Courier New',monospace; font-size:9px; font-weight:700; color:#f59e0b; text-align:center; letter-spacing:.5px; line-height:1.3; animation:nodePulse 4s ease-in-out infinite 1s; }
+      </style>
+      <div class="nd3">CLOUD<br/><span style="font-size:8px;opacity:.6">Docker·AWS</span></div>
+    </div>
+  </foreignObject>
+
+  <!-- ── EXECUTION NODE (left) ── -->
+  <circle cx="90" cy="248" r="22" fill="none" stroke="#4ade80" stroke-width="1">
+    <animate attributeName="r" values="22;34;22" dur="3.4s" repeatCount="indefinite" begin="1.6s"/>
+    <animate attributeName="stroke-opacity" values="0.5;0;0.5" dur="3.4s" repeatCount="indefinite" begin="1.6s"/>
+  </circle>
+  <circle cx="90" cy="248" r="20" fill="url(#nodeExec)" filter="url(#g4S)"/>
+  <circle cx="90" cy="248" r="16" fill="rgba(74,222,128,0.1)"/>
+  <circle cx="90" cy="248" r="16" fill="none" stroke="#4ade80" stroke-width="1.5" stroke-opacity="0.8"/>
+  <foreignObject x="30" y="254" width="68" height="22">
+    <div xmlns="http://www.w3.org/1999/xhtml">
+      <style>
+        .nd4 { font-family:'Courier New',monospace; font-size:9px; font-weight:700; color:#4ade80; text-align:center; letter-spacing:.5px; line-height:1.3; animation:nodePulse 3s ease-in-out infinite 1.5s; }
+      </style>
+      <div class="nd4">EXEC<br/><span style="font-size:8px;opacity:.6">Ship·Iterate</span></div>
+    </div>
+  </foreignObject>
+
+  <!-- ══════════════════════════════════════════════ -->
+  <!-- RIGHT — LIVE SKILL LEVELS + TECH TAGS          -->
+  <!-- ══════════════════════════════════════════════ -->
+  <rect x="464" y="52" width="416" height="392" rx="10" fill="url(#rightPanel4)" stroke="#00f5d4" stroke-width=".75" stroke-opacity=".2"/>
+  <line x1="474" y1="52" x2="870" y2="52" stroke="#00f5d4" stroke-width="1.5" stroke-opacity=".45"/>
+
+  <foreignObject x="470" y="56" width="404" height="382">
+    <div xmlns="http://www.w3.org/1999/xhtml">
+      <style>
+        @keyframes barGrow4 { from { width:0; } }
+        @keyframes shimSlide { 0%{left:-100%} 100%{left:250%} }
+        @keyframes fadeSlideIn4 { from{opacity:0;transform:translateX(20px)} to{opacity:1;transform:translateX(0)} }
+        @keyframes tagFloat {
+          0%,100% { transform:translateY(0); }
+          50%      { transform:translateY(-2px); }
+        }
+        @keyframes skillBlink { 0%,100%{opacity:1} 50%{opacity:0} }
+        @keyframes levelAppear { from{opacity:0;transform:scale(.6)} to{opacity:1;transform:scale(1)} }
+        @keyframes techPill {
+          0%,100% { box-shadow:0 0 0 1px rgba(255,255,255,.06); }
+          50%      { box-shadow:0 0 0 1px rgba(255,255,255,.14); }
+        }
+
+        .rp { font-family:'Courier New',monospace; padding:6px 8px 0 8px; height:376px; display:flex; flex-direction:column; gap:0; }
+
+        /* Header */
+        .rph { display:flex; align-items:center; justify-content:space-between; margin-bottom:20px; animation:fadeSlideIn4 .6s ease-out .2s both; }
+        .rph-title { font-size:11px; font-weight:700; color:#00f5d4; letter-spacing:3px; text-transform:uppercase; text-shadow:0 0 10px rgba(0,245,212,.5); }
+        .rph-live { display:flex; align-items:center; gap:5px; font-size:9px; color:rgba(148,163,184,.5); letter-spacing:1px; }
+        .live-d { width:6px;height:6px;border-radius:50%;background:#4ade80;animation:skillBlink 1.4s step-end infinite;box-shadow:0 0 5px #4ade80; }
+
+        /* Skill block */
+        .sk { margin-bottom:22px; animation:fadeSlideIn4 .55s ease-out both; }
+        .sk:nth-child(2) { animation-delay:.2s; }
+        .sk:nth-child(3) { animation-delay:.4s; }
+        .sk:nth-child(4) { animation-delay:.6s; }
+        .sk:nth-child(5) { animation-delay:.8s; }
+
+        /* Top row */
+        .sk-top { display:flex; align-items:flex-start; justify-content:space-between; margin-bottom:7px; }
+        .sk-left { display:flex; flex-direction:column; gap:3px; }
+        .sk-name { font-size:13px; font-weight:700; color:#e2e8f0; letter-spacing:.3px; }
+        .sk-techs { display:flex; flex-wrap:wrap; gap:4px; margin-top:2px; }
+        .pill {
+          font-size:8px; font-weight:600; letter-spacing:1px;
+          padding:2px 7px; border-radius:3px;
+          border:1px solid; text-transform:uppercase;
+          animation:tagFloat 3s ease-in-out infinite, techPill 3s ease-in-out infinite;
+        }
+        /* pill colors */
+        .p-c { color:#00f5d4; border-color:rgba(0,245,212,.25); background:rgba(0,245,212,.06); animation-delay:0s,0s; }
+        .p-b { color:#38bdf8; border-color:rgba(56,189,248,.25); background:rgba(56,189,248,.06); animation-delay:.3s,.3s; }
+        .p-p { color:#a855f7; border-color:rgba(168,85,247,.25); background:rgba(168,85,247,.06); animation-delay:.6s,.6s; }
+        .p-a { color:#f59e0b; border-color:rgba(245,158,11,.25); background:rgba(245,158,11,.06); animation-delay:.9s,.9s; }
+        .p-g { color:#4ade80; border-color:rgba(74,222,128,.25); background:rgba(74,222,128,.06); animation-delay:1.2s,1.2s; }
+        .p-r { color:#f87171; border-color:rgba(248,113,113,.25); background:rgba(248,113,113,.06); animation-delay:1.5s,1.5s; }
+
+        /* Right: level badge + pct */
+        .sk-right { display:flex; flex-direction:column; align-items:flex-end; gap:4px; }
+        .sk-pct { font-size:15px; font-weight:900; letter-spacing:1px; animation:levelAppear .6s cubic-bezier(.34,1.56,.64,1) both; }
+        .sk-lvl { font-size:8px; font-weight:700; letter-spacing:2px; text-transform:uppercase; opacity:.55; }
+
+        /* Bar */
+        .track4 { width:100%; height:8px; background:rgba(255,255,255,.05); border-radius:4px; overflow:hidden; position:relative; }
+        .tick4 { position:absolute; top:0; height:100%; width:1px; background:rgba(255,255,255,.1); }
+        .fill4 { height:100%; border-radius:4px; position:relative; overflow:hidden; animation:barGrow4 1.4s cubic-bezier(.22,1,.36,1) both; }
+        .fill4::after { content:''; position:absolute; top:0; left:-100%; width:55%; height:100%; background:linear-gradient(to right,transparent,rgba(255,255,255,.45),transparent); animation:shimSlide 3s ease-in-out infinite; }
+
+        /* Color variants */
+        .f-c { background:linear-gradient(90deg,#00f5d4,#00c9a7); box-shadow:0 0 10px rgba(0,245,212,.45); animation-delay:.4s; }
+        .f-b { background:linear-gradient(90deg,#38bdf8,#0284c7); box-shadow:0 0 10px rgba(56,189,248,.4); animation-delay:.7s; }
+        .f-p { background:linear-gradient(90deg,#a855f7,#7c3aed); box-shadow:0 0 10px rgba(168,85,247,.45); animation-delay:1s; }
+        .f-a { background:linear-gradient(90deg,#f59e0b,#d97706); box-shadow:0 0 10px rgba(245,158,11,.4); animation-delay:1.3s; }
+
+        .pct-c { color:#00f5d4; text-shadow:0 0 10px rgba(0,245,212,.6); }
+        .pct-b { color:#38bdf8; text-shadow:0 0 10px rgba(56,189,248,.6); }
+        .pct-p { color:#a855f7; text-shadow:0 0 10px rgba(168,85,247,.6); }
+        .pct-a { color:#f59e0b; text-shadow:0 0 10px rgba(245,158,11,.6); }
+
+        /* Footer summary row */
+        .sk-footer { margin-top:auto; padding-top:12px; border-top:1px solid rgba(168,85,247,.12); display:flex; gap:6px; flex-wrap:wrap; animation:fadeSlideIn4 .5s ease-out 1.4s both; }
+        .sk-badge { font-size:8px; font-weight:700; letter-spacing:1.5px; color:rgba(148,163,184,.5); background:rgba(255,255,255,.03); border:1px solid rgba(255,255,255,.07); padding:4px 9px; border-radius:3px; text-transform:uppercase; }
+      </style>
+      <div class="rp">
+        <div class="rph">
+          <span class="rph-title">SKILLS://LIVE_LEVELS</span>
+          <div class="rph-live"><span class="live-d"></span><span>REAL-TIME</span></div>
+        </div>
+
+        <!-- Backend Systems -->
+        <div class="sk">
+          <div class="sk-top">
+            <div class="sk-left">
+              <span class="sk-name">Backend Systems</span>
+              <div class="sk-techs">
+                <span class="pill p-b">Spring Boot</span>
+                <span class="pill p-b">REST APIs</span>
+                <span class="pill p-c">MySQL</span>
+                <span class="pill p-c">PostgreSQL</span>
+              </div>
+            </div>
+            <div class="sk-right">
+              <span class="sk-pct pct-b" style="animation-delay:.5s">91%</span>
+              <span class="sk-lvl" style="color:#38bdf8">ADVANCED</span>
+            </div>
+          </div>
+          <div class="track4">
+            <div class="tick4" style="left:25%"></div>
+            <div class="tick4" style="left:50%"></div>
+            <div class="tick4" style="left:75%"></div>
+            <div class="fill4 f-b" style="width:91%"></div>
+          </div>
+        </div>
+
+        <!-- AI + Security -->
+        <div class="sk">
+          <div class="sk-top">
+            <div class="sk-left">
+              <span class="sk-name">AI + Security Engineering</span>
+              <div class="sk-techs">
+                <span class="pill p-p">NLP</span>
+                <span class="pill p-p">ML Pipelines</span>
+                <span class="pill p-r">Phishing Defense</span>
+                <span class="pill p-p">Browser APIs</span>
+              </div>
+            </div>
+            <div class="sk-right">
+              <span class="sk-pct pct-p" style="animation-delay:.8s">89%</span>
+              <span class="sk-lvl" style="color:#a855f7">ADVANCED</span>
+            </div>
+          </div>
+          <div class="track4">
+            <div class="tick4" style="left:25%"></div>
+            <div class="tick4" style="left:50%"></div>
+            <div class="tick4" style="left:75%"></div>
+            <div class="fill4 f-p" style="width:89%"></div>
+          </div>
+        </div>
+
+        <!-- Cloud + DevOps -->
+        <div class="sk">
+          <div class="sk-top">
+            <div class="sk-left">
+              <span class="sk-name">Cloud + DevOps</span>
+              <div class="sk-techs">
+                <span class="pill p-a">Docker</span>
+                <span class="pill p-a">CI/CD</span>
+                <span class="pill p-a">AWS</span>
+                <span class="pill p-g">GitHub Actions</span>
+              </div>
+            </div>
+            <div class="sk-right">
+              <span class="sk-pct pct-a" style="animation-delay:1.1s">85%</span>
+              <span class="sk-lvl" style="color:#f59e0b">PROFICIENT</span>
+            </div>
+          </div>
+          <div class="track4">
+            <div class="tick4" style="left:25%"></div>
+            <div class="tick4" style="left:50%"></div>
+            <div class="tick4" style="left:75%"></div>
+            <div class="fill4 f-a" style="width:85%"></div>
+          </div>
+        </div>
+
+        <!-- Product Execution -->
+        <div class="sk">
+          <div class="sk-top">
+            <div class="sk-left">
+              <span class="sk-name">Product Execution</span>
+              <div class="sk-techs">
+                <span class="pill p-c">React</span>
+                <span class="pill p-c">Swift/SwiftUI</span>
+                <span class="pill p-g">Ship Fast</span>
+                <span class="pill p-g">Iterate Safely</span>
+              </div>
+            </div>
+            <div class="sk-right">
+              <span class="sk-pct pct-c" style="animation-delay:1.4s">87%</span>
+              <span class="sk-lvl" style="color:#00f5d4">ADVANCED</span>
+            </div>
+          </div>
+          <div class="track4">
+            <div class="tick4" style="left:25%"></div>
+            <div class="tick4" style="left:50%"></div>
+            <div class="tick4" style="left:75%"></div>
+            <div class="fill4 f-c" style="width:87%"></div>
+          </div>
+        </div>
+
+        <!-- Footer badge row -->
+        <div class="sk-footer">
+          <span class="sk-badge">Java</span>
+          <span class="sk-badge">Python</span>
+          <span class="sk-badge">TypeScript</span>
+          <span class="sk-badge">JavaScript</span>
+          <span class="sk-badge">Swift</span>
+          <span class="sk-badge">SQL</span>
+          <span class="sk-badge">C / C++</span>
+          <span class="sk-badge">HTML / CSS</span>
+        </div>
+      </div>
+    </div>
+  </foreignObject>
+
+  <!-- ════ BOTTOM STATUS BAR ════ -->
+  <rect x="1" y="440" width="898" height="19" fill="rgba(168,85,247,.03)" clip-path="url(#clip4)"/>
+  <line x1="1" y1="440" x2="899" y2="440" stroke="#a855f7" stroke-width=".5" stroke-opacity=".15"/>
+
+  <foreignObject x="0" y="442" width="900" height="16">
+    <div xmlns="http://www.w3.org/1999/xhtml">
+      <style>
+        @keyframes skillTicker { 0%{transform:translateX(0)} 100%{transform:translateX(-55%)} }
+        .st-wrap { overflow:hidden; width:900px; height:16px; display:flex; align-items:center; }
+        .st-inner { display:flex; white-space:nowrap; animation:skillTicker 24s linear infinite; font-family:'Courier New',monospace; font-size:9px; letter-spacing:1.5px; color:rgba(168,85,247,.35); }
+        .st-sep { color:rgba(168,85,247,.15); margin:0 18px; }
+      </style>
+      <div class="st-wrap"><div class="st-inner">
+        <span>JAVA · SPRING BOOT · PYTHON · NLP · REACT · SWIFT · DOCKER · AWS · CI/CD · MYSQL · POSTGRESQL · GITHUB ACTIONS · JAVASCRIPT · TYPESCRIPT</span>
+        <span class="st-sep">·</span>
+        <span>BACKEND SYSTEMS · AI ENGINEERING · SECURITY · CLOUD · DEVOPS · PRODUCT EXECUTION</span>
+        <span class="st-sep">·</span>
+        <span>JAVA · SPRING BOOT · PYTHON · NLP · REACT · SWIFT · DOCKER · AWS · CI/CD · MYSQL · POSTGRESQL · GITHUB ACTIONS</span>
+        <span class="st-sep">·</span>
+      </div></div>
+    </div>
+  </foreignObject>
+</svg>

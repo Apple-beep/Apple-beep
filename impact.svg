@@ -1,0 +1,437 @@
+<svg width="900" height="420" viewBox="0 0 900 420" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="bg3" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#020c1b"/>
+      <stop offset="100%" style="stop-color:#030a15"/>
+    </linearGradient>
+    <linearGradient id="cardTeal" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#0a2540;stop-opacity:0.95"/>
+      <stop offset="100%" style="stop-color:#051828;stop-opacity:0.98"/>
+    </linearGradient>
+    <linearGradient id="cardPurple" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#1a0a3a;stop-opacity:0.95"/>
+      <stop offset="100%" style="stop-color:#0d0520;stop-opacity:0.98"/>
+    </linearGradient>
+    <linearGradient id="cardAmber" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#2a1800;stop-opacity:0.95"/>
+      <stop offset="100%" style="stop-color:#150c00;stop-opacity:0.98"/>
+    </linearGradient>
+    <linearGradient id="radarSwp" x1="50%" y1="0%" x2="50%" y2="100%">
+      <stop offset="0%" style="stop-color:#00f5d4;stop-opacity:0"/>
+      <stop offset="100%" style="stop-color:#00f5d4;stop-opacity:0.45"/>
+    </linearGradient>
+    <filter id="gT" x="-60%" y="-60%" width="220%" height="220%">
+      <feGaussianBlur stdDeviation="8" result="b"/>
+      <feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge>
+    </filter>
+    <filter id="gM" x="-30%" y="-30%" width="160%" height="160%">
+      <feGaussianBlur stdDeviation="4" result="b"/>
+      <feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge>
+    </filter>
+    <filter id="gS" x="-15%" y="-15%" width="130%" height="130%">
+      <feGaussianBlur stdDeviation="2" result="b"/>
+      <feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge>
+    </filter>
+    <clipPath id="clip3">
+      <rect x="1" y="1" width="898" height="418" rx="14"/>
+    </clipPath>
+  </defs>
+
+  <!-- Background -->
+  <rect width="900" height="420" rx="14" fill="url(#bg3)"/>
+
+  <!-- Grid -->
+  <g opacity="0.07" clip-path="url(#clip3)">
+    <line x1="0" y1="84" x2="900" y2="84" stroke="#f59e0b" stroke-width="0.5"/>
+    <line x1="0" y1="168" x2="900" y2="168" stroke="#f59e0b" stroke-width="0.5"/>
+    <line x1="0" y1="252" x2="900" y2="252" stroke="#f59e0b" stroke-width="0.5"/>
+    <line x1="0" y1="336" x2="900" y2="336" stroke="#f59e0b" stroke-width="0.5"/>
+    <line x1="180" y1="0" x2="180" y2="420" stroke="#f59e0b" stroke-width="0.5"/>
+    <line x1="360" y1="0" x2="360" y2="420" stroke="#f59e0b" stroke-width="0.5"/>
+    <line x1="540" y1="0" x2="540" y2="420" stroke="#f59e0b" stroke-width="0.5"/>
+    <line x1="720" y1="0" x2="720" y2="420" stroke="#f59e0b" stroke-width="0.5"/>
+  </g>
+
+  <!-- Ambient glow -->
+  <circle cx="150" cy="260" r="160" fill="#00f5d4" opacity="0.025"/>
+  <circle cx="520" cy="200" r="140" fill="#f59e0b" opacity="0.025"/>
+  <circle cx="780" cy="260" r="130" fill="#a855f7" opacity="0.025"/>
+
+  <!-- Outer border -->
+  <rect x="1" y="1" width="898" height="418" rx="14" fill="none" stroke="#f59e0b" stroke-width="1" stroke-opacity="0.45"/>
+  <!-- Corner ticks -->
+  <polyline points="1,30 1,1 30,1" fill="none" stroke="#f59e0b" stroke-width="1.5" stroke-opacity="0.7"/>
+  <polyline points="870,1 899,1 899,30" fill="none" stroke="#f59e0b" stroke-width="1.5" stroke-opacity="0.7"/>
+  <polyline points="1,390 1,419 30,419" fill="none" stroke="#f59e0b" stroke-width="1.5" stroke-opacity="0.7"/>
+  <polyline points="870,419 899,419 899,390" fill="none" stroke="#f59e0b" stroke-width="1.5" stroke-opacity="0.7"/>
+
+  <!-- Section label -->
+  <foreignObject x="20" y="12" width="860" height="26">
+    <div xmlns="http://www.w3.org/1999/xhtml">
+      <style>
+        @keyframes secPulse3 { 0%,100%{opacity:0.8} 50%{opacity:1;text-shadow:0 0 16px rgba(245,158,11,0.8);} }
+        .sl3 { font-family:'Courier New',monospace; font-size:10px; font-weight:700; color:#f59e0b; letter-spacing:4px; text-transform:uppercase; animation:secPulse3 4s ease-in-out infinite; display:flex; align-items:center; gap:10px; }
+        .sl3-line { flex:1; height:1px; background:linear-gradient(to right,rgba(245,158,11,0.5),transparent); }
+        .sl3-id { color:rgba(148,163,184,0.45); font-size:9px; letter-spacing:2px; }
+      </style>
+      <div class="sl3">
+        <span>IMPACT://HIGH_SIGNAL</span>
+        <span class="sl3-line"></span>
+        <span class="sl3-id">SEC_03 · PROOF_OF_EXECUTION</span>
+      </div>
+    </div>
+  </foreignObject>
+
+  <line x1="20" y1="40" x2="880" y2="40" stroke="#f59e0b" stroke-width="0.5" stroke-opacity="0.2"/>
+
+  <!-- ════════════════════════════════════════ -->
+  <!-- RADAR PANEL — LEFT -->
+  <!-- ════════════════════════════════════════ -->
+  <rect x="20" y="52" width="230" height="350" rx="10" fill="rgba(10,25,45,0.85)" stroke="#00f5d4" stroke-width="0.75" stroke-opacity="0.3"/>
+  <line x1="30" y1="52" x2="240" y2="52" stroke="#00f5d4" stroke-width="1.5" stroke-opacity="0.5"/>
+
+  <!-- Radar label -->
+  <foreignObject x="26" y="56" width="218" height="22">
+    <div xmlns="http://www.w3.org/1999/xhtml">
+      <style>
+        .rl { font-family:'Courier New',monospace; font-size:9px; font-weight:700; color:#00f5d4; letter-spacing:2px; }
+      </style>
+      <div class="rl">IMPACT://RADAR_SCAN</div>
+    </div>
+  </foreignObject>
+
+  <!-- Radar circles -->
+  <g transform="translate(135, 230)">
+    <circle r="105" fill="none" stroke="#00f5d4" stroke-width="0.5" stroke-opacity="0.15"/>
+    <circle r="80"  fill="none" stroke="#00f5d4" stroke-width="0.5" stroke-opacity="0.2"/>
+    <circle r="55"  fill="none" stroke="#00f5d4" stroke-width="0.5" stroke-opacity="0.25"/>
+    <circle r="30"  fill="none" stroke="#00f5d4" stroke-width="0.5" stroke-opacity="0.35"/>
+    <circle r="10"  fill="none" stroke="#00f5d4" stroke-width="0.5" stroke-opacity="0.5"/>
+
+    <!-- Cross hairs -->
+    <line x1="-108" y1="0" x2="108" y2="0" stroke="#00f5d4" stroke-width="0.4" stroke-opacity="0.12"/>
+    <line x1="0" y1="-108" x2="0" y2="108" stroke="#00f5d4" stroke-width="0.4" stroke-opacity="0.12"/>
+    <line x1="-76" y1="-76" x2="76" y2="76" stroke="#00f5d4" stroke-width="0.3" stroke-opacity="0.08"/>
+    <line x1="76" y1="-76" x2="-76" y2="76" stroke="#00f5d4" stroke-width="0.3" stroke-opacity="0.08"/>
+
+    <!-- Sweep -->
+    <g>
+      <animateTransform attributeName="transform" type="rotate" values="0;360" dur="3.5s" repeatCount="indefinite"/>
+      <path d="M 0 0 L 108 0 A 108 108 0 0 0 54 -93.5 Z" fill="url(#radarSwp)" opacity="0.7"/>
+      <line x1="0" y1="0" x2="108" y2="0" stroke="#00f5d4" stroke-width="1.5" stroke-opacity="0.9"/>
+    </g>
+
+    <!-- Center -->
+    <circle r="5" fill="#00f5d4" filter="url(#gT)"/>
+    <circle r="2.5" fill="#fff"/>
+
+    <!-- Signal dot — deployment (teal, r=68, ~30deg) -->
+    <g transform="translate(59,-35)">
+      <circle r="7" fill="#00f5d4" opacity="0.15" filter="url(#gM)">
+        <animate attributeName="r" values="5;12;5" dur="2.4s" repeatCount="indefinite"/>
+        <animate attributeName="opacity" values="0.8;0.1;0.8" dur="2.4s" repeatCount="indefinite"/>
+      </circle>
+      <circle r="3.5" fill="#00f5d4"/>
+    </g>
+
+    <!-- Signal dot — security (purple, r=45, ~150deg) -->
+    <g transform="translate(-39,23)">
+      <circle r="7" fill="#a855f7" opacity="0.15" filter="url(#gM)">
+        <animate attributeName="r" values="5;11;5" dur="3.2s" repeatCount="indefinite" begin="0.8s"/>
+        <animate attributeName="opacity" values="0.8;0.1;0.8" dur="3.2s" repeatCount="indefinite" begin="0.8s"/>
+      </circle>
+      <circle r="3.5" fill="#a855f7"/>
+    </g>
+
+    <!-- Signal dot — mentorship (amber, r=82, ~250deg) -->
+    <g transform="translate(-29,77)">
+      <circle r="7" fill="#f59e0b" opacity="0.15" filter="url(#gM)">
+        <animate attributeName="r" values="5;10;5" dur="2.8s" repeatCount="indefinite" begin="1.5s"/>
+        <animate attributeName="opacity" values="0.8;0.1;0.8" dur="2.8s" repeatCount="indefinite" begin="1.5s"/>
+      </circle>
+      <circle r="3.5" fill="#f59e0b"/>
+    </g>
+
+    <!-- Outer ping -->
+    <circle r="0" fill="none" stroke="#00f5d4" stroke-width="1.5" stroke-opacity="0.6">
+      <animate attributeName="r" values="0;112" dur="3s" repeatCount="indefinite"/>
+      <animate attributeName="stroke-opacity" values="0.6;0" dur="3s" repeatCount="indefinite"/>
+    </circle>
+  </g>
+
+  <!-- Radar legend -->
+  <foreignObject x="26" y="355" width="218" height="42">
+    <div xmlns="http://www.w3.org/1999/xhtml">
+      <style>
+        .leg { font-family:'Courier New',monospace; font-size:9px; color:rgba(148,163,184,0.6); display:flex; flex-direction:column; gap:4px; }
+        .leg-row { display:flex; align-items:center; gap:6px; }
+        .leg-dot { width:6px;height:6px;border-radius:50%; }
+      </style>
+      <div class="leg">
+        <div class="leg-row"><span class="leg-dot" style="background:#00f5d4"></span><span>Deployment velocity</span></div>
+        <div class="leg-row"><span class="leg-dot" style="background:#a855f7"></span><span>Security impact</span></div>
+        <div class="leg-row"><span class="leg-dot" style="background:#f59e0b"></span><span>Leadership reach</span></div>
+      </div>
+    </div>
+  </foreignObject>
+
+  <!-- ════════════════════════════════════════ -->
+  <!-- THREE METRIC CARDS — RIGHT -->
+  <!-- ════════════════════════════════════════ -->
+
+  <!-- CARD 1 — Deployment 4h→15m -->
+  <rect x="268" y="52" width="300" height="165" rx="10" fill="url(#cardTeal)" stroke="#00f5d4" stroke-width="0.75" stroke-opacity="0.35"/>
+  <line x1="278" y1="52" x2="558" y2="52" stroke="#00f5d4" stroke-width="1.5" stroke-opacity="0.6"/>
+  <!-- Top accent bar -->
+  <rect x="268" y="52" width="300" height="3" rx="2" fill="#00f5d4" opacity="0.6"/>
+
+  <foreignObject x="275" y="58" width="286" height="158">
+    <div xmlns="http://www.w3.org/1999/xhtml">
+      <style>
+        @keyframes countUp1 {
+          0%   { opacity:0; transform:translateY(30px) scale(0.7); }
+          60%  { opacity:1; transform:translateY(-4px) scale(1.04); }
+          100% { opacity:1; transform:translateY(0) scale(1); }
+        }
+        @keyframes arrowPulse {
+          0%,100% { transform:translateX(0); opacity:1; }
+          50%      { transform:translateX(4px); opacity:0.6; }
+        }
+        @keyframes flashBorder {
+          0%,100% { box-shadow:0 0 0 1px rgba(0,245,212,0.2); }
+          50%      { box-shadow:0 0 16px rgba(0,245,212,0.4), 0 0 0 1px rgba(0,245,212,0.5); }
+        }
+        @keyframes particleBurst1 {
+          0%   { transform:translate(0,0) scale(1); opacity:1; }
+          100% { transform:translate(var(--tx), var(--ty)) scale(0); opacity:0; }
+        }
+        @keyframes fadeCard { from{opacity:0;transform:translateY(20px)} to{opacity:1;transform:translateY(0)} }
+
+        .card-inner { padding:8px 4px 4px 4px; font-family:'Courier New',monospace; animation:fadeCard 0.7s ease-out 0.2s both; }
+        .card-cat { font-size:9px; font-weight:700; color:rgba(0,245,212,0.6); letter-spacing:3px; text-transform:uppercase; margin-bottom:10px; }
+        .big-metric {
+          display:flex; align-items:center; gap:8px;
+          margin-bottom:10px;
+          animation: countUp1 0.9s cubic-bezier(0.34,1.56,0.64,1) 0.5s both;
+        }
+        .num-before { font-size:38px; font-weight:900; color:rgba(148,163,184,0.4); line-height:1; letter-spacing:-2px; }
+        .arrow { font-size:28px; color:#00f5d4; animation:arrowPulse 1.8s ease-in-out infinite; line-height:1; }
+        .num-after { font-size:46px; font-weight:900; color:#00f5d4; line-height:1; letter-spacing:-2px; text-shadow:0 0 20px rgba(0,245,212,0.6); }
+        .card-desc { font-size:11px; color:rgba(148,163,184,0.7); letter-spacing:0.5px; line-height:1.5; margin-bottom:10px; }
+        .card-tag { display:inline-block; font-size:9px; font-weight:700; letter-spacing:2px; color:#00f5d4; background:rgba(0,245,212,0.08); border:1px solid rgba(0,245,212,0.25); padding:3px 8px; border-radius:3px; text-transform:uppercase; }
+
+        /* Particle burst container */
+        .particles { position:relative; }
+        .p { position:absolute; width:4px; height:4px; border-radius:50%; background:#00f5d4; top:50%; left:50%; }
+        .p1 { --tx:-30px; --ty:-30px; animation:particleBurst1 2s ease-out infinite 1s; }
+        .p2 { --tx:30px;  --ty:-28px; animation:particleBurst1 2s ease-out infinite 1.2s; }
+        .p3 { --tx:35px;  --ty:25px;  animation:particleBurst1 2s ease-out infinite 1.4s; }
+        .p4 { --tx:-28px; --ty:32px;  animation:particleBurst1 2s ease-out infinite 1.6s; }
+        .p5 { --tx:0px;   --ty:-38px; animation:particleBurst1 2s ease-out infinite 1.8s; width:3px;height:3px; }
+        .p6 { --tx:-38px; --ty:0px;   animation:particleBurst1 2s ease-out infinite 1.1s; width:3px;height:3px; }
+      </style>
+      <div class="card-inner">
+        <div class="card-cat">DEPLOYMENT IMPACT</div>
+        <div class="big-metric">
+          <span class="num-before">4h</span>
+          <span class="arrow">→</span>
+          <span class="num-after">15m</span>
+          <div class="particles">
+            <div class="p p1"></div><div class="p p2"></div><div class="p p3"></div>
+            <div class="p p4"></div><div class="p p5"></div><div class="p p6"></div>
+          </div>
+        </div>
+        <div class="card-desc">Release workflow automation — cut full deployment cycle by <strong style="color:#00f5d4">94%</strong></div>
+        <span class="card-tag">⚡ CI/CD · GITHUB ACTIONS</span>
+      </div>
+    </div>
+  </foreignObject>
+
+  <!-- CARD 2 — Security 92%/-84% -->
+  <rect x="582" y="52" width="298" height="165" rx="10" fill="url(#cardPurple)" stroke="#a855f7" stroke-width="0.75" stroke-opacity="0.35"/>
+  <line x1="592" y1="52" x2="870" y2="52" stroke="#a855f7" stroke-width="1.5" stroke-opacity="0.6"/>
+  <rect x="582" y="52" width="298" height="3" rx="2" fill="#a855f7" opacity="0.6"/>
+
+  <foreignObject x="589" y="58" width="284" height="158">
+    <div xmlns="http://www.w3.org/1999/xhtml">
+      <style>
+        @keyframes countUp2 {
+          0%   { opacity:0; transform:translateY(30px) scale(0.7); }
+          60%  { opacity:1; transform:translateY(-4px) scale(1.04); }
+          100% { opacity:1; transform:translateY(0) scale(1); }
+        }
+        @keyframes particleBurst2 {
+          0%   { transform:translate(0,0) scale(1); opacity:1; }
+          100% { transform:translate(var(--tx), var(--ty)) scale(0); opacity:0; }
+        }
+        @keyframes fadeCard2 { from{opacity:0;transform:translateY(20px)} to{opacity:1;transform:translateY(0)} }
+
+        .c2 { padding:8px 4px 4px 4px; font-family:'Courier New',monospace; animation:fadeCard2 0.7s ease-out 0.4s both; }
+        .c2-cat { font-size:9px; font-weight:700; color:rgba(168,85,247,0.7); letter-spacing:3px; text-transform:uppercase; margin-bottom:10px; }
+        .c2-nums {
+          display:flex; align-items:flex-end; gap:6px; margin-bottom:10px;
+          animation: countUp2 0.9s cubic-bezier(0.34,1.56,0.64,1) 0.7s both;
+        }
+        .c2-main { font-size:44px; font-weight:900; color:#a855f7; line-height:1; letter-spacing:-2px; text-shadow:0 0 20px rgba(168,85,247,0.6); }
+        .c2-sep { font-size:30px; font-weight:300; color:rgba(168,85,247,0.4); line-height:1.2; }
+        .c2-sub-num { font-size:34px; font-weight:900; color:#f59e0b; line-height:1; letter-spacing:-1px; text-shadow:0 0 16px rgba(245,158,11,0.5); }
+        .c2-desc { font-size:11px; color:rgba(148,163,184,0.7); letter-spacing:0.5px; line-height:1.5; margin-bottom:10px; }
+        .c2-tag { display:inline-block; font-size:9px; font-weight:700; letter-spacing:2px; color:#a855f7; background:rgba(168,85,247,0.08); border:1px solid rgba(168,85,247,0.25); padding:3px 8px; border-radius:3px; text-transform:uppercase; }
+        .p2 { position:absolute; width:4px; height:4px; border-radius:50%; background:#a855f7; top:50%; left:50%; }
+        .p2a { --tx:-32px;--ty:-28px; animation:particleBurst2 2.2s ease-out infinite 1.2s; }
+        .p2b { --tx:28px; --ty:-32px; animation:particleBurst2 2.2s ease-out infinite 1.5s; }
+        .p2c { --tx:34px; --ty:24px;  animation:particleBurst2 2.2s ease-out infinite 1.8s; }
+        .p2d { --tx:-26px;--ty:30px;  animation:particleBurst2 2.2s ease-out infinite 2s; width:3px;height:3px; }
+        .particles2 { position:relative; display:inline-block; }
+      </style>
+      <div class="c2">
+        <div class="c2-cat">SECURITY IMPACT</div>
+        <div class="c2-nums">
+          <span class="c2-main">92%</span>
+          <span class="c2-sep">/</span>
+          <span class="c2-sub-num">-84%</span>
+          <div class="particles2">
+            <div class="p2 p2a"></div><div class="p2 p2b"></div>
+            <div class="p2 p2c"></div><div class="p2 p2d"></div>
+          </div>
+        </div>
+        <div class="c2-desc">Detection accuracy + risky-click drop — phishing defense at <strong style="color:#a855f7">production scale</strong></div>
+        <span class="c2-tag">🛡 BROWSER API · NLP · ML</span>
+      </div>
+    </div>
+  </foreignObject>
+
+  <!-- CARD 3 — 100+ Mentored — FULL WIDTH -->
+  <rect x="268" y="232" width="612" height="160" rx="10" fill="url(#cardAmber)" stroke="#f59e0b" stroke-width="0.75" stroke-opacity="0.35"/>
+  <line x1="278" y1="232" x2="870" y2="232" stroke="#f59e0b" stroke-width="1.5" stroke-opacity="0.6"/>
+  <rect x="268" y="232" width="612" height="3" rx="2" fill="#f59e0b" opacity="0.6"/>
+
+  <foreignObject x="275" y="238" width="598" height="152">
+    <div xmlns="http://www.w3.org/1999/xhtml">
+      <style>
+        @keyframes countUp3 {
+          0%   { opacity:0; transform:scale(0.5); }
+          50%  { opacity:1; transform:scale(1.06); }
+          100% { opacity:1; transform:scale(1); }
+        }
+        @keyframes orbit1 {
+          from { transform:rotate(0deg)   translateX(46px) rotate(0deg); }
+          to   { transform:rotate(360deg) translateX(46px) rotate(-360deg); }
+        }
+        @keyframes orbit2 {
+          from { transform:rotate(120deg) translateX(64px) rotate(-120deg); }
+          to   { transform:rotate(480deg) translateX(64px) rotate(-480deg); }
+        }
+        @keyframes orbit3 {
+          from { transform:rotate(240deg) translateX(38px) rotate(-240deg); }
+          to   { transform:rotate(600deg) translateX(38px) rotate(-600deg); }
+        }
+        @keyframes orbit4 {
+          from { transform:rotate(60deg)  translateX(58px) rotate(-60deg); }
+          to   { transform:rotate(420deg) translateX(58px) rotate(-420deg); }
+        }
+        @keyframes orbit5 {
+          from { transform:rotate(180deg) translateX(50px) rotate(-180deg); }
+          to   { transform:rotate(540deg) translateX(50px) rotate(-540deg); }
+        }
+        @keyframes fadeCard3 { from{opacity:0;transform:translateY(20px)} to{opacity:1;transform:translateY(0)} }
+        @keyframes glow3 {
+          0%,100% { text-shadow:0 0 20px rgba(245,158,11,0.6); }
+          50%      { text-shadow:0 0 40px rgba(245,158,11,0.9),0 0 60px rgba(245,158,11,0.4); }
+        }
+
+        .c3 { padding:8px 4px 4px 4px; font-family:'Courier New',monospace; animation:fadeCard3 0.7s ease-out 0.6s both; display:flex; gap:24px; align-items:center; height:140px; }
+        .c3-left { flex:1; }
+        .c3-cat { font-size:9px; font-weight:700; color:rgba(245,158,11,0.7); letter-spacing:3px; text-transform:uppercase; margin-bottom:10px; }
+        .c3-num {
+          font-size:64px; font-weight:900; color:#f59e0b; line-height:1;
+          letter-spacing:-3px;
+          animation: countUp3 1.1s cubic-bezier(0.34,1.56,0.64,1) 0.8s both, glow3 2.5s ease-in-out infinite 2s;
+        }
+        .c3-unit { font-size:20px; color:rgba(245,158,11,0.5); letter-spacing:1px; margin-bottom:10px; }
+        .c3-desc { font-size:11px; color:rgba(148,163,184,0.7); line-height:1.6; max-width:340px; }
+        .c3-tag { display:inline-block; margin-top:10px; font-size:9px; font-weight:700; letter-spacing:2px; color:#f59e0b; background:rgba(245,158,11,0.08); border:1px solid rgba(245,158,11,0.25); padding:3px 8px; border-radius:3px; text-transform:uppercase; }
+
+        /* Orbiting student dots visual */
+        .orbit-viz { position:relative; width:140px; height:140px; flex-shrink:0; }
+        .orbit-center {
+          position:absolute; top:50%; left:50%; transform:translate(-50%,-50%);
+          width:30px; height:30px; border-radius:50%;
+          background:rgba(245,158,11,0.15);
+          border:2px solid rgba(245,158,11,0.5);
+          display:flex; align-items:center; justify-content:center;
+          font-family:'Courier New',monospace; font-size:9px; color:#f59e0b; font-weight:700;
+        }
+        .orbit-ring {
+          position:absolute; top:50%; left:50%; transform:translate(-50%,-50%);
+          border-radius:50%; border:1px solid rgba(245,158,11,0.12);
+        }
+        .r1 { width:92px; height:92px; }
+        .r2 { width:128px; height:128px; }
+        .r3 { width:116px; height:116px; }
+        .odot {
+          position:absolute; top:50%; left:50%;
+          width:8px; height:8px; border-radius:50%;
+          margin:-4px;
+        }
+        .od1 { background:#00f5d4; animation:orbit1 3.5s linear infinite; box-shadow:0 0 6px #00f5d4; }
+        .od2 { background:#a855f7; animation:orbit2 5s linear infinite; box-shadow:0 0 6px #a855f7; }
+        .od3 { background:#f59e0b; animation:orbit3 2.8s linear infinite; box-shadow:0 0 6px #f59e0b; }
+        .od4 { background:#4ade80; animation:orbit4 4.2s linear infinite; width:6px;height:6px;margin:-3px; box-shadow:0 0 5px #4ade80; }
+        .od5 { background:#e879f9; animation:orbit5 6s linear infinite; width:6px;height:6px;margin:-3px; box-shadow:0 0 5px #e879f9; }
+      </style>
+      <div class="c3">
+        <div class="c3-left">
+          <div class="c3-cat">LEADERSHIP SIGNAL</div>
+          <div>
+            <span class="c3-num">100+</span>
+          </div>
+          <div class="c3-unit">STUDENTS MENTORED</div>
+          <div class="c3-desc">Systems programming &amp; Java OOP coaching — building the next generation of engineers</div>
+          <span class="c3-tag">👥 PEER LEADERSHIP · IIT</span>
+        </div>
+        <div class="orbit-viz">
+          <div class="orbit-ring r1"></div>
+          <div class="orbit-ring r2"></div>
+          <div class="orbit-ring r3"></div>
+          <div class="orbit-center">MKP</div>
+          <div class="odot od1"></div>
+          <div class="odot od2"></div>
+          <div class="odot od3"></div>
+          <div class="odot od4"></div>
+          <div class="odot od5"></div>
+        </div>
+      </div>
+    </div>
+  </foreignObject>
+
+  <!-- ════ BOTTOM BULLET SUMMARY ════ -->
+  <foreignObject x="20" y="404" width="860" height="15">
+    <div xmlns="http://www.w3.org/1999/xhtml">
+      <style>
+        @keyframes tickerImpact {
+          0%   { transform:translateX(0); }
+          100% { transform:translateX(-60%); }
+        }
+        .impact-ticker { font-family:'Courier New',monospace; font-size:9px; color:rgba(245,158,11,0.45); letter-spacing:1.5px; white-space:nowrap; overflow:hidden; display:flex; }
+        .impact-inner { display:flex; gap:0; animation:tickerImpact 20s linear infinite; }
+        .its { color:rgba(245,158,11,0.2); margin:0 20px; }
+      </style>
+      <div class="impact-ticker">
+        <div class="impact-inner">
+          <span>4h → 15m DEPLOYMENT CUT</span><span class="its">·</span>
+          <span>92% PHISHING DETECTION ACCURACY</span><span class="its">·</span>
+          <span>84% FEWER RISKY CLICKS</span><span class="its">·</span>
+          <span>100+ STUDENTS MENTORED</span><span class="its">·</span>
+          <span>PRODUCTION-GRADE SYSTEMS</span><span class="its">·</span>
+          <span>4h → 15m DEPLOYMENT CUT</span><span class="its">·</span>
+          <span>92% PHISHING DETECTION ACCURACY</span><span class="its">·</span>
+          <span>84% FEWER RISKY CLICKS</span><span class="its">·</span>
+        </div>
+      </div>
+    </div>
+  </foreignObject>
+
+  <!-- Bottom border -->
+  <line x1="1" y1="402" x2="899" y2="402" stroke="#f59e0b" stroke-width="0.5" stroke-opacity="0.15"/>
+</svg>

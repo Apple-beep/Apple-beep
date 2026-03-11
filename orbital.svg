@@ -1,0 +1,528 @@
+<svg width="900" height="520" viewBox="0 0 900 520" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="bg5" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#010810"/>
+      <stop offset="60%" style="stop-color:#020c1b"/>
+      <stop offset="100%" style="stop-color:#030912"/>
+    </linearGradient>
+
+    <!-- Star core gradient -->
+    <radialGradient id="starCore" cx="50%" cy="40%" r="60%">
+      <stop offset="0%"   style="stop-color:#ffffff;stop-opacity:1"/>
+      <stop offset="25%"  style="stop-color:#fffde0;stop-opacity:1"/>
+      <stop offset="60%"  style="stop-color:#f59e0b;stop-opacity:0.9"/>
+      <stop offset="100%" style="stop-color:#b45309;stop-opacity:0.6"/>
+    </radialGradient>
+
+    <!-- Planet gradients -->
+    <radialGradient id="pHireLens" cx="35%" cy="30%" r="70%">
+      <stop offset="0%"   style="stop-color:#6ee7f7"/>
+      <stop offset="100%" style="stop-color:#0e7490"/>
+    </radialGradient>
+    <radialGradient id="pCheckURL" cx="35%" cy="30%" r="70%">
+      <stop offset="0%"   style="stop-color:#f87171"/>
+      <stop offset="100%" style="stop-color:#991b1b"/>
+    </radialGradient>
+    <radialGradient id="pVision" cx="35%" cy="30%" r="70%">
+      <stop offset="0%"   style="stop-color:#a78bfa"/>
+      <stop offset="100%" style="stop-color:#5b21b6"/>
+    </radialGradient>
+    <radialGradient id="pF1" cx="35%" cy="30%" r="70%">
+      <stop offset="0%"   style="stop-color:#fbbf24"/>
+      <stop offset="100%" style="stop-color:#92400e"/>
+    </radialGradient>
+    <radialGradient id="pAI" cx="35%" cy="30%" r="70%">
+      <stop offset="0%"   style="stop-color:#86efac"/>
+      <stop offset="100%" style="stop-color:#15803d"/>
+    </radialGradient>
+
+    <!-- Orbit trail gradient -->
+    <linearGradient id="trailFade" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%"   style="stop-color:#00f5d4;stop-opacity:0"/>
+      <stop offset="100%" style="stop-color:#00f5d4;stop-opacity:0.6"/>
+    </linearGradient>
+
+    <!-- Glow filters -->
+    <filter id="starGlow" x="-80%" y="-80%" width="360%" height="360%">
+      <feGaussianBlur stdDeviation="14" result="b1"/>
+      <feGaussianBlur stdDeviation="6"  result="b2" in="SourceGraphic"/>
+      <feMerge><feMergeNode in="b1"/><feMergeNode in="b2"/><feMergeNode in="SourceGraphic"/></feMerge>
+    </filter>
+    <filter id="planetGlow" x="-60%" y="-60%" width="220%" height="220%">
+      <feGaussianBlur stdDeviation="5" result="b"/>
+      <feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge>
+    </filter>
+    <filter id="labelGlow" x="-10%" y="-20%" width="120%" height="140%">
+      <feGaussianBlur stdDeviation="2" result="b"/>
+      <feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge>
+    </filter>
+
+    <!-- Clip -->
+    <clipPath id="clip5">
+      <rect x="1" y="1" width="898" height="518" rx="14"/>
+    </clipPath>
+
+    <!-- Orbit ellipse paths for animateMotion -->
+    <!-- HireLens: rx=155 ry=48 -->
+    <path id="orb1" d="M 345 262 a 155 48 0 1 1 310 0 a 155 48 0 1 1 -310 0" fill="none"/>
+    <!-- CheckURL: rx=118 ry=82 -->
+    <path id="orb2" d="M 382 232 a 118 82 0 1 1 236 0 a 118 82 0 1 1 -236 0" fill="none"/>
+    <!-- VisionVoice: rx=85 ry=110 -->
+    <path id="orb3" d="M 415 202 a 85 110 0 1 1 170 0 a 85 110 0 1 1 -170 0" fill="none"/>
+    <!-- F1 DBMS: rx=190 ry=35 -->
+    <path id="orb4" d="M 310 277 a 190 35 0 1 1 380 0 a 190 35 0 1 1 -380 0" fill="none"/>
+    <!-- AI Pathfinding: rx=55 ry=130 -->
+    <path id="orb5" d="M 445 182 a 55 130 0 1 1 110 0 a 55 130 0 1 1 -110 0" fill="none"/>
+  </defs>
+
+  <!-- ── Background ── -->
+  <rect width="900" height="520" rx="14" fill="url(#bg5)"/>
+
+  <!-- Deep space stars (static dots) -->
+  <g opacity="0.7">
+    <circle cx="45"  cy="38"  r="1"   fill="#ffffff" opacity="0.6"/>
+    <circle cx="123" cy="72"  r="1.2" fill="#ffffff" opacity="0.5"/>
+    <circle cx="67"  cy="145" r="0.8" fill="#00f5d4" opacity="0.7"/>
+    <circle cx="198" cy="28"  r="1"   fill="#ffffff" opacity="0.4"/>
+    <circle cx="312" cy="18"  r="1.2" fill="#ffffff" opacity="0.6"/>
+    <circle cx="438" cy="32"  r="0.8" fill="#a855f7" opacity="0.7"/>
+    <circle cx="567" cy="14"  r="1"   fill="#ffffff" opacity="0.5"/>
+    <circle cx="689" cy="45"  r="1.2" fill="#ffffff" opacity="0.4"/>
+    <circle cx="754" cy="22"  r="0.8" fill="#00f5d4" opacity="0.6"/>
+    <circle cx="843" cy="68"  r="1"   fill="#ffffff" opacity="0.5"/>
+    <circle cx="876" cy="130" r="1.2" fill="#f59e0b" opacity="0.5"/>
+    <circle cx="812" cy="185" r="0.8" fill="#ffffff" opacity="0.4"/>
+    <circle cx="34"  cy="310" r="1"   fill="#ffffff" opacity="0.5"/>
+    <circle cx="78"  cy="395" r="1.2" fill="#a855f7" opacity="0.5"/>
+    <circle cx="55"  cy="452" r="0.8" fill="#ffffff" opacity="0.4"/>
+    <circle cx="152" cy="488" r="1"   fill="#ffffff" opacity="0.6"/>
+    <circle cx="248" cy="505" r="1.2" fill="#00f5d4" opacity="0.4"/>
+    <circle cx="445" cy="498" r="0.8" fill="#ffffff" opacity="0.5"/>
+    <circle cx="612" cy="508" r="1"   fill="#ffffff" opacity="0.4"/>
+    <circle cx="738" cy="490" r="1.2" fill="#f59e0b" opacity="0.5"/>
+    <circle cx="856" cy="472" r="0.8" fill="#ffffff" opacity="0.5"/>
+    <circle cx="888" cy="390" r="1"   fill="#a855f7" opacity="0.6"/>
+    <circle cx="865" cy="310" r="1.2" fill="#ffffff" opacity="0.4"/>
+    <!-- Twinkling stars -->
+    <circle cx="168" cy="195" r="1.5" fill="#ffffff" opacity="0.3">
+      <animate attributeName="opacity" values="0.3;0.9;0.3" dur="2.1s" repeatCount="indefinite"/>
+    </circle>
+    <circle cx="720" cy="155" r="1.5" fill="#00f5d4" opacity="0.3">
+      <animate attributeName="opacity" values="0.3;0.8;0.3" dur="3.4s" repeatCount="indefinite"/>
+    </circle>
+    <circle cx="88"  cy="260" r="1.2" fill="#a855f7" opacity="0.4">
+      <animate attributeName="opacity" values="0.4;1;0.4" dur="1.8s" repeatCount="indefinite"/>
+    </circle>
+    <circle cx="800" cy="420" r="1.5" fill="#f59e0b" opacity="0.3">
+      <animate attributeName="opacity" values="0.3;0.8;0.3" dur="2.6s" repeatCount="indefinite"/>
+    </circle>
+  </g>
+
+  <!-- Outer border + corners -->
+  <rect x="1" y="1" width="898" height="518" rx="14" fill="none" stroke="#f59e0b" stroke-width="1" stroke-opacity="0.3"/>
+  <polyline points="1,30 1,1 30,1"       fill="none" stroke="#f59e0b" stroke-width="1.5" stroke-opacity="0.6"/>
+  <polyline points="870,1 899,1 899,30"  fill="none" stroke="#f59e0b" stroke-width="1.5" stroke-opacity="0.6"/>
+  <polyline points="1,490 1,519 30,519"  fill="none" stroke="#f59e0b" stroke-width="1.5" stroke-opacity="0.6"/>
+  <polyline points="870,519 899,519 899,490" fill="none" stroke="#f59e0b" stroke-width="1.5" stroke-opacity="0.6"/>
+
+  <!-- Section label -->
+  <foreignObject x="20" y="12" width="860" height="24">
+    <div xmlns="http://www.w3.org/1999/xhtml">
+      <style>
+        @keyframes sl5p{0%,100%{opacity:.8}50%{opacity:1;text-shadow:0 0 16px rgba(245,158,11,.8)}}
+        .sl5{font-family:'Courier New',monospace;font-size:10px;font-weight:700;color:#f59e0b;letter-spacing:4px;text-transform:uppercase;animation:sl5p 4s ease-in-out infinite;display:flex;align-items:center;gap:10px}
+        .sl5-ln{flex:1;height:1px;background:linear-gradient(to right,rgba(245,158,11,.5),transparent)}
+        .sl5-id{color:rgba(148,163,184,.45);font-size:9px;letter-spacing:2px}
+      </style>
+      <div class="sl5">
+        <span>PROJECTS://CONSTELLATION_MAP</span>
+        <span class="sl5-ln"></span>
+        <span class="sl5-id">SEC_05 · ORBITAL_SYSTEM · 5 MISSIONS ACTIVE</span>
+      </div>
+    </div>
+  </foreignObject>
+  <line x1="20" y1="38" x2="880" y2="38" stroke="#f59e0b" stroke-width=".5" stroke-opacity=".18"/>
+
+  <!-- ══════════════ ORBIT ELLIPSES ══════════════ -->
+  <!-- Each orbit ring with dashed lines -->
+
+  <!-- Orbit 4 — F1 DBMS (outermost flat) -->
+  <ellipse cx="500" cy="262" rx="190" ry="35" fill="none"
+    stroke="#fbbf24" stroke-width="0.6" stroke-opacity="0.18" stroke-dasharray="6 8"/>
+
+  <!-- Orbit 1 — HireLens -->
+  <ellipse cx="500" cy="262" rx="155" ry="48" fill="none"
+    stroke="#6ee7f7" stroke-width="0.7" stroke-opacity="0.22" stroke-dasharray="5 7"/>
+
+  <!-- Orbit 2 — CheckURL -->
+  <ellipse cx="500" cy="262" rx="118" ry="82" fill="none"
+    stroke="#f87171" stroke-width="0.7" stroke-opacity="0.22" stroke-dasharray="5 7"/>
+
+  <!-- Orbit 3 — VisionVoice -->
+  <ellipse cx="500" cy="262" rx="85" ry="110" fill="none"
+    stroke="#a78bfa" stroke-width="0.7" stroke-opacity="0.22" stroke-dasharray="5 7"/>
+
+  <!-- Orbit 5 — AI Pathfinding (innermost) -->
+  <ellipse cx="500" cy="262" rx="55" ry="130" fill="none"
+    stroke="#86efac" stroke-width="0.7" stroke-opacity="0.2" stroke-dasharray="4 6"/>
+
+  <!-- ══════════════ CENTRAL STAR ══════════════ -->
+  <!-- Outer corona layers -->
+  <circle cx="500" cy="262" r="80" fill="none" stroke="#f59e0b" stroke-width=".5" stroke-opacity="0.06">
+    <animate attributeName="r" values="70;95;70" dur="6s" repeatCount="indefinite"/>
+    <animate attributeName="stroke-opacity" values="0.06;0.14;0.06" dur="6s" repeatCount="indefinite"/>
+  </circle>
+  <circle cx="500" cy="262" r="55" fill="none" stroke="#f59e0b" stroke-width=".8" stroke-opacity="0.1">
+    <animate attributeName="r" values="50;65;50" dur="4s" repeatCount="indefinite"/>
+    <animate attributeName="stroke-opacity" values="0.1;0.22;0.1" dur="4s" repeatCount="indefinite"/>
+  </circle>
+  <circle cx="500" cy="262" r="38" fill="none" stroke="#fbbf24" stroke-width="1" stroke-opacity="0.18">
+    <animate attributeName="r" values="35;44;35" dur="3s" repeatCount="indefinite"/>
+    <animate attributeName="stroke-opacity" values="0.18;0.38;0.18" dur="3s" repeatCount="indefinite"/>
+  </circle>
+
+  <!-- Star body -->
+  <circle cx="500" cy="262" r="22" fill="url(#starCore)" filter="url(#starGlow)">
+    <animate attributeName="r" values="20;23;20" dur="2.5s" repeatCount="indefinite"/>
+  </circle>
+  <circle cx="500" cy="262" r="12" fill="rgba(255,255,220,0.9)"/>
+  <circle cx="500" cy="262" r="6"  fill="#ffffff"/>
+
+  <!-- Star label -->
+  <foreignObject x="464" y="282" width="72" height="14">
+    <div xmlns="http://www.w3.org/1999/xhtml">
+      <style>
+        @keyframes starLabel{0%,100%{opacity:.7}50%{opacity:1;text-shadow:0 0 8px rgba(245,158,11,1)}}
+        .slbl{font-family:'Courier New',monospace;font-size:8px;font-weight:700;color:#fbbf24;text-align:center;letter-spacing:2px;animation:starLabel 2.5s ease-in-out infinite}
+      </style>
+      <div class="slbl">MKP CORE</div>
+    </div>
+  </foreignObject>
+
+  <!-- ══════════════ PLANET 1 — HireLens ══════════════ -->
+  <!-- Planet + label travel together -->
+  <g>
+    <animateMotion dur="9s" repeatCount="indefinite" begin="0s">
+      <mpath href="#orb1"/>
+    </animateMotion>
+    <!-- Planet glow halo -->
+    <circle r="18" fill="none" stroke="#6ee7f7" stroke-width="0.8" stroke-opacity="0.3">
+      <animate attributeName="r" values="14;22;14" dur="3s" repeatCount="indefinite"/>
+      <animate attributeName="stroke-opacity" values="0.3;0.6;0.3" dur="3s" repeatCount="indefinite"/>
+    </circle>
+    <!-- Planet body -->
+    <circle r="11" fill="url(#pHireLens)" filter="url(#planetGlow)"/>
+    <!-- Surface detail ring -->
+    <ellipse rx="11" ry="3.5" fill="none" stroke="rgba(255,255,255,0.25)" stroke-width="1" transform="rotate(-20)"/>
+    <!-- Label -->
+    <foreignObject x="-38" y="14" width="76" height="28">
+      <div xmlns="http://www.w3.org/1999/xhtml">
+        <style>
+          .pl{font-family:'Courier New',monospace;font-size:8px;font-weight:700;color:#6ee7f7;text-align:center;letter-spacing:.5px;line-height:1.4;text-shadow:0 0 8px rgba(110,231,247,.8)}
+        </style>
+        <div class="pl">HIRELENS<br/><span style="color:rgba(148,163,184,.6);font-size:7px">Python·NLP·React</span></div>
+      </div>
+    </foreignObject>
+  </g>
+
+  <!-- Planet 1 trail -->
+  <g opacity="0.35">
+    <animateMotion dur="9s" repeatCount="indefinite" begin="-0.6s">
+      <mpath href="#orb1"/>
+    </animateMotion>
+    <circle r="5" fill="#6ee7f7" opacity="0.5"/>
+  </g>
+  <g opacity="0.2">
+    <animateMotion dur="9s" repeatCount="indefinite" begin="-1.2s">
+      <mpath href="#orb1"/>
+    </animateMotion>
+    <circle r="3" fill="#6ee7f7" opacity="0.4"/>
+  </g>
+
+  <!-- ══════════════ PLANET 2 — CheckURL ══════════════ -->
+  <g>
+    <animateMotion dur="7s" repeatCount="indefinite" begin="-2s">
+      <mpath href="#orb2"/>
+    </animateMotion>
+    <circle r="16" fill="none" stroke="#f87171" stroke-width="0.8" stroke-opacity="0.3">
+      <animate attributeName="r" values="12;20;12" dur="2.8s" repeatCount="indefinite"/>
+      <animate attributeName="stroke-opacity" values="0.3;0.6;0.3" dur="2.8s" repeatCount="indefinite"/>
+    </circle>
+    <circle r="10" fill="url(#pCheckURL)" filter="url(#planetGlow)"/>
+    <ellipse rx="10" ry="3" fill="none" stroke="rgba(255,255,255,0.2)" stroke-width="1" transform="rotate(15)"/>
+    <foreignObject x="-36" y="13" width="72" height="28">
+      <div xmlns="http://www.w3.org/1999/xhtml">
+        <style>
+          .pl2{font-family:'Courier New',monospace;font-size:8px;font-weight:700;color:#f87171;text-align:center;letter-spacing:.5px;line-height:1.4;text-shadow:0 0 8px rgba(248,113,113,.8)}
+        </style>
+        <div class="pl2">CHECKURL<br/><span style="color:rgba(148,163,184,.6);font-size:7px">JS·Browser API</span></div>
+      </div>
+    </foreignObject>
+  </g>
+  <g opacity="0.35">
+    <animateMotion dur="7s" repeatCount="indefinite" begin="-2.5s">
+      <mpath href="#orb2"/>
+    </animateMotion>
+    <circle r="4.5" fill="#f87171" opacity="0.5"/>
+  </g>
+  <g opacity="0.2">
+    <animateMotion dur="7s" repeatCount="indefinite" begin="-3s">
+      <mpath href="#orb2"/>
+    </animateMotion>
+    <circle r="2.5" fill="#f87171" opacity="0.4"/>
+  </g>
+
+  <!-- ══════════════ PLANET 3 — VisionVoice ══════════════ -->
+  <g>
+    <animateMotion dur="11s" repeatCount="indefinite" begin="-4s">
+      <mpath href="#orb3"/>
+    </animateMotion>
+    <circle r="15" fill="none" stroke="#a78bfa" stroke-width="0.8" stroke-opacity="0.3">
+      <animate attributeName="r" values="11;19;11" dur="3.5s" repeatCount="indefinite"/>
+      <animate attributeName="stroke-opacity" values="0.3;0.6;0.3" dur="3.5s" repeatCount="indefinite"/>
+    </circle>
+    <circle r="10" fill="url(#pVision)" filter="url(#planetGlow)"/>
+    <!-- Planet ring (Saturn-style) -->
+    <ellipse rx="17" ry="5" fill="none" stroke="rgba(167,139,250,0.4)" stroke-width="1.5"/>
+    <foreignObject x="-40" y="13" width="80" height="28">
+      <div xmlns="http://www.w3.org/1999/xhtml">
+        <style>
+          .pl3{font-family:'Courier New',monospace;font-size:8px;font-weight:700;color:#a78bfa;text-align:center;letter-spacing:.5px;line-height:1.4;text-shadow:0 0 8px rgba(167,139,250,.8)}
+        </style>
+        <div class="pl3">VISIONVOICE<br/><span style="color:rgba(148,163,184,.6);font-size:7px">Swift·SwiftUI·ML</span></div>
+      </div>
+    </foreignObject>
+  </g>
+  <g opacity="0.35">
+    <animateMotion dur="11s" repeatCount="indefinite" begin="-5s">
+      <mpath href="#orb3"/>
+    </animateMotion>
+    <circle r="4" fill="#a78bfa" opacity="0.5"/>
+  </g>
+  <g opacity="0.2">
+    <animateMotion dur="11s" repeatCount="indefinite" begin="-6s">
+      <mpath href="#orb3"/>
+    </animateMotion>
+    <circle r="2.5" fill="#a78bfa" opacity="0.4"/>
+  </g>
+
+  <!-- ══════════════ PLANET 4 — F1 DBMS ══════════════ -->
+  <g>
+    <animateMotion dur="13s" repeatCount="indefinite" begin="-1s">
+      <mpath href="#orb4"/>
+    </animateMotion>
+    <circle r="18" fill="none" stroke="#fbbf24" stroke-width="0.8" stroke-opacity="0.3">
+      <animate attributeName="r" values="14;23;14" dur="4s" repeatCount="indefinite"/>
+      <animate attributeName="stroke-opacity" values="0.3;0.6;0.3" dur="4s" repeatCount="indefinite"/>
+    </circle>
+    <circle r="12" fill="url(#pF1)" filter="url(#planetGlow)"/>
+    <ellipse rx="12" ry="4" fill="none" stroke="rgba(255,255,255,0.22)" stroke-width="1" transform="rotate(-8)"/>
+    <circle r="5" fill="rgba(92,40,14,0.6)" cx="3" cy="-2"/>
+    <foreignObject x="-32" y="15" width="65" height="28">
+      <div xmlns="http://www.w3.org/1999/xhtml">
+        <style>
+          .pl4{font-family:'Courier New',monospace;font-size:8px;font-weight:700;color:#fbbf24;text-align:center;letter-spacing:.5px;line-height:1.4;text-shadow:0 0 8px rgba(251,191,36,.8)}
+        </style>
+        <div class="pl4">F1 DBMS<br/><span style="color:rgba(148,163,184,.6);font-size:7px">Python·SQL</span></div>
+      </div>
+    </foreignObject>
+  </g>
+  <g opacity="0.35">
+    <animateMotion dur="13s" repeatCount="indefinite" begin="-2s">
+      <mpath href="#orb4"/>
+    </animateMotion>
+    <circle r="5.5" fill="#fbbf24" opacity="0.5"/>
+  </g>
+  <g opacity="0.2">
+    <animateMotion dur="13s" repeatCount="indefinite" begin="-3s">
+      <mpath href="#orb4"/>
+    </animateMotion>
+    <circle r="3" fill="#fbbf24" opacity="0.4"/>
+  </g>
+
+  <!-- ══════════════ PLANET 5 — AI Pathfinding ══════════════ -->
+  <g>
+    <animateMotion dur="5.5s" repeatCount="indefinite" begin="-1.5s">
+      <mpath href="#orb5"/>
+    </animateMotion>
+    <circle r="13" fill="none" stroke="#86efac" stroke-width="0.8" stroke-opacity="0.3">
+      <animate attributeName="r" values="10;17;10" dur="2.2s" repeatCount="indefinite"/>
+      <animate attributeName="stroke-opacity" values="0.3;0.7;0.3" dur="2.2s" repeatCount="indefinite"/>
+    </circle>
+    <circle r="8" fill="url(#pAI)" filter="url(#planetGlow)"/>
+    <ellipse rx="8" ry="2.5" fill="none" stroke="rgba(255,255,255,0.2)" stroke-width="0.8" transform="rotate(30)"/>
+    <foreignObject x="-42" y="11" width="84" height="28">
+      <div xmlns="http://www.w3.org/1999/xhtml">
+        <style>
+          .pl5{font-family:'Courier New',monospace;font-size:8px;font-weight:700;color:#86efac;text-align:center;letter-spacing:.5px;line-height:1.4;text-shadow:0 0 8px rgba(134,239,172,.8)}
+        </style>
+        <div class="pl5">AI PATHFINDING<br/><span style="color:rgba(148,163,184,.6);font-size:7px">Python·A*·Greedy</span></div>
+      </div>
+    </foreignObject>
+  </g>
+  <g opacity="0.4">
+    <animateMotion dur="5.5s" repeatCount="indefinite" begin="-1.8s">
+      <mpath href="#orb5"/>
+    </animateMotion>
+    <circle r="3.5" fill="#86efac" opacity="0.6"/>
+  </g>
+  <g opacity="0.2">
+    <animateMotion dur="5.5s" repeatCount="indefinite" begin="-2.1s">
+      <mpath href="#orb5"/>
+    </animateMotion>
+    <circle r="2" fill="#86efac" opacity="0.4"/>
+  </g>
+
+  <!-- ══════════════ PROJECT CARDS ROW ══════════════ -->
+  <foreignObject x="14" y="390" width="872" height="116">
+    <div xmlns="http://www.w3.org/1999/xhtml">
+      <style>
+        @keyframes cardIn5 { from{opacity:0;transform:translateY(18px)} to{opacity:1;transform:translateY(0)} }
+        @keyframes cardBorderPulse {
+          0%,100% { box-shadow: 0 0 0 1px var(--bc); }
+          50%      { box-shadow: 0 0 10px var(--bc), 0 0 0 1px var(--bc); }
+        }
+        @keyframes dotBlink5 { 0%,100%{opacity:1} 50%{opacity:.1} }
+
+        .cards-row {
+          display:flex; gap:8px; height:110px;
+          font-family:'Courier New',monospace;
+          padding:0 2px;
+        }
+        .card5 {
+          flex:1; border-radius:8px;
+          background:rgba(10,16,32,.9);
+          padding:10px 10px 8px 10px;
+          display:flex; flex-direction:column; justify-content:space-between;
+          animation: cardIn5 .6s ease-out both;
+          border:1px solid var(--bc);
+          animation-delay:var(--d);
+          position:relative;
+          overflow:hidden;
+        }
+        .card5::before {
+          content:'';
+          position:absolute; top:0; left:0;
+          width:100%; height:2px;
+          background:var(--bc);
+          opacity:.7;
+        }
+        /* Shimmer sweep on load */
+        .card5::after {
+          content:'';
+          position:absolute; top:0; left:-100%; width:60%; height:100%;
+          background:linear-gradient(to right,transparent,rgba(255,255,255,.04),transparent);
+          animation:shimCard 3s ease-in-out infinite;
+          animation-delay:var(--sd);
+        }
+        @keyframes shimCard { 0%{left:-100%} 100%{left:200%} }
+
+        .c5-top { display:flex; align-items:flex-start; justify-content:space-between; gap:4px; }
+        .c5-name { font-size:10px; font-weight:900; letter-spacing:.5px; color:var(--tc); line-height:1.2; text-shadow:0 0 8px var(--bc); }
+        .c5-dot { width:6px;height:6px;border-radius:50%;background:var(--tc);flex-shrink:0;margin-top:2px;animation:dotBlink5 1.6s step-end infinite;animation-delay:var(--d);box-shadow:0 0 5px var(--bc); }
+        .c5-desc { font-size:9px; color:rgba(148,163,184,.65); line-height:1.45; letter-spacing:.2px; flex:1; margin:5px 0 4px 0; }
+        .c5-stack { font-size:8px; font-weight:700; letter-spacing:1px; color:var(--tc); opacity:.6; text-transform:uppercase; }
+        .c5-link { font-size:8px; color:var(--tc); opacity:.5; letter-spacing:.5px; text-decoration:none; }
+
+        /* Individual card colors */
+        .c-hl  { --bc:rgba(110,231,247,.3); --tc:#6ee7f7; --d:.2s; --sd:0s;   }
+        .c-cu  { --bc:rgba(248,113,113,.3); --tc:#f87171; --d:.4s; --sd:.5s;  }
+        .c-vv  { --bc:rgba(167,139,250,.3); --tc:#a78bfa; --d:.6s; --sd:1s;   }
+        .c-f1  { --bc:rgba(251,191,36,.3);  --tc:#fbbf24; --d:.8s; --sd:1.5s; }
+        .c-ai  { --bc:rgba(134,239,172,.3); --tc:#86efac; --d:1s;  --sd:2s;   }
+      </style>
+      <div class="cards-row">
+        <!-- HireLens -->
+        <div class="card5 c-hl">
+          <div class="c5-top">
+            <span class="c5-name">HireLens</span>
+            <span class="c5-dot"></span>
+          </div>
+          <div class="c5-desc">AI resume analysis with explainable scoring &amp; bias detection</div>
+          <div class="c5-stack">Python · NLP · React</div>
+        </div>
+        <!-- CheckURL -->
+        <div class="card5 c-cu">
+          <div class="c5-top">
+            <span class="c5-name">CheckURL-ext</span>
+            <span class="c5-dot"></span>
+          </div>
+          <div class="c5-desc">Real-time browser phishing defense · 92% detection accuracy</div>
+          <div class="c5-stack">JS · Browser APIs</div>
+        </div>
+        <!-- VisionVoice -->
+        <div class="card5 c-vv">
+          <div class="c5-top">
+            <span class="c5-name">VisionVoice</span>
+            <span class="c5-dot"></span>
+          </div>
+          <div class="c5-desc">Accessibility-first iOS app · voice, OCR &amp; on-device ML</div>
+          <div class="c5-stack">Swift · SwiftUI · Vision</div>
+        </div>
+        <!-- F1 DBMS -->
+        <div class="card5 c-f1">
+          <div class="c5-top">
+            <span class="c5-name">F1 DBMS</span>
+            <span class="c5-dot"></span>
+          </div>
+          <div class="c5-desc">OLAP analytics on large motorsport datasets · SQL optimized</div>
+          <div class="c5-stack">Python · SQL · MySQL</div>
+        </div>
+        <!-- AI Pathfinding -->
+        <div class="card5 c-ai">
+          <div class="c5-top">
+            <span class="c5-name">AI Pathfinding</span>
+            <span class="c5-dot"></span>
+          </div>
+          <div class="c5-desc">A* vs Greedy algorithm playground · performance benchmarks</div>
+          <div class="c5-stack">Python · A* · Greedy</div>
+        </div>
+      </div>
+    </div>
+  </foreignObject>
+
+  <!-- Divider above cards -->
+  <line x1="14" y1="390" x2="886" y2="390" stroke="#f59e0b" stroke-width=".5" stroke-opacity=".15"/>
+
+  <!-- Mission legend (top right) -->
+  <foreignObject x="720" y="46" width="165" height="72">
+    <div xmlns="http://www.w3.org/1999/xhtml">
+      <style>
+        @keyframes lgFade{from{opacity:0}to{opacity:1}}
+        .lg{font-family:'Courier New',monospace;background:rgba(5,12,26,.85);border:1px solid rgba(245,158,11,.2);border-radius:6px;padding:8px 10px;animation:lgFade .8s ease-out 1.2s both}
+        .lg-title{font-size:8px;font-weight:700;color:rgba(245,158,11,.6);letter-spacing:2px;margin-bottom:6px}
+        .lg-row{display:flex;align-items:center;gap:6px;margin-bottom:3px;font-size:8px;color:rgba(148,163,184,.55);letter-spacing:.5px}
+        .lg-dot{width:7px;height:7px;border-radius:50%;flex-shrink:0}
+      </style>
+      <div class="lg">
+        <div class="lg-title">MISSION LEGEND</div>
+        <div class="lg-row"><span class="lg-dot" style="background:#6ee7f7"></span>AI + Backend delivery</div>
+        <div class="lg-row"><span class="lg-dot" style="background:#f87171"></span>Security + reliability</div>
+        <div class="lg-row"><span class="lg-dot" style="background:#a78bfa"></span>Product + accessibility</div>
+        <div class="lg-row"><span class="lg-dot" style="background:#fbbf24"></span>Data + performance</div>
+        <div class="lg-row"><span class="lg-dot" style="background:#86efac"></span>Algorithms + systems</div>
+      </div>
+    </div>
+  </foreignObject>
+
+  <!-- Orbit speed label (bottom left of solar system) -->
+  <foreignObject x="18" y="46" width="160" height="60">
+    <div xmlns="http://www.w3.org/1999/xhtml">
+      <style>
+        @keyframes spFade{from{opacity:0}to{opacity:1}}
+        .sp{font-family:'Courier New',monospace;background:rgba(5,12,26,.8);border:1px solid rgba(0,245,212,.15);border-radius:6px;padding:7px 9px;animation:spFade .8s ease-out 1.5s both}
+        .sp-title{font-size:8px;font-weight:700;color:rgba(0,245,212,.5);letter-spacing:2px;margin-bottom:5px}
+        .sp-row{display:flex;justify-content:space-between;font-size:8px;color:rgba(148,163,184,.45);letter-spacing:.5px;margin-bottom:2px}
+        .sp-val{color:rgba(255,255,255,.35);font-weight:700}
+      </style>
+      <div class="sp">
+        <div class="sp-title">ORBITAL VELOCITY</div>
+        <div class="sp-row"><span>AI Pathfinding</span><span class="sp-val">5.5s</span></div>
+        <div class="sp-row"><span>CheckURL</span><span class="sp-val">7.0s</span></div>
+        <div class="sp-row"><span>HireLens</span><span class="sp-val">9.0s</span></div>
+        <div class="sp-row"><span>VisionVoice</span><span class="sp-val">11.0s</span></div>
+        <div class="sp-row"><span>F1 DBMS</span><span class="sp-val">13.0s</span></div>
+      </div>
+    </div>
+  </foreignObject>
+</svg>
