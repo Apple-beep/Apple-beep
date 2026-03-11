@@ -1,0 +1,210 @@
+<svg width="900" height="380" viewBox="0 0 900 380" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="bg2" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#020c1b"/>
+      <stop offset="100%" stop-color="#050d1a"/>
+    </linearGradient>
+    <linearGradient id="bT2" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#00f5d4"/>
+      <stop offset="100%" stop-color="#00c4a0"/>
+    </linearGradient>
+    <linearGradient id="bP2" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#a855f7"/>
+      <stop offset="100%" stop-color="#7c3aed"/>
+    </linearGradient>
+    <linearGradient id="bA2" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#f59e0b"/>
+      <stop offset="100%" stop-color="#d97706"/>
+    </linearGradient>
+    <linearGradient id="bG2" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#4ade80"/>
+      <stop offset="100%" stop-color="#16a34a"/>
+    </linearGradient>
+    <linearGradient id="rowHl" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#00f5d4" stop-opacity="0.07"/>
+      <stop offset="100%" stop-color="#00f5d4" stop-opacity="0"/>
+    </linearGradient>
+    <filter id="g2" x="-40%" y="-40%" width="180%" height="180%">
+      <feGaussianBlur stdDeviation="4" result="b"/>
+      <feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge>
+    </filter>
+    <filter id="g2s" x="-60%" y="-60%" width="220%" height="220%">
+      <feGaussianBlur stdDeviation="7" result="b"/>
+      <feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge>
+    </filter>
+    <clipPath id="clip2">
+      <rect x="1" y="1" width="898" height="378" rx="14"/>
+    </clipPath>
+    <clipPath id="tickerClip">
+      <rect x="0" y="348" width="900" height="30"/>
+    </clipPath>
+  </defs>
+
+  <rect width="900" height="380" rx="14" fill="url(#bg2)"/>
+
+  <g opacity="0.07" clip-path="url(#clip2)">
+    <line x1="75"  y1="0" x2="75"  y2="380" stroke="#00f5d4" stroke-width="0.5"/>
+    <line x1="150" y1="0" x2="150" y2="380" stroke="#00f5d4" stroke-width="0.5"/>
+    <line x1="225" y1="0" x2="225" y2="380" stroke="#00f5d4" stroke-width="0.5"/>
+    <line x1="300" y1="0" x2="300" y2="380" stroke="#00f5d4" stroke-width="0.5"/>
+    <line x1="375" y1="0" x2="375" y2="380" stroke="#00f5d4" stroke-width="0.5"/>
+    <line x1="450" y1="0" x2="450" y2="380" stroke="#00f5d4" stroke-width="0.5"/>
+    <line x1="525" y1="0" x2="525" y2="380" stroke="#00f5d4" stroke-width="0.5"/>
+    <line x1="600" y1="0" x2="600" y2="380" stroke="#00f5d4" stroke-width="0.5"/>
+    <line x1="675" y1="0" x2="675" y2="380" stroke="#00f5d4" stroke-width="0.5"/>
+    <line x1="750" y1="0" x2="750" y2="380" stroke="#00f5d4" stroke-width="0.5"/>
+    <line x1="825" y1="0" x2="825" y2="380" stroke="#00f5d4" stroke-width="0.5"/>
+    <line x1="0" y1="60"  x2="900" y2="60"  stroke="#00f5d4" stroke-width="0.5"/>
+    <line x1="0" y1="120" x2="900" y2="120" stroke="#00f5d4" stroke-width="0.5"/>
+    <line x1="0" y1="180" x2="900" y2="180" stroke="#00f5d4" stroke-width="0.5"/>
+    <line x1="0" y1="240" x2="900" y2="240" stroke="#00f5d4" stroke-width="0.5"/>
+    <line x1="0" y1="300" x2="900" y2="300" stroke="#00f5d4" stroke-width="0.5"/>
+  </g>
+
+  <rect x="1" y="1" width="898" height="378" rx="14" fill="none" stroke="#00f5d4" stroke-width="1.5" stroke-opacity="0.4"/>
+  <rect x="3" y="3" width="894" height="374" rx="12" fill="none" stroke="#00f5d4" stroke-width="0.4" stroke-opacity="0.1"/>
+
+  <polyline points="1,28 1,1 28,1"           fill="none" stroke="#00f5d4" stroke-width="2" stroke-opacity="0.65"/>
+  <polyline points="872,1 899,1 899,28"       fill="none" stroke="#00f5d4" stroke-width="2" stroke-opacity="0.65"/>
+  <polyline points="1,352 1,379 28,379"       fill="none" stroke="#00f5d4" stroke-width="2" stroke-opacity="0.65"/>
+  <polyline points="872,379 899,379 899,352"  fill="none" stroke="#00f5d4" stroke-width="2" stroke-opacity="0.65"/>
+
+  <text x="22" y="22" font-family="Courier New, monospace" font-size="10" font-weight="700"
+        fill="#00f5d4" letter-spacing="3">
+    RECRUITER BRIEF
+    <animate attributeName="opacity" values="0.7;1;0.7" dur="4s" repeatCount="indefinite"/>
+  </text>
+  <line x1="148" y1="16" x2="530" y2="16" stroke="#00f5d4" stroke-width="0.5" stroke-opacity="0.15"/>
+  <text x="878" y="22" font-family="Courier New, monospace" font-size="9"
+        fill="#475569" text-anchor="end" letter-spacing="1">SEC 02</text>
+
+  <line x1="1" y1="32" x2="899" y2="32" stroke="#00f5d4" stroke-width="0.5" stroke-opacity="0.15"/>
+
+  <rect x="20" y="44" width="480" height="290" rx="8" fill="rgba(0,10,30,0.6)" stroke="#00f5d4" stroke-width="0.5" stroke-opacity="0.2"/>
+
+  <text x="36" y="66" font-family="Courier New, monospace" font-size="9" font-weight="700"
+        fill="#00f5d4" opacity="0.5" letter-spacing="2">CANDIDATE DATA</text>
+  <line x1="30" y1="72" x2="488" y2="72" stroke="#00f5d4" stroke-width="0.5" stroke-opacity="0.12"/>
+
+  <rect x="20" y="80" width="480" height="26" rx="0" fill="url(#rowHl)">
+    <animate attributeName="opacity" values="0.6;1;0.6" dur="3s" repeatCount="indefinite" begin="0s"/>
+  </rect>
+  <circle cx="38" cy="93" r="3" fill="#4ade80">
+    <animate attributeName="opacity" values="1;0.2;1" dur="1.6s" repeatCount="indefinite"/>
+  </circle>
+  <text x="52" y="97" font-family="Courier New, monospace" font-size="10" fill="#64748b" letter-spacing="1">NAME</text>
+  <text x="180" y="97" font-family="Courier New, monospace" font-size="10" font-weight="700" fill="#e2e8f0" letter-spacing="0.5">Musharaf Khan Pathan</text>
+
+  <rect x="20" y="108" width="480" height="26" fill="rgba(0,245,212,0.02)"/>
+  <text x="52" y="126" font-family="Courier New, monospace" font-size="10" fill="#64748b" letter-spacing="1">ROLE</text>
+  <text x="180" y="126" font-family="Courier New, monospace" font-size="10" font-weight="700" fill="#00f5d4" letter-spacing="0.5">Software Engineer</text>
+
+  <rect x="20" y="136" width="480" height="26" fill="rgba(0,245,212,0.02)"/>
+  <circle cx="38" cy="149" r="3" fill="#4ade80">
+    <animate attributeName="opacity" values="1;0.2;1" dur="1.6s" repeatCount="indefinite" begin="0.3s"/>
+  </circle>
+  <text x="52" y="153" font-family="Courier New, monospace" font-size="10" fill="#64748b" letter-spacing="1">LOCATION</text>
+  <text x="180" y="153" font-family="Courier New, monospace" font-size="10" font-weight="700" fill="#e2e8f0" letter-spacing="0.5">Chicago, IL</text>
+
+  <rect x="20" y="164" width="480" height="26" fill="rgba(0,245,212,0.02)"/>
+  <text x="52" y="182" font-family="Courier New, monospace" font-size="10" fill="#64748b" letter-spacing="1">EDUCATION</text>
+  <text x="180" y="182" font-family="Courier New, monospace" font-size="10" font-weight="700" fill="#e2e8f0" letter-spacing="0.5">IIT BS CS  ·  May 2026</text>
+
+  <rect x="20" y="192" width="480" height="26" fill="rgba(0,245,212,0.02)"/>
+  <text x="52" y="210" font-family="Courier New, monospace" font-size="10" fill="#64748b" letter-spacing="1">FOCUS</text>
+  <text x="180" y="210" font-family="Courier New, monospace" font-size="10" font-weight="700" fill="#a855f7" letter-spacing="0.5">Secure AI  ·  Scalable Backend</text>
+
+  <rect x="20" y="220" width="480" height="26" fill="rgba(0,245,212,0.02)"/>
+  <text x="52" y="238" font-family="Courier New, monospace" font-size="10" fill="#64748b" letter-spacing="1">STACK</text>
+  <text x="180" y="238" font-family="Courier New, monospace" font-size="10" font-weight="700" fill="#e2e8f0" letter-spacing="0.3">Java  ·  Python  ·  Spring  ·  Docker  ·  AWS</text>
+
+  <rect x="20" y="248" width="480" height="26" fill="rgba(0,245,212,0.02)"/>
+  <text x="52" y="266" font-family="Courier New, monospace" font-size="10" fill="#64748b" letter-spacing="1">EMAIL</text>
+  <text x="180" y="266" font-family="Courier New, monospace" font-size="10" font-weight="700" fill="#e2e8f0" letter-spacing="0.3">mpathan2work@gmail.com</text>
+
+  <rect x="20" y="276" width="480" height="26" fill="rgba(0,245,212,0.02)"/>
+  <text x="52" y="294" font-family="Courier New, monospace" font-size="10" fill="#64748b" letter-spacing="1">GITHUB</text>
+  <text x="180" y="294" font-family="Courier New, monospace" font-size="10" font-weight="700" fill="#00f5d4" letter-spacing="0.3">github.com/Apple-beep</text>
+
+  <rect x="20" y="304" width="480" height="26" fill="rgba(0,245,212,0.02)"/>
+  <circle cx="38" cy="317" r="3" fill="#4ade80" filter="url(#g2)">
+    <animate attributeName="r" values="3;5;3" dur="1.4s" repeatCount="indefinite"/>
+    <animate attributeName="opacity" values="1;0.3;1" dur="1.4s" repeatCount="indefinite"/>
+  </circle>
+  <text x="52" y="321" font-family="Courier New, monospace" font-size="10" fill="#64748b" letter-spacing="1">STATUS</text>
+  <text x="180" y="321" font-family="Courier New, monospace" font-size="10" font-weight="700" fill="#4ade80" letter-spacing="0.5">Actively Interviewing</text>
+  <text x="340" y="321" font-family="Courier New, monospace" font-size="9" fill="#4ade80" opacity="0.5" letter-spacing="0.5">— FT SWE 2026</text>
+
+  <line x1="170" y1="79" x2="170" y2="332" stroke="#00f5d4" stroke-width="0.5" stroke-opacity="0.12"/>
+
+  <rect x="516" y="44" width="364" height="290" rx="8" fill="rgba(0,10,30,0.6)" stroke="#00f5d4" stroke-width="0.5" stroke-opacity="0.2"/>
+
+  <text x="530" y="66" font-family="Courier New, monospace" font-size="9" font-weight="700"
+        fill="#00f5d4" opacity="0.5" letter-spacing="2">PROFILE STRENGTH</text>
+  <circle cx="858" cy="62" r="4" fill="#4ade80" filter="url(#g2)">
+    <animate attributeName="opacity" values="1;0.2;1" dur="1.6s" repeatCount="indefinite"/>
+    <animate attributeName="r" values="3.5;5.5;3.5" dur="1.6s" repeatCount="indefinite"/>
+  </circle>
+  <line x1="526" y1="72" x2="872" y2="72" stroke="#00f5d4" stroke-width="0.5" stroke-opacity="0.12"/>
+
+  <text x="530" y="104" font-family="Courier New, monospace" font-size="11" font-weight="700" fill="#e2e8f0">Execution</text>
+  <text x="874" y="104" font-family="Courier New, monospace" font-size="10" font-weight="700" fill="#00f5d4" text-anchor="end">87%</text>
+  <rect x="530" y="110" width="340" height="7" rx="3.5" fill="rgba(255,255,255,0.06)"/>
+  <rect x="530" y="110" width="296" height="7" rx="3.5" fill="url(#bT2)">
+    <animate attributeName="width" values="0;296" dur="1.3s" begin="0.3s" fill="freeze" calcMode="spline" keySplines="0.4 0 0.2 1"/>
+  </rect>
+  <text x="530" y="127" font-family="Courier New, monospace" font-size="8" fill="#64748b" letter-spacing="0.5">Delivering under pressure  ·  Clean architecture</text>
+
+  <line x1="530" y1="135" x2="870" y2="135" stroke="#00f5d4" stroke-width="0.3" stroke-opacity="0.08"/>
+
+  <text x="530" y="154" font-family="Courier New, monospace" font-size="11" font-weight="700" fill="#e2e8f0">Security Mindset</text>
+  <text x="874" y="154" font-family="Courier New, monospace" font-size="10" font-weight="700" fill="#a855f7" text-anchor="end">92%</text>
+  <rect x="530" y="160" width="340" height="7" rx="3.5" fill="rgba(255,255,255,0.06)"/>
+  <rect x="530" y="160" width="313" height="7" rx="3.5" fill="url(#bP2)">
+    <animate attributeName="width" values="0;313" dur="1.3s" begin="0.55s" fill="freeze" calcMode="spline" keySplines="0.4 0 0.2 1"/>
+  </rect>
+  <text x="530" y="177" font-family="Courier New, monospace" font-size="8" fill="#64748b" letter-spacing="0.5">Threat modeling  ·  Secure-by-design</text>
+
+  <line x1="530" y1="185" x2="870" y2="185" stroke="#00f5d4" stroke-width="0.3" stroke-opacity="0.08"/>
+
+  <text x="530" y="204" font-family="Courier New, monospace" font-size="11" font-weight="700" fill="#e2e8f0">AI Product Delivery</text>
+  <text x="874" y="204" font-family="Courier New, monospace" font-size="10" font-weight="700" fill="#f59e0b" text-anchor="end">88%</text>
+  <rect x="530" y="210" width="340" height="7" rx="3.5" fill="rgba(255,255,255,0.06)"/>
+  <rect x="530" y="210" width="299" height="7" rx="3.5" fill="url(#bA2)">
+    <animate attributeName="width" values="0;299" dur="1.3s" begin="0.8s" fill="freeze" calcMode="spline" keySplines="0.4 0 0.2 1"/>
+  </rect>
+  <text x="530" y="227" font-family="Courier New, monospace" font-size="8" fill="#64748b" letter-spacing="0.5">NLP  ·  LLM integration  ·  ML pipelines</text>
+
+  <line x1="530" y1="235" x2="870" y2="235" stroke="#00f5d4" stroke-width="0.3" stroke-opacity="0.08"/>
+
+  <text x="530" y="254" font-family="Courier New, monospace" font-size="11" font-weight="700" fill="#e2e8f0">Scale + Reliability</text>
+  <text x="874" y="254" font-family="Courier New, monospace" font-size="10" font-weight="700" fill="#4ade80" text-anchor="end">93%</text>
+  <rect x="530" y="260" width="340" height="7" rx="3.5" fill="rgba(255,255,255,0.06)"/>
+  <rect x="530" y="260" width="316" height="7" rx="3.5" fill="url(#bG2)">
+    <animate attributeName="width" values="0;316" dur="1.3s" begin="1.05s" fill="freeze" calcMode="spline" keySplines="0.4 0 0.2 1"/>
+  </rect>
+  <text x="530" y="277" font-family="Courier New, monospace" font-size="8" fill="#64748b" letter-spacing="0.5">Distributed systems  ·  High-availability design</text>
+
+  <line x1="530" y1="285" x2="870" y2="285" stroke="#00f5d4" stroke-width="0.3" stroke-opacity="0.08"/>
+
+  <rect x="530" y="298" width="155" height="22" rx="4" fill="rgba(74,222,128,0.07)" stroke="#4ade80" stroke-width="1" stroke-opacity="0.3"/>
+  <circle cx="543" cy="309" r="3" fill="#4ade80">
+    <animate attributeName="opacity" values="1;0.15;1" dur="1.4s" repeatCount="indefinite"/>
+  </circle>
+  <text x="552" y="313" font-family="Courier New, monospace" font-size="9" font-weight="700"
+        fill="#4ade80" letter-spacing="1.5">HIRING READY</text>
+
+  <rect x="694" y="298" width="176" height="22" rx="4" fill="rgba(0,245,212,0.05)" stroke="#00f5d4" stroke-width="1" stroke-opacity="0.2"/>
+  <text x="782" y="313" font-family="Courier New, monospace" font-size="9" font-weight="700"
+        fill="#00f5d4" opacity="0.7" text-anchor="middle" letter-spacing="1">OPEN TO RELOCATION</text>
+
+  <rect x="1" y="346" width="898" height="32" fill="rgba(0,245,212,0.03)" clip-path="url(#clip2)"/>
+  <line x1="1" y1="346" x2="899" y2="346" stroke="#00f5d4" stroke-width="0.5" stroke-opacity="0.15"/>
+
+  <g clip-path="url(#tickerClip)">
+    <text font-family="Courier New, monospace" font-size="10" fill="#00f5d4" opacity="0.45" letter-spacing="1.5">
+      <animateTransform attributeName="transform" type="translate" values="900,0;-1800,0" dur="18s" repeatCount="indefinite"/>
+      <tspan y="366">⬡ SOFTWARE ENGINEER  ·  AI &amp; SECURITY  ·  BACKEND SYSTEMS  ·  CHICAGO IL  ·  IIT BS CS MAY 2026  ·  ACTIVELY INTERVIEWING  ·  mpathan2work@gmail.com  ·  OPEN TO FT ROLES 2026  ·  ⬡</tspan>
+    </text>
+  </g>
+</svg>
