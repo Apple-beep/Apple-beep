@@ -1,6 +1,6 @@
 <div align="center">
 
-![Hero](https://raw.githubusercontent.com/Apple-beep/Apple-beep/main/assets/hero.svg)
+![Hero](https://raw.githubusercontent.com/Apple-beep/Apple-beep/main/hero.svg)
 
 </div>
 
@@ -10,7 +10,7 @@
 
 <div align="center">
 
-![Signal Brief](https://raw.githubusercontent.com/Apple-beep/Apple-beep/main/assets/signal-brief.svg)
+![Signal Brief](https://raw.githubusercontent.com/Apple-beep/Apple-beep/main/signal-brief.svg)
 
 </div>
 
@@ -20,7 +20,7 @@
 
 <div align="center">
 
-![Impact](https://raw.githubusercontent.com/Apple-beep/Apple-beep/main/assets/impact.svg)
+![Impact](https://raw.githubusercontent.com/Apple-beep/Apple-beep/main/impact.svg)
 
 </div>
 
@@ -30,7 +30,7 @@
 
 <div align="center">
 
-![Skills](https://raw.githubusercontent.com/Apple-beep/Apple-beep/main/assets/skills.svg)
+![Skills](https://raw.githubusercontent.com/Apple-beep/Apple-beep/main/skills.svg)
 
 </div>
 
@@ -40,7 +40,7 @@
 
 <div align="center">
 
-![Orbital Projects](https://raw.githubusercontent.com/Apple-beep/Apple-beep/main/assets/orbital.svg)
+![Orbital Projects](https://raw.githubusercontent.com/Apple-beep/Apple-beep/main/orbital.svg)
 
 </div>
 
@@ -92,9 +92,9 @@
 
 <div align="center">
 
-![Skyline Header](https://raw.githubusercontent.com/Apple-beep/Apple-beep/main/assets/skyline.svg)
+![Skyline Header](https://raw.githubusercontent.com/Apple-beep/Apple-beep/main/skyline.svg)
 
-![3D contribution skyline](https://raw.githubusercontent.com/Apple-beep/Apple-beep/main/assets/github-skyline.svg)
+![3D contribution skyline](https://raw.githubusercontent.com/Apple-beep/Apple-beep/main/github-skyline.svg)
 
 `Auto-updated every 8 hours via GitHub Actions.`
 
@@ -106,7 +106,7 @@
 
 <div align="center">
 
-![Footer](https://raw.githubusercontent.com/Apple-beep/Apple-beep/main/assets/footer.svg)
+![Footer](https://raw.githubusercontent.com/Apple-beep/Apple-beep/main/footer.svg)
 
 </div>
 
