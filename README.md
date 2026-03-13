@@ -78,13 +78,7 @@
 
 ## PACMAN:
 
-<div align="center">
-
 ![Pac-Man contribution graph](https://raw.githubusercontent.com/Apple-beep/Apple-beep/output/pacman-contribution-graph-dark.svg)
-
-`Auto-updated daily via GitHub Actions.`
-
-</div>
 
 ---
 
