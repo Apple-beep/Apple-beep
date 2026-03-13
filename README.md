@@ -78,7 +78,7 @@
 
 ## PACMAN:
 
-![Pac-Man contribution graph](https://raw.githubusercontent.com/Apple-beep/Apple-beep/output/pacman-contribution-graph-dark.svg)
+![Skills](https://raw.githubusercontent.com/Apple-beep/Apple-beep/main/pacman-live-commits.html)
 
 ---
 
