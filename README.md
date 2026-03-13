@@ -77,9 +77,9 @@
 ---
 
 ## PACMAN:
-
-![Skills](https://raw.githubusercontent.com/Apple-beep/Apple-beep/main/pacman-live-commits.html)
-
+<div align="center">
+(https://apple-beep.github.io/Apple-beep/pacman-live-commits.html)
+</div>
 ---
 
 ## SKYLINE:
