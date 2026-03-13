@@ -88,8 +88,6 @@
 
 ![Skyline Header](https://raw.githubusercontent.com/Apple-beep/Apple-beep/main/skyline.svg)
 
-![3D contribution skyline](https://raw.githubusercontent.com/Apple-beep/Apple-beep/main/github-skyline.svg)
-
 `Auto-updated every 8 hours via GitHub Actions.`
 
 </div>
