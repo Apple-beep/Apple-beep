@@ -97,15 +97,17 @@
 ## CONTACT:
 
 <div align="center">
-
-![Footer](https://raw.githubusercontent.com/Apple-beep/Apple-beep/main/footer.svg)
-
+<img src="https://raw.githubusercontent.com/Apple-beep/Apple-beep/main/footer.svg" width="100%" alt="Musharaf Khan Pathan — Contact"/>
+<br/>
+<a href="https://musharafportfolio.vercel.app/" target="_blank" rel="noopener noreferrer">
+  <img src="https://raw.githubusercontent.com/Apple-beep/Apple-beep/main/btn-portfolio.svg" height="52" alt="Portfolio — musharafportfolio.vercel.app"/>
+</a>
+&nbsp;&nbsp;&nbsp;
+<a href="https://www.linkedin.com/in/musharaf-khan-pathan/" target="_blank" rel="noopener noreferrer">
+  <img src="https://raw.githubusercontent.com/Apple-beep/Apple-beep/main/btn-linkedin.svg" height="52" alt="LinkedIn — musharaf-khan-pathan"/>
+</a>
+&nbsp;&nbsp;&nbsp;
+<a href="mailto:mpathan2work@gmail.com">
+  <img src="https://raw.githubusercontent.com/Apple-beep/Apple-beep/main/btn-contact.svg" height="52" alt="Email — mpathan2work@gmail.com"/>
+</a>
 </div>
-
----
-
-## FOUNDATION:
-
-- GitHub Pages deployment pipeline is active via Actions.
-- Project site is live at: [https://apple-beep.github.io/Apple-beep/](https://apple-beep.github.io/Apple-beep/)
-- Health checks run weekly and on relevant pushes.
