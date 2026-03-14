@@ -101,17 +101,17 @@
 <br/><br/>
 <table border="0" cellspacing="0" cellpadding="0">
   <tr>
-    <td align="center" style="padding:0 8px">
+    <td align="center" style="padding:0 5px">
       <a href="https://musharafportfolio.vercel.app/">
         <img src="https://raw.githubusercontent.com/Apple-beep/Apple-beep/main/btn-portfolio.svg" width="256" alt="Portfolio — musharafportfolio.vercel.app"/>
       </a>
     </td>
-    <td align="center" style="padding:0 8px">
+    <td align="center" style="padding:0 5px">
       <a href="https://www.linkedin.com/in/musharaf-khan-pathan/">
         <img src="https://raw.githubusercontent.com/Apple-beep/Apple-beep/main/btn-linkedin.svg" width="256" alt="LinkedIn — musharaf-khan-pathan"/>
       </a>
     </td>
-    <td align="center" style="padding:0 8px">
+    <td align="center" style="padding:0 5px">
       <a href="mailto:mpathan2work@gmail.com">
         <img src="https://raw.githubusercontent.com/Apple-beep/Apple-beep/main/btn-contact.svg" width="256" alt="Email — mpathan2work@gmail.com"/>
       </a>
