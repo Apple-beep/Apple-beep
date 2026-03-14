@@ -97,17 +97,25 @@
 ## CONTACT:
 
 <div align="center">
-<img src="https://raw.githubusercontent.com/Apple-beep/Apple-beep/main/footer.svg" width="100%" alt="Musharaf Khan Pathan — Contact"/>
-<br/>
-<a href="https://musharafportfolio.vercel.app/" target="_blank" rel="noopener noreferrer">
-  <img src="https://raw.githubusercontent.com/Apple-beep/Apple-beep/main/btn-portfolio.svg" height="52" alt="Portfolio — musharafportfolio.vercel.app"/>
-</a>
-&nbsp;&nbsp;&nbsp;
-<a href="https://www.linkedin.com/in/musharaf-khan-pathan/" target="_blank" rel="noopener noreferrer">
-  <img src="https://raw.githubusercontent.com/Apple-beep/Apple-beep/main/btn-linkedin.svg" height="52" alt="LinkedIn — musharaf-khan-pathan"/>
-</a>
-&nbsp;&nbsp;&nbsp;
-<a href="mailto:mpathan2work@gmail.com">
-  <img src="https://raw.githubusercontent.com/Apple-beep/Apple-beep/main/btn-contact.svg" height="52" alt="Email — mpathan2work@gmail.com"/>
-</a>
+<img src="https://raw.githubusercontent.com/Apple-beep/Apple-beep/main/footer.svg" width="900" alt="Musharaf Khan Pathan — Contact"/>
+<br/><br/>
+<table border="0" cellspacing="0" cellpadding="0">
+  <tr>
+    <td align="center" style="padding:0 8px">
+      <a href="https://musharafportfolio.vercel.app/">
+        <img src="https://raw.githubusercontent.com/Apple-beep/Apple-beep/main/btn-portfolio.svg" width="256" alt="Portfolio — musharafportfolio.vercel.app"/>
+      </a>
+    </td>
+    <td align="center" style="padding:0 8px">
+      <a href="https://www.linkedin.com/in/musharaf-khan-pathan/">
+        <img src="https://raw.githubusercontent.com/Apple-beep/Apple-beep/main/btn-linkedin.svg" width="256" alt="LinkedIn — musharaf-khan-pathan"/>
+      </a>
+    </td>
+    <td align="center" style="padding:0 8px">
+      <a href="mailto:mpathan2work@gmail.com">
+        <img src="https://raw.githubusercontent.com/Apple-beep/Apple-beep/main/btn-contact.svg" width="256" alt="Email — mpathan2work@gmail.com"/>
+      </a>
+    </td>
+  </tr>
+</table>
 </div>
