@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="440" height="56" viewBox="0 0 440 56" fill="none" xmlns="http://www.w3.org/2000/svg">
+<defs>
+  <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+    <stop offset="0%" stop-color="#001a14"/>
+    <stop offset="50%" stop-color="#030d1a"/>
+    <stop offset="100%" stop-color="#1a0800"/>
+  </linearGradient>
+  <linearGradient id="shine" x1="0" y1="0" x2="1" y2="0">
+    <stop offset="0%"   stop-color="rgba(0,245,212,0)"/>
+    <stop offset="50%"  stop-color="rgba(0,245,212,.08)"/>
+    <stop offset="100%" stop-color="rgba(0,245,212,0)"/>
+  </linearGradient>
+</defs>
+
+<!-- Body -->
+<rect width="440" height="56" rx="10" fill="url(#bg)"/>
+
+<!-- Static border -->
+<rect x=".75" y=".75" width="438.5" height="54.5" rx="9.5" fill="none" stroke="rgba(0,245,212,.45)" stroke-width="1.5"/>
+<!-- Top glow edge -->
+<rect x="1" y="1" width="438" height="2" rx="9" fill="rgba(0,245,212,.12)"/>
+<!-- Animated border pulse -->
+<rect x=".75" y=".75" width="438.5" height="54.5" rx="9.5" fill="none" stroke="#00f5d4" stroke-width="1.2">
+  <animate attributeName="stroke-opacity" values=".3;.85;.3" dur="2.2s" repeatCount="indefinite"/>
+</rect>
+<!-- Right amber accent -->
+<rect x="1" y="1" width="438" height="54" rx="9" fill="none" stroke="rgba(245,158,11,.12)" stroke-width="1.5">
+  <animate attributeName="stroke-opacity" values=".08;.3;.08" dur="2.2s" begin="1.1s" repeatCount="indefinite"/>
+</rect>
+
+<!-- Shimmer sweep -->
+<rect x="0" y="0" width="80" height="56" rx="10" fill="url(#shine)">
+  <animateTransform attributeName="transform" type="translate" values="-80,0;520,0;-80,0" dur="3s" repeatCount="indefinite"/>
+</rect>
+
+<!-- PAC-MAN icon (left) -->
+<circle cx="36" cy="28" r="14" fill="rgba(245,197,24,.06)"/>
+<path fill="#f5c518">
+  <animate attributeName="d"
+    values="M42.3,30.96 A14,14 0 1,0 42.3,25.04 L36,28 Z;M43,28.2 A14,14 0 1,0 43,27.8 L36,28 Z;M42.3,30.96 A14,14 0 1,0 42.3,25.04 L36,28 Z"
+    dur="0.28s" repeatCount="indefinite"/>
+</path>
+<circle cx="33.5" cy="21.5" r="2" fill="rgba(0,0,0,.65)"/>
+
+<!-- Divider -->
+<line x1="64" y1="12" x2="64" y2="44" stroke="rgba(0,245,212,.15)" stroke-width="1"/>
+
+<!-- Play triangle -->
+<polygon points="82,28 74,22 74,34" fill="#00f5d4" opacity=".9">
+  <animate attributeName="opacity" values=".7;1;.7" dur="1.1s" repeatCount="indefinite"/>
+</polygon>
+
+<!-- Main text -->
+<text x="100" y="24" font-family="Arial,sans-serif" font-size="13" font-weight="900" fill="#00f5d4" letter-spacing="2">PLAY THE LIVE GAME</text>
+<text x="100" y="39" font-family="Courier New,monospace" font-size="8.5" fill="rgba(148,163,184,.5)" letter-spacing=".5">apple-beep.github.io/Apple-beep/pacman/</text>
+
+<!-- Ghost icons (right side) -->
+<!-- BUG ghost mini -->
+<path d="M358,22 A5,5 0 0,1 368,22 L368,30 Q366.5,33 365,30 Q363.5,33 362,30 Q360.5,33 359,30 Q357.5,33 356,30 Z" fill="#f87171" opacity=".7">
+  <animate attributeName="opacity" values=".55;.85;.55" dur="1.4s" repeatCount="indefinite"/>
+</path>
+<!-- DEBT ghost mini -->
+<path d="M374,22 A5,5 0 0,1 384,22 L384,30 Q382.5,33 381,30 Q379.5,33 378,30 Q376.5,33 375,30 Q373.5,33 372,30 Z" fill="#f9a8d4" opacity=".7">
+  <animate attributeName="opacity" values=".55;.85;.55" dur="1.4s" begin=".3s" repeatCount="indefinite"/>
+</path>
+
+<!-- Arrow -->
+<text x="405" y="32" text-anchor="middle" dominant-baseline="middle" font-size="20" font-family="Arial,sans-serif" fill="#f59e0b" opacity=".75">→</text>
+
+</svg>
