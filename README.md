@@ -50,7 +50,7 @@
 
 <div align="center">
 
-[![My Skills](https://skillicons.dev/icons?i=java,python,ts,js,swift,react,spring,docker,aws,mysql,git,github&theme=dark&perline=12)](https://github.com/Apple-beep)
+[![My Skills](https://skillicons.dev/icons?i=java,python,Go,C,ts,js,swift,react,spring,docker,aws,mysql,git,github&theme=dark&perline=12)](https://github.com/Apple-beep)
 
 </div>
 
