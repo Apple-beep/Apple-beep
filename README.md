@@ -97,7 +97,7 @@
 ## CONTACT:
 
 <div align="center">
-<img src="https://raw.githubusercontent.com/Apple-beep/Apple-beep/main/footer.svg" width="900" alt="Musharaf Khan Pathan — Contact"/>
+<img src="https://raw.githubusercontent.com/Apple-beep/Apple-beep/main/footer.svg" width="800" alt="Musharaf Khan Pathan — Contact"/>
 <table border="0" cellspacing="0" cellpadding="0">
   <tr>
     <td align="center" style="padding:0 8px">
