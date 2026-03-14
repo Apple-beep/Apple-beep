@@ -78,9 +78,12 @@
 
 ## PACMAN:
 <div align="center">
-(https://apple-beep.github.io/Apple-beep/pacman-live-commits.html)
+<img src="https://raw.githubusercontent.com/Apple-beep/Apple-beep/main/pacman-demo.svg" width="900" alt="Pac-Man auto-eating Apple-beep's GitHub commits — Demo"/>
+<br/>
+<a href="https://apple-beep.github.io/Apple-beep/pacman/">
+  <img src="https://raw.githubusercontent.com/Apple-beep/Apple-beep/main/btn-pacman-play.svg" width="440" alt="Play the Live Pac-Man Game"/>
+</a>
 </div>
----
 
 ## SKYLINE:
 
