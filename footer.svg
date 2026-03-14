@@ -1,0 +1,115 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="900" height="80" viewBox="0 0 900 80" fill="none" xmlns="http://www.w3.org/2000/svg">
+<defs>
+  <linearGradient id="fBg" x1="0" y1="0" x2="0" y2="1">
+    <stop offset="0%" stop-color="#010d1f"/>
+    <stop offset="100%" stop-color="#020c1b"/>
+  </linearGradient>
+  <linearGradient id="fLine" x1="0" y1="0" x2="1" y2="0">
+    <stop offset="0%"   stop-color="rgba(0,245,212,0)"/>
+    <stop offset="30%"  stop-color="rgba(0,245,212,0.45)"/>
+    <stop offset="70%"  stop-color="rgba(0,245,212,0.45)"/>
+    <stop offset="100%" stop-color="rgba(0,245,212,0)"/>
+  </linearGradient>
+  <linearGradient id="fSig" x1="0" y1="0" x2="1" y2="0">
+    <stop offset="0%"   stop-color="rgba(0,245,212,0)"/>
+    <stop offset="25%"  stop-color="rgba(0,245,212,0.12)"/>
+    <stop offset="50%"  stop-color="rgba(0,245,212,0.06)"/>
+    <stop offset="75%"  stop-color="rgba(0,245,212,0.12)"/>
+    <stop offset="100%" stop-color="rgba(0,245,212,0)"/>
+  </linearGradient>
+</defs>
+
+<!-- ── Background ── -->
+<rect width="900" height="80" rx="12" fill="url(#fBg)"/>
+
+<!-- Subtle dot grid -->
+<rect width="900" height="80" rx="12" fill="none" opacity="1">
+  <!-- dots via path trick — repeating dots at 22px intervals -->
+</rect>
+<!-- Manually placed dots (22px grid, teal .028 opacity) -->
+<g fill="rgba(0,245,212,.03)">
+  <circle cx="44" cy="20" r=".7"/><circle cx="88" cy="20" r=".7"/><circle cx="132" cy="20" r=".7"/>
+  <circle cx="176" cy="20" r=".7"/><circle cx="220" cy="20" r=".7"/><circle cx="264" cy="20" r=".7"/>
+  <circle cx="308" cy="20" r=".7"/><circle cx="352" cy="20" r=".7"/><circle cx="396" cy="20" r=".7"/>
+  <circle cx="440" cy="20" r=".7"/><circle cx="484" cy="20" r=".7"/><circle cx="528" cy="20" r=".7"/>
+  <circle cx="572" cy="20" r=".7"/><circle cx="616" cy="20" r=".7"/><circle cx="660" cy="20" r=".7"/>
+  <circle cx="704" cy="20" r=".7"/><circle cx="748" cy="20" r=".7"/><circle cx="792" cy="20" r=".7"/>
+  <circle cx="836" cy="20" r=".7"/><circle cx="880" cy="20" r=".7"/>
+  <circle cx="44" cy="56" r=".7"/><circle cx="132" cy="56" r=".7"/><circle cx="220" cy="56" r=".7"/>
+  <circle cx="308" cy="56" r=".7"/><circle cx="396" cy="56" r=".7"/><circle cx="484" cy="56" r=".7"/>
+  <circle cx="572" cy="56" r=".7"/><circle cx="660" cy="56" r=".7"/><circle cx="748" cy="56" r=".7"/>
+  <circle cx="836" cy="56" r=".7"/>
+</g>
+
+<!-- ── Border ── -->
+<rect x="1" y="1" width="898" height="78" rx="11"
+      fill="none" stroke="rgba(0,245,212,.22)" stroke-width="1.5"/>
+<!-- Inner border accent -->
+<rect x="3" y="3" width="894" height="74" rx="10"
+      fill="none" stroke="rgba(0,245,212,.06)" stroke-width=".75"/>
+
+<!-- ── Corner brackets ── -->
+<path d="M15,1  L1,1  L1,15"  fill="none" stroke="rgba(0,245,212,.58)" stroke-width="1.8" stroke-linecap="round"/>
+<path d="M885,1 L899,1 L899,15" fill="none" stroke="rgba(0,245,212,.58)" stroke-width="1.8" stroke-linecap="round"/>
+<path d="M1,65  L1,79 L15,79"  fill="none" stroke="rgba(0,245,212,.58)" stroke-width="1.8" stroke-linecap="round"/>
+<path d="M899,65 L899,79 L885,79" fill="none" stroke="rgba(0,245,212,.58)" stroke-width="1.8" stroke-linecap="round"/>
+
+<!-- ── Top section: LEFT — status dot + label ── -->
+<!-- Breathing status dot -->
+<circle cx="22" cy="26" r="4" fill="#4ade80">
+  <animate attributeName="r"       values="3.5;4.5;3.5" dur="2s" repeatCount="indefinite"/>
+  <animate attributeName="opacity" values="1;.6;1"       dur="2s" repeatCount="indefinite"/>
+</circle>
+<!-- Expanding ring -->
+<circle cx="22" cy="26" r="8" fill="none" stroke="#4ade80" stroke-width=".8">
+  <animate attributeName="r"       values="5;11;5"       dur="2s" repeatCount="indefinite"/>
+  <animate attributeName="opacity" values=".35;0;.35"    dur="2s" repeatCount="indefinite"/>
+</circle>
+<text x="34" y="22"
+      font-family="Arial,sans-serif" font-size="8.5" font-weight="700"
+      fill="#4ade80" letter-spacing="2.5">ACTIVELY INTERVIEWING</text>
+<text x="34" y="34"
+      font-family="Courier New,monospace" font-size="7.5"
+      fill="rgba(74,222,128,.4)" letter-spacing="1.5">FULL-TIME SWE · JUNE 2026</text>
+
+<!-- ── CENTER — name + tagline ── -->
+<text x="450" y="20" text-anchor="middle"
+      font-family="Arial,sans-serif" font-size="13" font-weight="900"
+      fill="rgba(0,245,212,.85)" letter-spacing="4">MUSHARAF KHAN PATHAN</text>
+<!-- Tagline with three pillars -->
+<text x="338" y="36" text-anchor="middle"
+      font-family="Courier New,monospace" font-size="8.5" font-weight="700"
+      fill="rgba(0,245,212,.55)" letter-spacing="2">BUILD</text>
+<text x="450" y="36" text-anchor="middle"
+      font-family="Courier New,monospace" font-size="8.5" font-weight="700"
+      fill="rgba(168,85,247,.55)" letter-spacing="2">SECURE</text>
+<text x="562" y="36" text-anchor="middle"
+      font-family="Courier New,monospace" font-size="8.5" font-weight="700"
+      fill="rgba(245,158,11,.55)" letter-spacing="2">SCALE</text>
+<!-- Dividers between pillars -->
+<line x1="392" y1="29" x2="392" y2="39" stroke="rgba(0,245,212,.18)" stroke-width="1"/>
+<line x1="506" y1="29" x2="506" y2="39" stroke="rgba(0,245,212,.18)" stroke-width="1"/>
+
+<!-- ── RIGHT — IIT badge ── -->
+<rect x="786" y="14" width="100" height="28" rx="5"
+      fill="rgba(0,245,212,.05)" stroke="rgba(0,245,212,.2)" stroke-width="1"/>
+<text x="836" y="24" text-anchor="middle"
+      font-family="Arial,sans-serif" font-size="8" font-weight="700"
+      fill="rgba(0,245,212,.65)" letter-spacing="1.5">IIT CHICAGO</text>
+<text x="836" y="35" text-anchor="middle"
+      font-family="Courier New,monospace" font-size="7.5"
+      fill="rgba(71,85,105,.5)" letter-spacing="1">BS CS · 2026</text>
+
+<!-- ── DIVIDER LINE with glow ── -->
+<line x1="14" y1="50" x2="886" y2="50" stroke="url(#fLine)" stroke-width="1"/>
+
+<!-- ── CONNECT LABEL (centered) ── -->
+<text x="450" y="66" text-anchor="middle"
+      font-family="Courier New,monospace" font-size="8.5" font-weight="700"
+      fill="rgba(0,245,212,.35)" letter-spacing="5">CONNECT</text>
+<!-- Small dashes flanking the label -->
+<line x1="230" y1="63" x2="360" y2="63" stroke="rgba(0,245,212,.1)" stroke-width=".8"/>
+<line x1="540" y1="63" x2="670" y2="63" stroke="rgba(0,245,212,.1)" stroke-width=".8"/>
+
+</svg>
